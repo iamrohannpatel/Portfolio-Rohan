@@ -25,8 +25,8 @@ const SkillsSphere = () => {
         let animationFrame;
         const animate = () => {
             setRotation(prev => ({
-                x: prev.x + 0.003,
-                y: prev.y + 0.003
+                x: prev.x + 0.018,
+                y: prev.y + 0.018
             }));
             animationFrame = requestAnimationFrame(animate);
         };
@@ -61,7 +61,9 @@ const SkillsSphere = () => {
                                 zIndex: Math.floor(scale * 100),
                                 fontSize: '14px',
                                 fontWeight: 'bold',
-                                color: alpha > 0.8 ? '#fff' : '#94a3b8'
+                                fontWeight: 'bold',
+                                color: alpha > 0.8 ? '#fff' : '#94a3b8',
+                                willChange: 'transform, opacity, z-index'
                             }}
                         >
                             <span className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md border border-white/10">
