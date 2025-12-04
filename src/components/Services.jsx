@@ -7,9 +7,9 @@ const Services = () => {
     <section id="services" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
-          <span className="text-pink-500">02.</span> What I Do
+          <span className="text-pink-500">05.</span> What I Do
         </h2>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {/* Service 1: Web Development */}
           <TiltCard className="bg-white/5 border border-white/10 p-8 rounded-2xl">
@@ -21,7 +21,7 @@ const Services = () => {
               Building fast, responsive, and SEO-friendly websites using modern frameworks like React and Next.js.
             </p>
           </TiltCard>
-          
+
           {/* Service 2: Backend Systems */}
           <TiltCard className="bg-white/5 border border-white/10 p-8 rounded-2xl">
             <div className="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">

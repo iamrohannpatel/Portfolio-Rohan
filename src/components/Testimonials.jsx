@@ -6,7 +6,7 @@ const Testimonials = () => {
     <section id="testimonials" className="py-24 px-4 bg-black/30">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-white">
-          <span className="text-yellow-500">05.</span> Testimonials
+          <span className="text-yellow-500">07.</span> Testimonials
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">

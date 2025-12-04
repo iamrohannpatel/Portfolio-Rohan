@@ -36,7 +36,7 @@ const Contact = () => {
         <section id="contact" className="py-24 px-4 bg-gradient-to-b from-transparent to-black">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-4xl font-bold mb-12 flex items-center justify-center gap-3">
-                    <span className="text-cyan-500">09.</span> Let's Connect
+                    <span className="text-cyan-500">10.</span> Let's Connect
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-12">

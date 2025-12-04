@@ -50,7 +50,7 @@ const Home = ({ scrollToSection }) => {
                         className="px-8 py-4 bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold rounded-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2"
                     >
                         <Download size={20} />
-                        Download CV
+                        Download Resume 
                     </button>
                 </div>
             </div>

@@ -14,9 +14,10 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                         <button
                             key={item.id}
                             onClick={() => scrollToSection(item.id)}
-                            className={`text-sm font-medium tracking-wider hover:text-cyan-400 transition-colors ${activeSection === item.id ? 'text-cyan-400' : 'text-gray-300'}`}
+                            className={`relative group text-sm font-medium tracking-wider transition-colors ${activeSection === item.id ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
                         >
                             {item.label}
+                            <span className={`absolute -bottom-1 left-0 h-[2px] bg-cyan-400 transition-all duration-300 ${activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                         </button>
                     ))}
                 </div>
@@ -34,8 +35,9 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                             <button
                                 key={item.id}
                                 onClick={() => scrollToSection(item.id)}
-                                className="text-left text-lg font-medium text-gray-300 hover:text-cyan-400"
+                                className={`flex items-center gap-4 text-left text-lg font-medium transition-colors ${activeSection === item.id ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
                             >
+                                <span className="text-cyan-400">{item.icon}</span>
                                 {item.label}
                             </button>
                         ))}

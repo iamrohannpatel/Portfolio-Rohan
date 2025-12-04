@@ -7,7 +7,7 @@ const Projects = () => {
         <section id="projects" className="py-24 px-4 bg-black/30">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
-                    <span className="text-cyan-500">04.</span> Projects
+                    <span className="text-cyan-500">02.</span> Projects
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

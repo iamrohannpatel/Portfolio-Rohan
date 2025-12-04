@@ -6,7 +6,7 @@ const Education = () => {
         <section id="education" className="py-24 px-4 bg-transparent">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
-                    <span className="text-pink-500">06.</span> Education & Roadmap
+                    <span className="text-purple-500">06.</span> Education & Roadmap
                 </h2>
 
                 <div className="relative border-l-2 border-white/10 ml-6 md:ml-10 space-y-12">
