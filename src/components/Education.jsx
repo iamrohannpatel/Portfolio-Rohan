@@ -23,7 +23,7 @@ const Education = () => {
                             <ul className="list-disc list-inside text-gray-400 space-y-2 text-sm">
                                 <li>Completed Frontend Development + GenAI.</li>
                                 <li>Mastered the Data Structures and Algorithms.</li>
-                                 <li>Actively learning Backend development.</li>
+                                <li>Currently learning Backend development.</li>
                             </ul>
                         </div>
                     </div>

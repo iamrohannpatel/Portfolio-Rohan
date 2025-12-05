@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Target, Flame, Trophy, Code2 } from 'lucide-react';
+import { Target, Flame, Percent, Code2 } from 'lucide-react';
 
 const CodingProfile = () => {
     const contributions = useMemo(() => {
@@ -29,7 +29,7 @@ const CodingProfile = () => {
                         <div className="bg-white/5 border border-white/10 p-6 rounded-xl flex items-center justify-between hover:border-cyan-500/30 transition-colors">
                             <div>
                                 <div className="text-gray-400 text-sm font-medium mb-1">Problems Solved</div>
-                                <div className="text-3xl font-bold text-white">450+</div>
+                                <div className="text-3xl font-bold text-white">200+</div>
                             </div>
                             <div className="h-12 w-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
                                 <Target size={24} />
@@ -53,11 +53,11 @@ const CodingProfile = () => {
                         {/* Global Rank Card */}
                         <div className="bg-white/5 border border-white/10 p-6 rounded-xl flex items-center justify-between hover:border-yellow-500/30 transition-colors">
                             <div>
-                                <div className="text-gray-400 text-sm font-medium mb-1">Global Rank</div>
-                                <div className="text-3xl font-bold text-white">Top 2.5%</div>
+                                <div className="text-gray-400 text-sm font-medium mb-1">Acceptance Rate</div>
+                                <div className="text-3xl font-bold text-white">71.2%</div>
                             </div>
                             <div className="h-12 w-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400">
-                                <Trophy size={24} />
+                                <Percent size={24} />
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ import {
 
 const TECHNICAL_SKILLS = [
     {
-        category: "Frontend Arsenal",
+        category: "Frontend Core",
         color: "cyan",
         icon: <Layout className="text-cyan-400" size={24} />,
         skills: [
@@ -212,7 +212,7 @@ const SkillsSection = () => {
                                 : 'text-gray-400 hover:text-white'
                                 }`}
                         >
-                            Technical Core
+                            Technical Skills 
                         </button>
                         <button
                             onClick={() => setSkillType('soft')}
@@ -221,7 +221,7 @@ const SkillsSection = () => {
                                 : 'text-gray-400 hover:text-white'
                                 }`}
                         >
-                            Human OS
+                            Soft Skills 
                         </button>
                     </div>
                 </div>
