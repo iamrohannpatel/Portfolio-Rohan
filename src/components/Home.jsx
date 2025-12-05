@@ -17,7 +17,7 @@ const Home = ({ scrollToSection }) => {
         <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
             <div className="max-w-4xl space-y-6 animate-fade-in-up">
                 <div className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium mb-4">
-                    Hi, I'm Rohan Patel
+                    Hi, I am Rohan Patel
                 </div>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight">
                     Frontend <br />
@@ -32,9 +32,9 @@ const Home = ({ scrollToSection }) => {
                 {/* Student-Centric Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-12">
                     <StatCounter end={1200} label="Hours of Code" suffix="+" />
-                    <StatCounter end={15} label="Projects" suffix="+" />
-                    <StatCounter end={10} label="Tech Stack" />
-                    <StatCounter end={4} label="Semesters" />
+                    <StatCounter end={10} label="Projects" suffix="+" />
+                    <StatCounter end={10} label="Tech Skills" suffix="+" />
+                    <StatCounter end={1} label="Years of learning" suffix="+" />
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
