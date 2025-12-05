@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Download } from 'lucide-react';
+import { ChevronsDown, Download } from 'lucide-react';
 import StatCounter from './StatCounter';
 
 const Home = ({ scrollToSection }) => {
@@ -40,9 +40,10 @@ const Home = ({ scrollToSection }) => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                     <button
                         onClick={() => scrollToSection('coding')}
-                        className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.5)]"
+                        className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2"
                     >
                         View Profile
+                        <ChevronsDown className="animate-bounce" size={20} />
                     </button>
 
                     <button
@@ -50,12 +51,9 @@ const Home = ({ scrollToSection }) => {
                         className="px-8 py-4 bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold rounded-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2"
                     >
                         <Download size={20} />
-                        Download Resume 
+                        Download Resume
                     </button>
                 </div>
-            </div>
-            <div className="absolute bottom-10 animate-bounce text-gray-500">
-                <ChevronDown size={32} />
             </div>
         </section>
     );
