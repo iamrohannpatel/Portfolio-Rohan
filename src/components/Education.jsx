@@ -3,9 +3,9 @@ import { GraduationCap, Book, Award, ChevronRight } from 'lucide-react';
 
 const Education = () => {
     return (
-        <section id="education" className="py-24 px-4 bg-transparent">
+        <section id="education" className="py-12 md:py-24 px-4 bg-transparent">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
                     <span className="text-purple-500">06.</span> Education & Roadmap
                 </h2>
 

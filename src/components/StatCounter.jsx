@@ -21,7 +21,7 @@ const StatCounter = ({ end, label, suffix = "" }) => {
     }, [end]);
 
     return (
-        <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:border-cyan-500/50 transition-colors">
+        <div className="text-center p-6 bg-white/5 rounded-xl border border-cyan-500/50 lg:border-white/10 lg:hover:border-cyan-500/50 transition-colors">
             <div className="text-4xl font-bold text-cyan-400 mb-2">
                 {count}{suffix}
             </div>

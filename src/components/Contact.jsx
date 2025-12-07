@@ -33,13 +33,13 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 px-4 bg-gradient-to-b from-transparent to-black">
+        <section id="contact" className="py-8 md:py-24 px-4 bg-gradient-to-b from-transparent to-black">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold mb-12 flex items-center justify-center gap-3">
+                <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-12 flex items-center justify-center gap-3">
                     <span className="text-cyan-500">10.</span> Let's Connect
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                     {/* Contact Info */}
                     <div className="space-y-8">
                         <p className="text-lg text-gray-300 leading-relaxed">
@@ -62,7 +62,7 @@ const Contact = () => {
                     </div>
 
                     {/* Form */}
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md relative">
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white/5 p-4 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md relative">
                         <div className="relative group">
                             <User className="absolute left-4 top-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors" size={20} />
                             <input
@@ -70,7 +70,7 @@ const Contact = () => {
                                 name="user_name"
                                 required
                                 placeholder="Name"
-                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all"
+                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all"
                             />
                         </div>
                         <div className="relative group">
@@ -80,7 +80,7 @@ const Contact = () => {
                                 name="user_email"
                                 required
                                 placeholder="Email"
-                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all"
+                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all"
                             />
                         </div>
                         <div className="relative group">
@@ -90,7 +90,7 @@ const Contact = () => {
                                 required
                                 rows="4"
                                 placeholder="Message"
-                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all resize-none"
+                                className="w-full bg-black/20 border border-white/10 rounded-lg py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all resize-none"
                             />
                         </div>
 

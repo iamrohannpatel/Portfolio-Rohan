@@ -3,13 +3,13 @@ import { Quote } from 'lucide-react';
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 px-4 bg-black/30">
+    <section id="testimonials" className="py-12 md:py-24 px-4 bg-black/30">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-white">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3 text-white">
           <span className="text-yellow-500">07.</span> Testimonials
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {/* Testimonial 1 */}
           <div className="p-8 rounded-2xl bg-white/5 border border-white/10 relative hover:border-yellow-500/30 transition-colors">
             <Quote className="absolute top-8 right-8 text-white/10" size={64} />

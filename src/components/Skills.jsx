@@ -196,9 +196,9 @@ const SkillsSection = () => {
     const [skillType, setSkillType] = useState('technical');
 
     return (
-        <section id="skills" className="py-24 px-4">
+        <section id="skills" className="py-12 md:py-24 px-4">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl font-bold mb-12 flex items-center justify-center gap-3 text-white">
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center gap-3 text-white">
                     <span className="text-purple-500">03.</span> Skill Matrix
                 </h2>
 
@@ -207,21 +207,21 @@ const SkillsSection = () => {
                     <div className="bg-white/5 p-1 rounded-full border border-white/10 flex">
                         <button
                             onClick={() => setSkillType('technical')}
-                            className={`px-8 py-3 rounded-full text-sm font-bold transition-all ${skillType === 'technical'
+                            className={`px-4 py-2 md:px-8 md:py-3 rounded-full text-sm font-bold transition-all ${skillType === 'technical'
                                 ? 'bg-cyan-500 text-black shadow-[0_0_20px_rgba(6,182,212,0.4)]'
                                 : 'text-gray-400 hover:text-white'
                                 }`}
                         >
-                            Technical Skills 
+                            Technical Skills
                         </button>
                         <button
                             onClick={() => setSkillType('soft')}
-                            className={`px-8 py-3 rounded-full text-sm font-bold transition-all ${skillType === 'soft'
+                            className={`px-4 py-2 md:px-8 md:py-3 rounded-full text-sm font-bold transition-all ${skillType === 'soft'
                                 ? 'bg-purple-500 text-black shadow-[0_0_20px_rgba(168,85,247,0.4)]'
                                 : 'text-gray-400 hover:text-white'
                                 }`}
                         >
-                            Soft Skills 
+                            Soft Skills
                         </button>
                     </div>
                 </div>

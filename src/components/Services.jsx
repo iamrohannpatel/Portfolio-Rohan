@@ -4,13 +4,13 @@ import TiltCard from './TiltCard'; // Ensure this path is correct based on your 
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 px-4">
+    <section id="services" className="py-12 md:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
           <span className="text-pink-500">05.</span> What I Do
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8">
           {/* Service 1: Web Development */}
           <TiltCard className="bg-white/5 border border-white/10 p-8 rounded-2xl">
             <div className="w-16 h-16 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 mb-6">

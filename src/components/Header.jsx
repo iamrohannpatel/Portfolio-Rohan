@@ -9,7 +9,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                     <Terminal size={24} className="text-cyan-400" />
                     developerohan
                 </div>
-                <div className="hidden md:flex space-x-8">
+                <div className="hidden lg:flex space-x-8">
                     {navItems.map((item) => (
                         <button
                             key={item.id}
@@ -22,14 +22,14 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                     ))}
                 </div>
                 <button
-                    className="md:hidden text-white"
+                    className="lg:hidden text-white"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
             {mobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 backdrop-blur-xl">
+                <div className="lg:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 backdrop-blur-xl">
                     <div className="flex flex-col p-6 space-y-4">
                         {navItems.map((item) => (
                             <button

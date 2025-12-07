@@ -3,10 +3,10 @@ import SkillsSphere from './SkillsSphere';
 
 const About = () => {
     return (
-        <section id="about" className="py-24 px-4 bg-black/20 backdrop-blur-sm">
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <section id="about" className="py-12 md:py-24 px-4 bg-black/20 backdrop-blur-sm">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div>
-                    <h2 className="text-4xl font-bold mb-6 flex items-center gap-3">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
                         <span className="text-purple-500">01.</span> About Rohan
                     </h2>
                     <div className="space-y-4 text-gray-300 leading-relaxed text-lg mb-8">
