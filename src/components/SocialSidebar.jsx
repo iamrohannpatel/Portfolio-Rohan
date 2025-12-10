@@ -3,11 +3,11 @@ import { Github, Linkedin, Instagram } from 'lucide-react';
 
 const SocialSidebar = () => {
     return (
-        <div className="hidden lg:flex fixed z-40 gap-6 left-6 top-1/2 -translate-y-1/2 flex-col">
-            <a href="#" className="text-white hover:text-white/80 hover:-translate-y-1 transition-all">
+        <div className="hidden xl:flex short:hidden fixed z-40 gap-6 left-6 top-1/2 -translate-y-1/2 flex-col">
+            <a href="https://github.com/iamrohannpatel" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 hover:-translate-y-1 transition-all">
                 <Github size={24} />
             </a>
-            <a href="#" className="text-[#0077b5] hover:text-[#0077b5]/80 hover:-translate-y-1 transition-all">
+            <a href="https://www.linkedin.com/in/iamrohannpatel/" target="_blank" rel="noopener noreferrer" className="text-[#0077b5] hover:text-[#0077b5]/80 hover:-translate-y-1 transition-all">
                 <Linkedin size={24} />
             </a>
             <a href="#" className="text-white hover:text-white/80 hover:-translate-y-1 transition-all">

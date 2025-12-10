@@ -27,9 +27,11 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center max-w-full overflow-hidden">
                     <h3 className="text-center text-2xl font-bold mb-4 text-white">My Arsenal</h3>
-                    <SkillsSphere />
+                    <div className="w-full max-w-[300px] xs:max-w-full flex justify-center">
+                        <SkillsSphere />
+                    </div>
                     <p className="text-sm text-gray-500 mt-4">Drag to rotate (Simulated)</p>
                 </div>
             </div>

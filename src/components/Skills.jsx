@@ -16,7 +16,9 @@ import {
     Brain,
     Users,
     Zap,
-    Lightbulb
+    Lightbulb,
+    MessageSquare,
+    Clock
 } from 'lucide-react';
 
 /* --- DATA CONSTANTS --- */
@@ -90,6 +92,26 @@ const SOFT_SKILLS = [
         border: "group-hover:border-pink-500/50",
         color: "text-pink-400",
         bg: "bg-pink-500/20"
+    },
+    {
+        id: 5,
+        name: "Communication",
+        icon: <MessageSquare size={40} />,
+        desc: "Clear and concise communication is key. I ensure everyone is on the same page.",
+        theme: "from-green-500/20 to-emerald-500/20",
+        border: "group-hover:border-green-500/50",
+        color: "text-green-400",
+        bg: "bg-green-500/20"
+    },
+    {
+        id: 6,
+        name: "Time Management",
+        icon: <Clock size={40} />,
+        desc: "Efficiently managing time to meet deadlines and deliver high-quality work.",
+        theme: "from-red-500/20 to-orange-500/20",
+        border: "group-hover:border-red-500/50",
+        color: "text-red-400",
+        bg: "bg-red-500/20"
     }
 ];
 
@@ -255,7 +277,7 @@ const SkillsSection = () => {
                         </div>
                     ) : (
                         /* SOFT SKILLS: RPG CARDS */
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in-up">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
                             {SOFT_SKILLS.map((skill) => (
                                 <TiltCard
                                     key={skill.id}

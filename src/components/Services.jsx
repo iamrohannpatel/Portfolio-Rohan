@@ -10,7 +10,7 @@ const Services = () => {
           <span className="text-pink-500">05.</span> What I Do
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-8">
           {/* Service 1: Web Development */}
           <TiltCard className="bg-white/5 border border-white/10 p-8 rounded-2xl">
             <div className="w-16 h-16 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 mb-6">

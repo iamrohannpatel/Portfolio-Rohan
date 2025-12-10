@@ -47,16 +47,16 @@ const Contact = () => {
                         </p>
                         <div className="space-y-4">
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=developerohann@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
-                                <div className="p-3 bg-white/5 rounded-lg text-[#EA4335] group-hover:bg-white/10 transition-colors"><Mail size={20} /></div>
-                                <span>developerohann@gmail.com</span>
+                                <div className="p-3 bg-white/5 rounded-lg text-[#EA4335] group-hover:bg-white/10 transition-colors shrink-0"><Mail size={20} /></div>
+                                <span className="text-sm xs:text-base break-all">developerohann@gmail.com</span>
                             </a>
                             <a href="https://www.linkedin.com/in/iamrohannpatel/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
-                                <div className="p-3 bg-white/5 rounded-lg text-[#0077B5] group-hover:bg-white/10 transition-colors"><Linkedin size={20} /></div>
-                                <span>www.linkedin.com/in/iamrohannpatel</span>
+                                <div className="p-3 bg-white/5 rounded-lg text-[#0077B5] group-hover:bg-white/10 transition-colors shrink-0"><Linkedin size={20} /></div>
+                                <span className="text-sm xs:text-base break-all">www.linkedin.com/in/iamrohannpatel</span>
                             </a>
                             <a href="https://github.com/iamrohannpatel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
-                                <div className="p-3 bg-white/5 rounded-lg text-white group-hover:bg-white/10 transition-colors"><Github size={20} /></div>
-                                <span>www.github.com/iamrohannpatel</span>
+                                <div className="p-3 bg-white/5 rounded-lg text-white group-hover:bg-white/10 transition-colors shrink-0"><Github size={20} /></div>
+                                <span className="text-sm xs:text-base break-all">www.github.com/iamrohannpatel</span>
                             </a>
                         </div>
                     </div>
