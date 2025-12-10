@@ -27,6 +27,7 @@ import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 import SocialSidebar from './components/SocialSidebar';
 import Skills from './components/Skills';
+import ScrollToTop from './components/ScrollToTop';
 
 /**
  * MAIN APP
@@ -101,6 +102,7 @@ const App = () => {
 
       <ParticleBackground />
       <SocialSidebar />
+      <ScrollToTop />
 
       {/* Navigation */}
       <Header

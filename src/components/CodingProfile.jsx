@@ -17,7 +17,7 @@ const CodingProfile = () => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     return (
-        <section id="coding" className="py-24 px-4">
+        <section id="coding" className="py-12 md:py-24 px-4">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
                     <span className="text-green-500">04.</span> Coding Consistency

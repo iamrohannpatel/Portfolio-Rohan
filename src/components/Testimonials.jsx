@@ -11,7 +11,7 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {/* Testimonial 1 */}
-          <div className="p-8 rounded-2xl bg-white/5 border border-white/10 relative hover:border-yellow-500/30 transition-colors">
+          <div className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 relative hover:border-yellow-500/30 transition-colors">
             <Quote className="absolute top-8 right-8 text-white/10" size={64} />
             <p className="text-gray-300 italic mb-6 relative z-10 text-lg">
               "Rohan is an incredibly dedicated developer. His ability to solve complex problems and his eye for design make him a valuable asset to any team."
@@ -26,7 +26,7 @@ const Testimonials = () => {
           </div>
 
           {/* Testimonial 2 */}
-          <div className="p-8 rounded-2xl bg-white/5 border border-white/10 relative hover:border-yellow-500/30 transition-colors">
+          <div className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 relative hover:border-yellow-500/30 transition-colors">
             <Quote className="absolute top-8 right-8 text-white/10" size={64} />
             <p className="text-gray-300 italic mb-6 relative z-10 text-lg">
               "Working with Rohan on the hackathon project was amazing. He leads with code and is always willing to help others learn."

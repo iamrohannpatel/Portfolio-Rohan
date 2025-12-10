@@ -262,7 +262,7 @@ const SkillsSection = () => {
                                     </div>
 
                                     {/* Cube Grid */}
-                                    <div className="grid grid-cols-3 gap-4 justify-items-center relative z-10">
+                                    <div className="grid grid-cols-3 gap-2 md:gap-4 justify-items-center relative z-10">
                                         {cat.skills.map((skill, sIdx) => (
                                             <CubeSkill
                                                 key={sIdx}

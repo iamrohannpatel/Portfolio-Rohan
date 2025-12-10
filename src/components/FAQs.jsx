@@ -29,7 +29,7 @@ const FaqSection = () => {
                 )}
               </button>
               <div
-                className={`px-6 text-gray-400 overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'
+                className={`px-6 text-gray-400 overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[500px] pb-6 opacity-100' : 'max-h-0 opacity-0'
                   }`}
               >
                 {faq.answer}

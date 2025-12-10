@@ -29,7 +29,7 @@ const BlogSection = () => {
               <p className="text-gray-400 text-sm mb-6 flex-grow">
                 {post.excerpt}
               </p>
-              <button className="flex items-center gap-2 text-orange-400 text-sm font-medium hover:gap-3 transition-all">
+              <button className="flex items-center gap-2 text-orange-400 text-sm font-medium hover:gap-3 transition-all py-2">
                 Read Article <ExternalLink size={16} />
               </button>
             </TiltCard>
