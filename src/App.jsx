@@ -23,6 +23,7 @@ import Education from './components/Education';
 import Blog from './components/Blog';
 import FAQs from './components/FAQs';
 import Contact from './components/Contact';
+import Feedback from './components/Feedback';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 import SocialSidebar from './components/SocialSidebar';
@@ -157,6 +158,9 @@ const App = () => {
 
           {/* CONTACT FORM */}
           <Contact />
+
+          {/* FEEDBACK */}
+          <Feedback />
 
           <Footer />
 

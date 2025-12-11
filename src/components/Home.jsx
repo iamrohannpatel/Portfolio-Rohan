@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronsDown, Download, Hand } from 'lucide-react';
+import { ChevronsDown, FileDown, Hand, BookOpen } from 'lucide-react';
 import StatCounter from './StatCounter';
 
 const Home = ({ scrollToSection }) => {
@@ -45,19 +45,30 @@ const Home = ({ scrollToSection }) => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                     <button
-                        onClick={() => scrollToSection('coding')}
-                        className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2"
+                        onClick={() => scrollToSection('blog')}
+                        className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2"
                     >
-                        View Profile
-                        <ChevronsDown className="animate-bounce" size={20} />
+                        Latest Blog
+                        <BookOpen className="animate-pulse" size={20} />
                     </button>
 
                     <button
                         onClick={handleDownloadResume}
-                        className="px-8 py-4 bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold rounded-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2"
+                        className="group relative px-8 py-4 font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] active:scale-95"
                     >
-                        <Download size={20} />
-                        Download Resume
+                        {/* Gradient Border Background */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-100 animate-gradient-xy" />
+
+                        {/* Inner Dark Background */}
+                        <div className="absolute inset-[2px] bg-[#0a0a0a] rounded-[10px] z-10 transition-colors duration-300 group-hover:bg-[#0a0a0a]/80" />
+
+                        {/* Content */}
+                        <div className="relative z-20 flex items-center justify-center gap-2">
+                            <FileDown size={20} className="text-cyan-400 group-hover:text-white transition-colors duration-300 group-hover:animate-bounce" />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:text-white group-hover:bg-none transition-all duration-300">
+                                Download Resume
+                            </span>
+                        </div>
                     </button>
                 </div>
             </div>
