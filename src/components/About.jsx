@@ -32,7 +32,6 @@ const About = () => {
                     <div className="w-full max-w-[300px] xs:max-w-full flex justify-center">
                         <SkillsSphere />
                     </div>
-                    <p className="text-sm text-gray-500 mt-4">Drag to rotate (Simulated)</p>
                 </div>
             </div>
         </section>

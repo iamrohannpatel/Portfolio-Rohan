@@ -6,9 +6,8 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <div className="text-2xl font-bold flex items-center gap-2">
-                    <Terminal size={24} className="text-cyan-400" />
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-[0_0_25px_rgba(168,85,247,0.8)]">
-                        developerohan
+                        &lt;Developerohan /&gt;
                     </span>
                 </div>
                 <div className="hidden xl:flex space-x-8">

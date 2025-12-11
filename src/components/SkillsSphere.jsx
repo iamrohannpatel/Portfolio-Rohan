@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 
 const SkillsSphere = () => {
     const skills = [
@@ -7,7 +7,8 @@ const SkillsSphere = () => {
         "Firebase", "MongoDB", "HTML5", "CSS3", "Redux"
     ];
 
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const rotationRef = useRef({ x: 0, y: 0 });
+    const itemsRef = useRef([]);
 
     const tags = useMemo(() => {
         const phi = Math.PI * (3 - Math.sqrt(5));
@@ -23,55 +24,60 @@ const SkillsSphere = () => {
 
     useEffect(() => {
         let animationFrame;
+
         const animate = () => {
-            setRotation(prev => ({
-                x: prev.x + 0.018,
-                y: prev.y + 0.018
-            }));
+            rotationRef.current.x += 0.015;
+            rotationRef.current.y += 0.015;
+
+            const cosX = Math.cos(rotationRef.current.x);
+            const sinX = Math.sin(rotationRef.current.x);
+            const cosY = Math.cos(rotationRef.current.y);
+            const sinY = Math.sin(rotationRef.current.y);
+
+            tags.forEach((tag, i) => {
+                const item = itemsRef.current[i];
+                if (!item) return;
+
+                let y = tag.y * cosX - tag.z * sinX;
+                let z = tag.y * sinX + tag.z * cosX;
+                let x = tag.x * cosY - z * sinY;
+                z = tag.x * sinY + z * cosY;
+
+                const scale = (z + 2) / 3;
+                const alpha = (z + 1) / 2;
+
+                item.style.transform = `translate3d(${x * 120}px, ${y * 120}px, 0) scale(${scale})`;
+                item.style.opacity = Math.max(0.2, alpha);
+                item.style.zIndex = Math.floor(scale * 100);
+                item.style.color = alpha > 0.8 ? '#fff' : '#94a3b8';
+            });
+
             animationFrame = requestAnimationFrame(animate);
         };
+
         animate();
         return () => cancelAnimationFrame(animationFrame);
-    }, []);
+    }, [tags]);
 
     return (
         <div className="relative w-full h-[400px] flex items-center justify-center overflow-hidden">
             <div className="relative w-64 h-64 transform-style-3d">
-                {tags.map((tag, i) => {
-                    const cosX = Math.cos(rotation.x);
-                    const sinX = Math.sin(rotation.x);
-                    const cosY = Math.cos(rotation.y);
-                    const sinY = Math.sin(rotation.y);
-
-                    let y = tag.y * cosX - tag.z * sinX;
-                    let z = tag.y * sinX + tag.z * cosX;
-                    let x = tag.x * cosY - z * sinY;
-                    z = tag.x * sinY + z * cosY;
-
-                    const scale = (z + 2) / 3;
-                    const alpha = (z + 1) / 2;
-
-                    return (
-                        <div
-                            key={i}
-                            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 cursor-default hover:text-cyan-400 hover:scale-110 hover:z-50"
-                            style={{
-                                transform: `translate3d(${x * 120}px, ${y * 120}px, 0) scale(${scale})`,
-                                opacity: Math.max(0.2, alpha),
-                                zIndex: Math.floor(scale * 100),
-                                fontSize: '14px',
-                                fontWeight: 'bold',
-                                fontWeight: 'bold',
-                                color: alpha > 0.8 ? '#fff' : '#94a3b8',
-                                willChange: 'transform, opacity, z-index'
-                            }}
-                        >
-                            <span className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md border border-white/10">
-                                {tag.skill}
-                            </span>
-                        </div>
-                    );
-                })}
+                {tags.map((tag, i) => (
+                    <div
+                        key={i}
+                        ref={(el) => itemsRef.current[i] = el}
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 cursor-default hover:text-cyan-400 hover:scale-110 hover:z-50"
+                        style={{
+                            willChange: 'transform, opacity, z-index',
+                            fontSize: '14px',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        <span className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md border border-white/10">
+                            {tag.skill}
+                        </span>
+                    </div>
+                ))}
             </div>
         </div>
     );
