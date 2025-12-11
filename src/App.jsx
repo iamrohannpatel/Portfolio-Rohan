@@ -28,6 +28,9 @@ import ParticleBackground from './components/ParticleBackground';
 import SocialSidebar from './components/SocialSidebar';
 import Skills from './components/Skills';
 import ScrollToTop from './components/ScrollToTop';
+import ClickSpark from './components/ClickSpark';
+
+
 
 /**
  * MAIN APP
@@ -92,67 +95,75 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">
+    <ClickSpark
+      sparkColor="#22d3ee"
+      sparkSize={10}
+      sparkRadius={15}
+      sparkCount={8}
+      duration={400}
+    >
+      <div className="min-h-screen text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">
 
-      {/* Scroll Progress Bar */}
-      <div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-[100]"
-        style={{ width: `${scrollProgress * 100}%` }}
-      />
+        {/* Scroll Progress Bar */}
+        <div
+          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-[100]"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
 
-      <ParticleBackground />
-      <SocialSidebar />
-      <ScrollToTop />
+        <ParticleBackground />
+        <SocialSidebar />
+        <ScrollToTop />
 
-      {/* Navigation */}
-      <Header
-        activeSection={activeSection}
-        scrollToSection={scrollToSection}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        navItems={navItems}
-      />
+        {/* Navigation */}
+        <Header
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+          navItems={navItems}
+        />
 
-      <main className="relative z-10 pt-20">
+        <main className="relative z-10 pt-20">
 
-        {/* HERO */}
-        <Home scrollToSection={scrollToSection} />
+          {/* HERO */}
+          <Home scrollToSection={scrollToSection} />
 
-        {/* ABOUT */}
-        <About />
+          {/* ABOUT */}
+          <About />
 
-        {/* PROJECTS */}
-        <Projects />
+          {/* PROJECTS */}
+          <Projects />
 
-        {/* SKILLS */}
-        <Skills />
+          {/* SKILLS */}
+          <Skills />
 
-        {/* CODING PROFILE */}
-        <CodingProfile />
+          {/* CODING PROFILE */}
+          <CodingProfile />
 
-        {/* SERVICES */}
-        <Services />
+          {/* SERVICES */}
+          <Services />
 
-        {/* EDUCATION & JOURNEY */}
-        <Education />
+          {/* EDUCATION & JOURNEY */}
+          <Education />
 
-        {/* TESTIMONIALS */}
-        <Testimonials />
+          {/* TESTIMONIALS */}
+          <Testimonials />
 
-        {/* BLOG */}
-        <Blog />
+          {/* BLOG */}
+          <Blog />
 
-        {/* FAQ */}
-        <FAQs />
+          {/* FAQ */}
+          <FAQs />
 
-        {/* CONTACT FORM */}
-        <Contact />
+          {/* CONTACT FORM */}
+          <Contact />
 
-        <Footer />
+          <Footer />
 
-      </main>
+        </main>
 
-    </div>
+      </div>
+    </ClickSpark>
   );
 };
 

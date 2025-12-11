@@ -6,7 +6,7 @@ import TiltCard from './TiltCard';
 
 const BlogSection = () => {
   return (
-    <section id="blog" className="py-12 md:py-24 px-4 bg-black/30">
+    <section id="blog" className="py-16 md:py-20 px-4 bg-black/30">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
           <span className="text-orange-500">08.</span> Latest Insights

@@ -14,14 +14,14 @@ const Home = ({ scrollToSection }) => {
     };
 
     return (
-        <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative py-20 short:py-10">
+        <section id="home" className="min-h-screen flex flex-col items-center text-center px-4 relative pt-12 pb-20 md:pb-32 scroll-mt-28">
             <div className="max-w-4xl space-y-6 animate-fade-in-up">
                 <div className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium mb-4 short:mb-2">
                     Hi, I am Rohan Patel
                 </div>
-                <h1 className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl">
+                <h1 className="text-6xl xs:text-7xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl">
                     Frontend <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
                         Developer
                     </span>
                 </h1>

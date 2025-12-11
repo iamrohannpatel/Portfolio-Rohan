@@ -33,7 +33,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-8 md:py-24 px-4 bg-gradient-to-b from-transparent to-black">
+        <section id="contact" className="py-16 md:py-20 px-4 bg-gradient-to-b from-transparent to-black">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-12 flex items-center justify-center gap-3">
                     <span className="text-cyan-500">10.</span> Let's Connect

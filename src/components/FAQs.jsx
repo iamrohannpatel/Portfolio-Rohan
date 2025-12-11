@@ -6,7 +6,7 @@ const FaqSection = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <section id="faq" className="py-24 px-4">
+    <section id="faq" className="py-16 md:py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
           <span className="text-blue-500">09.</span> FAQs
