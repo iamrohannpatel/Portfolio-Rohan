@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronsDown, Download } from 'lucide-react';
+import { ChevronsDown, Download, Hand } from 'lucide-react';
 import StatCounter from './StatCounter';
 
 const Home = ({ scrollToSection }) => {
@@ -16,8 +16,14 @@ const Home = ({ scrollToSection }) => {
     return (
         <section id="home" className="min-h-screen flex flex-col items-center text-center px-4 relative pt-12 pb-20 md:pb-32 scroll-mt-28">
             <div className="max-w-4xl space-y-6 animate-fade-in-up">
-                <div className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium mb-4 short:mb-2">
-                    Hi, I am Rohan Patel
+                <div className="relative inline-flex group">
+                    <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                    <div className="relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 ring-offset-gray-900 border border-white/10">
+                        <Hand className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" />
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-400">
+                            Hi, I am Rohan Patel
+                        </span>
+                    </div>
                 </div>
                 <h1 className="text-6xl xs:text-7xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl">
                     Frontend <br />
