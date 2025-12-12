@@ -48,7 +48,7 @@ const Testimonials = () => {
 
       <div className="max-w-6xl mx-auto mb-8 md:mb-1 relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3 text-white">
-          <span className="text-yellow-500">07.</span> Testimonials
+          <span className="text-yellow-500">08.</span> Testimonials
         </h2>
       </div>
 

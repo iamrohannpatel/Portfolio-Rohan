@@ -10,7 +10,9 @@ import {
   GraduationCap,
   BookOpen,
   HelpCircle,
-  Mail
+  Mail,
+  Award,
+  ThumbsUp
 } from 'lucide-react';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -20,6 +22,7 @@ import CodingProfile from './components/CodingProfile';
 import Projects from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Education from './components/Education';
+import Certifications from './components/Certifications';
 import Blog from './components/Blog';
 import FAQs from './components/FAQs';
 import Contact from './components/Contact';
@@ -49,10 +52,12 @@ const App = () => {
     { id: 'coding', label: 'Coding', icon: <Code2 size={20} /> },
     { id: 'services', label: 'Services', icon: <Briefcase size={20} /> },
     { id: 'education', label: 'Education', icon: <GraduationCap size={20} /> },
+    { id: 'certifications', label: 'Certifications', icon: <Award size={20} /> },
     { id: 'testimonials', label: 'Testimonials', icon: <MessageSquareQuote size={20} /> },
     { id: 'blog', label: 'Blog', icon: <BookOpen size={20} /> },
     { id: 'faq', label: 'FAQs', icon: <HelpCircle size={20} /> },
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
+    { id: 'feedback', label: 'Feedback', icon: <ThumbsUp size={20} /> },
   ];
 
   useEffect(() => {
@@ -146,6 +151,9 @@ const App = () => {
 
           {/* EDUCATION & JOURNEY */}
           <Education />
+
+          {/* CERTIFICATIONS */}
+          <Certifications />
 
           {/* TESTIMONIALS */}
           <Testimonials />

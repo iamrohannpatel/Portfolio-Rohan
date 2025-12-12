@@ -40,3 +40,33 @@ export const FAQ_DATA = [
     answer: "It depends on the project scope. A simple landing page might take a few days, while a full-stack application could take several weeks."
   }
 ];
+
+export const CERTIFICATIONS_DATA = [
+  {
+    id: 1,
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "2024",
+    image: "https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Cloud-Practitioner_badge.634f8a21af2e0e956ed8905a72366146ba22b74c.png",
+    link: "https://aws.amazon.com/certification/",
+    skills: ["Cloud Computing", "AWS Services", "Security", "Billing"]
+  },
+  {
+    id: 2,
+    title: "Meta Front-End Developer Professional Certificate",
+    issuer: "Meta",
+    date: "2023",
+    image: "https://images.credly.com/size/340x340/images/2704fc72-03f4-41d6-840e-54070a927d2c/Meta_Front-End_Developer_Professional_Certificate.png",
+    link: "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    skills: ["React", "JavaScript", "HTML/CSS", "UI/UX"]
+  },
+  {
+    id: 3,
+    title: "Legacy JavaScript Algorithms and Data Structures",
+    issuer: "freeCodeCamp",
+    date: "2023",
+    image: "https://design-style-guide.freecodecamp.org/downloads/fcc_secondary_small.svg",
+    link: "https://www.freecodecamp.org/certification/fcc/javascript-algorithms-and-data-structures",
+    skills: ["JavaScript", "Algorithms", "Data Structures", "Problem Solving"]
+  }
+];

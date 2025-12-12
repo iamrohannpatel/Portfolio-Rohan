@@ -2,6 +2,23 @@ import React from 'react';
 import { Terminal, Menu, X } from 'lucide-react';
 
 const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuOpen, navItems }) => {
+    const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
+    // Prioritize visible items
+    const visibleIds = ['home', 'about', 'projects', 'skills', 'education', 'certifications', 'contact'];
+    const visibleItems = navItems.filter(item => visibleIds.includes(item.id));
+    // Sort visible items to match the order in visibleIds? 
+    // Actually, preserving the relative order from navItems is better if we want to keep the scroll order logic consistent, 
+    // but the user wants "consistent" look. 
+    // Let's explicitly order them if possible, OR just take the important ones.
+    // However, App.jsx defines rendering order. Nav should ideally match or it will jump around.
+    // Let's just use a simple slice approach? 
+    // No, strictly selecting specific IDs is safer for "importance".
+    // I will render them in the order they appear in navItems to maintain consistency with page scroll.
+
+    const primaryItems = navItems.filter(item => visibleIds.includes(item.id));
+    const secondaryItems = navItems.filter(item => !visibleIds.includes(item.id));
+
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -10,36 +27,86 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                         &lt;Developerohan /&gt;
                     </span>
                 </div>
-                <div className="hidden xl:flex space-x-8">
-                    {navItems.map((item) => (
+
+                {/* Desktop Navigation */}
+                <div className="hidden xl:flex items-center space-x-1">
+                    {primaryItems.map((item) => (
                         <button
                             key={item.id}
                             onClick={() => scrollToSection(item.id)}
-                            className={`relative group text-sm font-medium tracking-wider transition-colors ${activeSection === item.id ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
+                            className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${activeSection === item.id
+                                ? 'text-white bg-white/10 shadow-[0_0_10px_rgba(34,211,238,0.2)]'
+                                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                }`}
                         >
                             {item.label}
-                            <span className={`absolute -bottom-1 left-0 h-[2px] bg-cyan-400 transition-all duration-300 ${activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                            {/* Bottom Glow for Active State */}
+                            {activeSection === item.id && (
+                                <span className="absolute bottom-0 left-1/2 w-1/2 h-[2px] -translate-x-1/2 bg-cyan-400 blur-[2px] rounded-full" />
+                            )}
                         </button>
                     ))}
+
+                    {/* More Dropdown */}
+                    {secondaryItems.length > 0 && (
+                        <div className="relative group">
+                            <button
+                                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group-hover:bg-white/10 ${secondaryItems.some(i => i.id === activeSection)
+                                    ? 'text-white bg-white/10'
+                                    : 'text-gray-400 group-hover:text-white'
+                                    }`}
+                            >
+                                More
+                                <Menu size={16} />
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                <div className="w-48 bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden p-1">
+                                    {secondaryItems.map((item) => (
+                                        <button
+                                            key={item.id}
+                                            onClick={() => scrollToSection(item.id)}
+                                            className={`flex items-center w-full px-4 py-3 text-sm font-medium transition-colors rounded-lg ${activeSection === item.id
+                                                ? 'bg-cyan-500/10 text-cyan-400'
+                                                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                                }`}
+                                        >
+                                            <span className="w-6">{item.icon}</span>
+                                            {item.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
+
+                {/* Mobile Menu Button */}
                 <button
-                    className="xl:hidden text-white"
+                    className={`xl:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : 'rotate-0'
+                        }`}
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
             {mobileMenuOpen && (
-                <div className="xl:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 backdrop-blur-xl">
-                    <div className="flex flex-col p-6 space-y-4">
+                <div className="xl:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 backdrop-blur-xl h-[calc(100vh-80px)] overflow-y-auto">
+                    <div className="flex flex-col p-4 space-y-1 pb-10">
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
                                 onClick={() => scrollToSection(item.id)}
-                                className={`flex items-center gap-4 text-left text-lg font-medium transition-colors ${activeSection === item.id ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
+                                className={`flex items-center gap-3 text-left p-3 rounded-lg transition-all ${activeSection === item.id
+                                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'
+                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                    }`}
                             >
-                                <span className="text-cyan-400">{item.icon}</span>
-                                {item.label}
+                                <span className={`${activeSection === item.id ? 'text-cyan-400' : 'text-gray-500'}`}>
+                                    {item.icon}
+                                </span>
+                                <span className="text-base font-medium">{item.label}</span>
                             </button>
                         ))}
                     </div>

@@ -44,10 +44,10 @@ const Feedback = () => {
             <div className="max-w-4xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center justify-center gap-3 text-white">
-                        <span className="text-pink-500">11.</span> Feedback
+                        <span className="text-pink-500">12.</span> Feedback
                     </h2>
                     <p className="text-gray-400 text-lg max-w-xl mx-auto">
-                        Please share your feedback on my projects and work.
+                        Please share your feedback on my work and projects.
                     </p>
                 </div>
 
