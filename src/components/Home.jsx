@@ -32,7 +32,7 @@ const Home = ({ scrollToSection }) => {
                     </span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    Computer Science Student & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
+                    Computer Science UnderGrad & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
                 </p>
 
                 {/* Student-Centric Stats */}
