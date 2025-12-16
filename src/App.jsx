@@ -94,7 +94,13 @@ const App = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 60; // Exact/tight header height to remove gaps
+      const offsetPosition = element.offsetTop - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
       setActiveSection(id);
       setMobileMenuOpen(false);
     }

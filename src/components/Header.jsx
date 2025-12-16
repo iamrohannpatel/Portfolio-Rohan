@@ -20,7 +20,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
     const secondaryItems = navItems.filter(item => !visibleIds.includes(item.id));
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
+        <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-black/50 border-b border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.1)] transition-all duration-300">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <div className="text-2xl font-bold flex items-center gap-2">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-[0_0_25px_rgba(168,85,247,0.8)]">

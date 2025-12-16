@@ -28,7 +28,8 @@ const TiltCard = ({ children, className = "" }) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
-            className={`relative transition-all duration-200 ease-out transform-style-3d ${className}`}
+            onClick={() => setIsHovered(!isHovered)}
+            className={`relative transition-all duration-200 ease-out transform-style-3d ${className} ${isHovered ? 'active-card' : ''}`}
             style={{
                 transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
                 zIndex: isHovered ? 50 : 1
