@@ -66,7 +66,7 @@ const SkillsSphere = () => {
                     <div
                         key={i}
                         ref={(el) => itemsRef.current[i] = el}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 cursor-default hover:text-cyan-400 hover:scale-110 hover:z-50"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 cursor-default hover:text-amber-400 hover:scale-110 hover:z-50"
                         style={{
                             willChange: 'transform, opacity, z-index',
                             fontSize: '14px',

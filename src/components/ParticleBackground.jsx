@@ -44,7 +44,7 @@ const ParticleBackground = () => {
 
                 ctx.beginPath();
                 ctx.arc(x2d, y2d, size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(100, 200, 255, ${scale})`;
+                ctx.fillStyle = `rgba(251, 191, 36, ${scale})`;
                 ctx.fill();
                 return { x: x2d, y: y2d, scale };
             }
@@ -55,7 +55,7 @@ const ParticleBackground = () => {
         let animationFrameId;
 
         const animate = () => {
-            ctx.fillStyle = '#050510';
+            ctx.fillStyle = '#0a0a0a';
             ctx.fillRect(0, 0, width, height);
 
             const activePoints = points.map(p => {
@@ -75,7 +75,7 @@ const ParticleBackground = () => {
                         ctx.moveTo(activePoints[i].x, activePoints[i].y);
                         ctx.lineTo(activePoints[j].x, activePoints[j].y);
                         const alpha = (1 - distance / 100) * activePoints[i].scale;
-                        ctx.strokeStyle = `rgba(6, 182, 212, ${alpha})`;
+                        ctx.strokeStyle = `rgba(217, 119, 6, ${alpha})`;
                         ctx.stroke();
                     }
                 }

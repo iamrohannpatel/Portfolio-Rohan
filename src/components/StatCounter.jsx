@@ -21,11 +21,11 @@ const StatCounter = ({ end, label, suffix = "" }) => {
     }, [end]);
 
     return (
-        <div className="text-center p-6 bg-white/5 rounded-xl border border-cyan-500/50 lg:border-white/10 lg:hover:border-cyan-500/50 transition-colors">
-            <div className="text-4xl font-bold text-cyan-400 mb-2">
+        <div className="text-center p-6 bg-white/80 dark:bg-white/5 rounded-xl border border-amber-500/50 lg:border-gray-200 lg:dark:border-white/10 lg:hover:border-amber-500/50 transition-colors shadow-lg dark:shadow-none">
+            <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">
                 {count}{suffix}
             </div>
-            <div className="text-gray-400 text-sm uppercase tracking-wider">{label}</div>
+            <div className="text-gray-600 dark:text-gray-400 text-sm uppercase tracking-wider font-semibold">{label}</div>
         </div>
     );
 };

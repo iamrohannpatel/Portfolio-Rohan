@@ -16,22 +16,19 @@ const Home = ({ scrollToSection }) => {
     return (
         <section id="home" className="min-h-screen flex flex-col items-center text-center px-4 relative pt-12 pb-20 md:pb-32 scroll-mt-28">
             <div className="max-w-4xl space-y-6 animate-fade-in-up">
-                <div className="relative inline-flex group">
-                    <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-                    <div className="relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 ring-offset-gray-900 border border-white/10">
-                        <Hand className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" />
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-400">
-                            Hi, I am Rohan Patel
-                        </span>
-                    </div>
+                <div className="inline-flex items-center justify-center py-3 text-lg font-bold text-gray-900 dark:text-white mb-4">
+                    <Hand className="w-5 h-5 mr-2 text-amber-600 dark:text-amber-200 animate-pulse" />
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-200 dark:to-orange-100">
+                        Hi, I am Rohan Patel
+                    </span>
                 </div>
-                <h1 className="text-6xl xs:text-7xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl">
+                <h1 className="text-6xl xs:text-7xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl text-gray-800 dark:text-white">
                     Frontend <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-stone-600 dark:from-amber-300 dark:via-orange-200 dark:to-stone-400">
                         Developer
                     </span>
                 </h1>
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
                     Computer Science UnderGrad & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
                 </p>
 
@@ -46,7 +43,7 @@ const Home = ({ scrollToSection }) => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                     <button
                         onClick={() => scrollToSection('blog')}
-                        className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2"
+                        className="px-8 py-4 bg-amber-100 hover:bg-amber-50 text-amber-950 font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(251,191,36,0.5)] flex items-center justify-center gap-2"
                     >
                         Latest Blog
                         <BookOpen className="animate-pulse" size={20} />
@@ -54,18 +51,18 @@ const Home = ({ scrollToSection }) => {
 
                     <button
                         onClick={handleDownloadResume}
-                        className="group relative px-8 py-4 font-bold text-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] active:scale-95"
+                        className="group relative px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(251,191,36,0.4)] active:scale-95"
                     >
                         {/* Gradient Border Background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-100 animate-gradient-xy" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-400 to-stone-500 dark:from-amber-400 dark:via-orange-300 dark:to-stone-400 opacity-100 animate-gradient-xy" />
 
                         {/* Inner Dark Background */}
-                        <div className="absolute inset-[2px] bg-[#0a0a0a] rounded-[10px] z-10 transition-colors duration-300 group-hover:bg-[#0a0a0a]/80" />
+                        <div className="absolute inset-[2px] bg-white dark:bg-[#0a0a0a] rounded-[10px] z-10 transition-colors duration-300 group-hover:bg-gray-50 dark:group-hover:bg-[#0a0a0a]/80" />
 
                         {/* Content */}
                         <div className="relative z-20 flex items-center justify-center gap-2">
-                            <FileDown size={20} className="text-cyan-400 group-hover:text-white transition-colors duration-300 group-hover:animate-bounce" />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:text-white group-hover:bg-none transition-all duration-300">
+                            <FileDown size={20} className="text-amber-600 dark:text-amber-200 group-hover:text-amber-700 dark:group-hover:text-white transition-colors duration-300 group-hover:animate-bounce" />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-200 dark:to-orange-200 group-hover:text-amber-700 dark:group-hover:text-white group-hover:bg-none transition-all duration-300">
                                 Download Resume
                             </span>
                         </div>

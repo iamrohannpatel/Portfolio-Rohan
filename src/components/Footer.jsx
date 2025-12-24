@@ -3,15 +3,15 @@ import { Github, Linkedin, Instagram, } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-black">
+        <footer className="py-8 text-center text-gray-600 text-sm border-t border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-black transition-colors duration-300">
             <div className="flex justify-center gap-6 mb-6 xl:hidden short:flex">
-                <a href="https://github.com/iamrohannpatel" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-all">
+                <a href="https://github.com/iamrohannpatel" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-white/80 transition-all">
                     <Github size={24} />
                 </a>
                 <a href="https://www.linkedin.com/in/iamrohannpatel/" target="_blank" rel="noopener noreferrer" className="text-[#0077b5] hover:text-[#0077b5]/80 transition-all">
                     <Linkedin size={24} />
                 </a>
-                <a href="#" className="text-white hover:text-white/80 transition-all">
+                <a href="#" className="text-gray-900 dark:text-white hover:text-black dark:hover:text-white/80 transition-all">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                         <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
                     </svg>
@@ -26,7 +26,7 @@ const Footer = () => {
                 </a>
             </div>
             <p>Designed & Built with React by Rohan Patel</p>
-            <p className="mt-2">© 2025 developerohan. All rights reserved.</p>
+            <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">© 2025 developerohan. All rights reserved.</p>
         </footer>
     );
 };

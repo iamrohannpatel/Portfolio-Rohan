@@ -12,27 +12,29 @@ import {
   HelpCircle,
   Mail,
   Award,
-  ThumbsUp
+  ThumbsUp,
+  Loader2
 } from 'lucide-react';
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
-import Services from './components/Services';
-import CodingProfile from './components/CodingProfile';
-import Projects from './components/Projects';
-import Testimonials from './components/Testimonials';
-import Education from './components/Education';
-import Certifications from './components/Certifications';
-import Blog from './components/Blog';
-import FAQs from './components/FAQs';
-import Contact from './components/Contact';
-import Feedback from './components/Feedback';
-import Footer from './components/Footer';
-import ParticleBackground from './components/ParticleBackground';
 import SocialSidebar from './components/SocialSidebar';
-import Skills from './components/Skills';
 import ScrollToTop from './components/ScrollToTop';
 import ClickSpark from './components/ClickSpark';
+
+// Lazy Load Section Components
+const Services = React.lazy(() => import('./components/Services'));
+const CodingProfile = React.lazy(() => import('./components/CodingProfile'));
+const Projects = React.lazy(() => import('./components/Projects'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const Education = React.lazy(() => import('./components/Education'));
+const Certifications = React.lazy(() => import('./components/Certifications'));
+const Blog = React.lazy(() => import('./components/Blog'));
+const FAQs = React.lazy(() => import('./components/FAQs'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const Feedback = React.lazy(() => import('./components/Feedback'));
+const Footer = React.lazy(() => import('./components/Footer'));
+const Skills = React.lazy(() => import('./components/Skills'));
 
 
 
@@ -43,6 +45,29 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [theme, setTheme] = useState('dark');
+
+  // Load theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  // Apply theme to HTML element
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const navItems = [
     { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
@@ -108,21 +133,21 @@ const App = () => {
 
   return (
     <ClickSpark
-      sparkColor="#22d3ee"
+      sparkColor="#FFD700"
       sparkSize={10}
       sparkRadius={15}
       sparkCount={8}
       duration={400}
     >
-      <div className="min-h-screen text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">
+      <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
 
         {/* Scroll Progress Bar */}
         <div
-          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-[100]"
+          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500 z-[100]"
           style={{ width: `${scrollProgress * 100}%` }}
         />
 
-        <ParticleBackground />
+        {/* <ParticleBackground /> */}
         <SocialSidebar />
         <ScrollToTop />
 
@@ -133,6 +158,8 @@ const App = () => {
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           navItems={navItems}
+          theme={theme}
+          toggleTheme={toggleTheme}
         />
 
         <main className="relative z-10 pt-20">
@@ -144,39 +171,63 @@ const App = () => {
           <About />
 
           {/* PROJECTS */}
-          <Projects />
+          <React.Suspense fallback={<div className="h-96 flex items-center justify-center"><Loader2 className="animate-spin text-amber-500" size={40} /></div>}>
+            <Projects />
+          </React.Suspense>
 
           {/* SKILLS */}
-          <Skills />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Skills />
+          </React.Suspense>
 
           {/* CODING PROFILE */}
-          <CodingProfile />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <CodingProfile />
+          </React.Suspense>
 
           {/* SERVICES */}
-          <Services />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Services />
+          </React.Suspense>
 
           {/* EDUCATION & JOURNEY */}
-          <Education />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Education />
+          </React.Suspense>
 
           {/* CERTIFICATIONS */}
-          <Certifications />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Certifications />
+          </React.Suspense>
 
           {/* TESTIMONIALS */}
-          <Testimonials />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Testimonials />
+          </React.Suspense>
 
           {/* BLOG */}
-          <Blog />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Blog />
+          </React.Suspense>
 
           {/* FAQ */}
-          <FAQs />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <FAQs />
+          </React.Suspense>
 
           {/* CONTACT FORM */}
-          <Contact />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Contact />
+          </React.Suspense>
 
           {/* FEEDBACK */}
-          <Feedback />
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Feedback />
+          </React.Suspense>
 
-          <Footer />
+          <React.Suspense fallback={<div className="h-20" />}>
+            <Footer />
+          </React.Suspense>
 
         </main>
 
