@@ -31,10 +31,10 @@ const Home = ({ scrollToSection }) => {
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                     {/* LEFT COLUMN: ORIGINAL CONTENT RESTORED */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-10 order-2 lg:order-1">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
 
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 dark:bg-white/5 border border-amber-500/20 backdrop-blur-md shadow-sm transition-all hover:scale-105 hover:bg-white/60 dark:hover:bg-white/10 group cursor-default">
+                        <div className="inline-flex items-center gap-2 transition-all hover:scale-105 group cursor-default">
                             <Hand size={18} className="text-amber-600 dark:text-amber-400 animate-wave origin-bottom-right" />
                             <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                 Hi, I am Rohan Patel
@@ -42,9 +42,9 @@ const Home = ({ scrollToSection }) => {
                         </div>
 
                         {/* Title - Super Impressive Typography */}
-                        <div className="relative">
+                        <div className="relative mt-2">
                             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 dark:text-white leading-[0.9] drop-shadow-sm">
-                                Frontend
+                                Full Stack
                                 <br />
                                 <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 saturate-150">
                                     Developer
@@ -57,12 +57,12 @@ const Home = ({ scrollToSection }) => {
                         </div>
 
                         {/* Description */}
-                        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-medium leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-medium leading-relaxed mt-6">
                             Computer Science UnderGrad & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
                         </p>
 
                         {/* Actions */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-5">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-5 mt-8">
                             <button
                                 onClick={handleDownloadResume}
                                 className="group relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-full overflow-hidden shadow-2xl shadow-amber-500/20 transition-all hover:scale-105 active:scale-95"
