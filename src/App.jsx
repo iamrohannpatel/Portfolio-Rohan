@@ -20,6 +20,7 @@ import Home from './components/Home';
 import About from './components/About';
 import SocialSidebar from './components/SocialSidebar';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollProgress from './components/ScrollProgress';
 import ClickSpark from './components/ClickSpark';
 
 // Lazy Load Section Components
@@ -44,7 +45,6 @@ const Skills = React.lazy(() => import('./components/Skills'));
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [theme, setTheme] = useState('dark');
 
   // Load theme from localStorage
@@ -84,17 +84,6 @@ const App = () => {
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
     { id: 'feedback', label: 'Feedback', icon: <ThumbsUp size={20} /> },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
-      setScrollProgress(Number(scroll));
-    }
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -142,10 +131,7 @@ const App = () => {
       <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
 
         {/* Scroll Progress Bar */}
-        <div
-          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500 z-[100]"
-          style={{ width: `${scrollProgress * 100}%` }}
-        />
+        <ScrollProgress />
 
         {/* <ParticleBackground /> */}
         <SocialSidebar />

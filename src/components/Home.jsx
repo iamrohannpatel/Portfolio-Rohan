@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronsDown, FileDown, Hand, User, ExternalLink } from 'lucide-react';
+import { ChevronsDown, FileDown, Hand, User, ExternalLink, Code, Laptop, Zap, Coffee } from 'lucide-react';
 import StatCounter from './StatCounter';
 import profileImg from '../assets/rohan-profile.jpeg';
 
@@ -15,7 +15,7 @@ const Home = ({ scrollToSection }) => {
     };
 
     return (
-        <section id="home" className="relative min-h-[90vh] w-full flex items-start justify-center pt-6 pb-16 lg:pt-8 lg:pb-0 overflow-hidden perspective-1000">
+        <section id="home" className="relative min-h-[90vh] w-full flex items-start justify-center pt-2 pb-16 lg:pt-2 lg:pb-0 overflow-hidden perspective-1000">
 
             {/* 1. CINEMATIC BACKGROUND */}
             <div className="absolute inset-0 bg-gray-50 dark:bg-[#030303]">
@@ -31,7 +31,7 @@ const Home = ({ scrollToSection }) => {
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                     {/* LEFT COLUMN: ORIGINAL CONTENT RESTORED */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-10">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-10 order-2 lg:order-1">
 
                         {/* Badge */}
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 dark:bg-white/5 border border-amber-500/20 backdrop-blur-md shadow-sm transition-all hover:scale-105 hover:bg-white/60 dark:hover:bg-white/10 group cursor-default">
@@ -88,11 +88,11 @@ const Home = ({ scrollToSection }) => {
                     </div>
 
                     {/* RIGHT COLUMN: THE "IMPRESSIVE" AVATAR + STATS */}
-                    <div className="flex flex-col items-center justify-center space-y-8 lg:justify-start lg:items-center relative group perspective-500 h-full">
+                    <div className="flex flex-col items-center justify-center space-y-8 lg:justify-start lg:items-center relative group perspective-500 h-full order-1 lg:order-2">
                         {/* Background Splatter/Glow */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/30 to-orange-600/30 rounded-full blur-[80px] scale-75 animate-pulse" />
 
-                        <div className="relative w-64 h-64 sm:w-72 sm:h-72 transform transition-transform duration-700 preserve-3d">
+                        <div className="relative w-64 h-64 sm:w-72 sm:h-72 transform transition-transform duration-700 preserve-3d mt-12 lg:mt-6">
                             {/* Tech Rings (Restored & Enhanced) */}
                             <div className="absolute inset-0 rounded-full border-[3px] border-dashed border-amber-500/30 animate-[spin_20s_linear_infinite]" />
                             <div className="absolute inset-4 rounded-full border-[3px] border-dashed border-orange-500/30 animate-[spin_15s_linear_infinite_reverse]" />
@@ -114,32 +114,58 @@ const Home = ({ scrollToSection }) => {
 
                         </div>
 
-                        {/* Stats - Modern Layout */}
-                        <div className="w-full max-w-md pt-8 animate-fade-in-up delay-200">
-                            <div className="grid grid-cols-4 gap-4 text-center">
-                                <div className="flex flex-col items-center">
-                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                                        <StatCounter end={1200} suffix="+" />
-                                    </span>
-                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Hours Code</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                                        <StatCounter end={10} suffix="+" />
-                                    </span>
-                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                                        <StatCounter end={10} suffix="+" />
-                                    </span>
-                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Skills</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                                        <StatCounter end={2} suffix="+" />
-                                    </span>
-                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Exp</span>
+                        {/* Stats - Boxy Strip Layout */}
+                        <div className="w-full max-w-2xl mt-4 lg:mt-0 animate-fade-in-up delay-200">
+                            <div className="relative bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl p-4 shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 transition-all duration-300 group">
+                                {/* Gloss Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+
+                                <div className="grid grid-cols-2 sm:grid-cols-4 items-center">
+
+                                    {/* Stat 1 */}
+                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat border-r border-transparent sm:border-r-gray-200/20 dark:sm:border-r-white/10">
+                                        <Code size={24} className="text-amber-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
+                                                <StatCounter end={1200} suffix="+" />
+                                            </span>
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Hours Code</span>
+                                    </div>
+
+                                    {/* Stat 2 */}
+                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat sm:border-r border-gray-200/20 dark:border-white/10">
+                                        <Laptop size={24} className="text-orange-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
+                                                <StatCounter end={10} suffix="+" />
+                                            </span>
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Projects</span>
+                                    </div>
+
+                                    {/* Stat 3 */}
+                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat border-r border-transparent sm:border-r-gray-200/20 dark:sm:border-r-white/10">
+                                        <Zap size={24} className="text-amber-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
+                                                <StatCounter end={10} suffix="+" />
+                                            </span>
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Skills</span>
+                                    </div>
+
+                                    {/* Stat 4 */}
+                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat">
+                                        <Coffee size={24} className="text-orange-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
+                                                <StatCounter end={2} suffix="+" />
+                                            </span>
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Years Exp</span>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
