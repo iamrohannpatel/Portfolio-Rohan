@@ -15,7 +15,7 @@ const Home = ({ scrollToSection }) => {
     };
 
     return (
-        <section id="home" className="relative min-h-screen w-full flex items-center justify-center py-20 lg:py-0 overflow-hidden perspective-1000">
+        <section id="home" className="relative min-h-[90vh] w-full flex items-start justify-center pt-6 pb-16 lg:pt-8 lg:pb-0 overflow-hidden perspective-1000">
 
             {/* 1. CINEMATIC BACKGROUND */}
             <div className="absolute inset-0 bg-gray-50 dark:bg-[#030303]">
@@ -114,14 +114,32 @@ const Home = ({ scrollToSection }) => {
 
                         </div>
 
-                        {/* Stats - Moved Below Avatar */}
-                        <div className="w-full max-w-[16rem] pt-4 animate-fade-in-up delay-200">
-                            <div className="w-full bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-4 backdrop-blur-md shadow-sm hover:shadow-md transition-shadow">
-                                <div className="grid grid-cols-2 gap-4 text-center">
-                                    <div className="px-2 border-r border-gray-300/50 dark:border-white/10"> <StatCounter end={1200} label="Hours Code" suffix="+" /> </div>
-                                    <div className="px-2"> <StatCounter end={10} label="Projects" suffix="+" /> </div>
-                                    <div className="px-2 border-r border-gray-300/50 dark:border-white/10 border-t pt-4"> <StatCounter end={10} label="Skills" suffix="+" /> </div>
-                                    <div className="px-2 border-t pt-4 border-gray-300/50 dark:border-white/10"> <StatCounter end={2} label="Years Exp" suffix="+" /> </div>
+                        {/* Stats - Modern Layout */}
+                        <div className="w-full max-w-md pt-8 animate-fade-in-up delay-200">
+                            <div className="grid grid-cols-4 gap-4 text-center">
+                                <div className="flex flex-col items-center">
+                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                                        <StatCounter end={1200} suffix="+" />
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Hours Code</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                                        <StatCounter end={10} suffix="+" />
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                                        <StatCounter end={10} suffix="+" />
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Skills</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                                        <StatCounter end={2} suffix="+" />
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Exp</span>
                                 </div>
                             </div>
                         </div>
