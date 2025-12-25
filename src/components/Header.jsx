@@ -1,4 +1,5 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
 import { Terminal, Menu, X, Sun, Moon } from 'lucide-react';
 
 const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuOpen, navItems, theme, toggleTheme }) => {
@@ -9,10 +10,51 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
     const primaryItems = navItems.filter(item => visibleIds.includes(item.id));
     const secondaryItems = navItems.filter(item => !visibleIds.includes(item.id));
 
+    const handleThemeToggle = (e) => {
+        // Fallback for browsers without View Transitions
+        if (!document.startViewTransition) {
+            toggleTheme();
+            return;
+        }
+
+        const x = e.clientX;
+        const y = e.clientY;
+
+        const endRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        // 1. Start the transition
+        const transition = document.startViewTransition(() => {
+            // 2. Synchronously update React state and DOM
+            flushSync(() => {
+                toggleTheme();
+            });
+        });
+
+        // 3. Animate the circular clip path
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(0px at ${x}px ${y}px)`,
+                        `circle(${endRadius}px at ${x}px ${y}px)`
+                    ],
+                },
+                {
+                    duration: 700,
+                    easing: "cubic-bezier(0.25, 1, 0.5, 1)", // Quart Easing out for "buttery" feel
+                    pseudoElement: "::view-transition-new(root)",
+                }
+            );
+        });
+    };
+
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] transition-all duration-300">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <div className="text-2xl font-bold flex items-center gap-2">
+                <div className="text-xl md:text-2xl font-bold flex items-center gap-2">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-200 dark:to-orange-400 drop-shadow-[0_0_25px_rgba(251,191,36,0.8)]">
                         &lt;Developerohan /&gt;
                     </span>
@@ -73,42 +115,8 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
 
                     {/* Theme Toggle Button */}
                     <button
-                        onClick={(e) => {
-                            // Check if View Transitions API is supported
-                            if (!document.startViewTransition) {
-                                toggleTheme();
-                                return;
-                            }
-
-                            const x = e.clientX;
-                            const y = e.clientY;
-
-                            const endRadius = Math.hypot(
-                                Math.max(x, window.innerWidth - x),
-                                Math.max(y, window.innerHeight - y)
-                            );
-
-                            const transition = document.startViewTransition(() => {
-                                toggleTheme();
-                            });
-
-                            transition.ready.then(() => {
-                                document.documentElement.animate(
-                                    {
-                                        clipPath: [
-                                            `circle(0px at ${x}px ${y}px)`,
-                                            `circle(${endRadius}px at ${x}px ${y}px)`
-                                        ],
-                                    },
-                                    {
-                                        duration: 750,
-                                        easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
-                                        pseudoElement: '::view-transition-new(root)',
-                                    }
-                                );
-                            });
-                        }}
-                        className="ml-2 p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300"
+                        onClick={handleThemeToggle}
+                        className="ml-2 p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
                         aria-label="Toggle Theme"
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -118,37 +126,8 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                 {/* Mobile Menu Button & Toggle */}
                 <div className="xl:hidden flex items-center gap-2">
                     <button
-                        onClick={(e) => {
-                            if (!document.startViewTransition) {
-                                toggleTheme();
-                                return;
-                            }
-                            const x = e.clientX;
-                            const y = e.clientY;
-                            const endRadius = Math.hypot(
-                                Math.max(x, window.innerWidth - x),
-                                Math.max(y, window.innerHeight - y)
-                            );
-                            const transition = document.startViewTransition(() => {
-                                toggleTheme();
-                            });
-                            transition.ready.then(() => {
-                                document.documentElement.animate(
-                                    {
-                                        clipPath: [
-                                            `circle(0px at ${x}px ${y}px)`,
-                                            `circle(${endRadius}px at ${x}px ${y}px)`
-                                        ],
-                                    },
-                                    {
-                                        duration: 750,
-                                        easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
-                                        pseudoElement: '::view-transition-new(root)',
-                                    }
-                                );
-                            });
-                        }}
-                        className="p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300"
+                        onClick={handleThemeToggle}
+                        className="p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>

@@ -70,7 +70,8 @@ const Certifications = () => {
                                 href={cert.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-gray-100 dark:bg-white/5 hover:from-amber-500 hover:to-orange-500 hover:text-white dark:hover:from-amber-600 dark:hover:to-orange-600 group-[.active-card]:from-amber-600 group-[.active-card]:to-orange-600 border border-gray-200 dark:border-white/10 hover:border-transparent group-[.active-card]:border-transparent text-gray-900 dark:text-white transition-all duration-300 font-medium gap-2 group/btn relative overflow-hidden hover:bg-gradient-to-r"
+                                className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl transition-all duration-300 font-medium gap-2 group/btn relative overflow-hidden bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 text-white border border-transparent lg:bg-none lg:bg-gray-100 lg:dark:bg-white/5 lg:text-gray-900 lg:dark:text-white lg:border-gray-200 lg:dark:border-white/10 lg:hover:bg-gradient-to-r lg:hover:from-amber-500 lg:hover:to-orange-500 lg:hover:text-white lg:dark:hover:from-amber-600 lg:dark:hover:to-orange-600 lg:hover:border-transparent lg:group-hover:bg-gradient-to-r lg:group-hover:from-amber-500 lg:group-hover:to-orange-500 lg:group-hover:text-white lg:group-hover:border-transparent lg:dark:group-hover:from-amber-600 lg:dark:group-hover:to-orange-600"
+
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     Verify Credential <ExternalLink size={16} className="group-hover/btn:translate-x-1 group-[.active-card]:translate-x-1 transition-transform" />

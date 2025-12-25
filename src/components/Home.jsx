@@ -1,6 +1,7 @@
 import React from 'react';
-import { ChevronsDown, FileDown, Hand, BookOpen } from 'lucide-react';
+import { ChevronsDown, FileDown, Hand, User, ExternalLink } from 'lucide-react';
 import StatCounter from './StatCounter';
+import profileImg from '../assets/rohan-profile.jpeg';
 
 const Home = ({ scrollToSection }) => {
     const handleDownloadResume = () => {
@@ -14,62 +15,126 @@ const Home = ({ scrollToSection }) => {
     };
 
     return (
-        <section id="home" className="min-h-screen flex flex-col items-center text-center px-4 relative pt-12 pb-20 md:pb-32 scroll-mt-28">
-            <div className="max-w-4xl space-y-6 animate-fade-in-up">
-                <div className="inline-flex items-center justify-center py-3 text-lg font-bold text-gray-900 dark:text-white mb-4">
-                    <Hand className="w-5 h-5 mr-2 text-amber-600 dark:text-amber-200 animate-pulse" />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-200 dark:to-orange-100">
-                        Hi, I am Rohan Patel
-                    </span>
-                </div>
-                <h1 className="text-6xl xs:text-7xl md:text-7xl lg:text-8xl font-extrabold tracking-tight short:text-5xl text-gray-800 dark:text-white">
-                    Frontend <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-stone-600 dark:from-amber-300 dark:via-orange-200 dark:to-stone-400">
-                        Developer
-                    </span>
-                </h1>
-                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    Computer Science UnderGrad & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
-                </p>
+        <section id="home" className="relative min-h-screen w-full flex items-center justify-center py-20 lg:py-0 overflow-hidden perspective-1000">
 
-                {/* Student-Centric Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-12">
-                    <StatCounter end={1200} label="Hours of Code" suffix="+" />
-                    <StatCounter end={10} label="Projects" suffix="+" />
-                    <StatCounter end={10} label="Tech Skills" suffix="+" />
-                    <StatCounter end={1} label="Years of learning" suffix="+" />
-                </div>
+            {/* 1. CINEMATIC BACKGROUND */}
+            <div className="absolute inset-0 bg-gray-50 dark:bg-[#030303]">
+                {/* Aurora Beams */}
+                <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-r from-amber-400/20 to-orange-500/20 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-l from-amber-600/20 to-orange-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                    <button
-                        onClick={() => scrollToSection('blog')}
-                        className="px-8 py-4 bg-amber-100 hover:bg-amber-50 text-amber-950 font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(251,191,36,0.5)] flex items-center justify-center gap-2"
-                    >
-                        Latest Blog
-                        <BookOpen className="animate-pulse" size={20} />
-                    </button>
+                {/* Grid Pattern overlay for texture */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay" />
+            </div>
 
-                    <button
-                        onClick={handleDownloadResume}
-                        className="group relative px-8 py-4 font-bold text-gray-900 dark:text-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(251,191,36,0.4)] active:scale-95"
-                    >
-                        {/* Gradient Border Background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-400 to-stone-500 dark:from-amber-400 dark:via-orange-300 dark:to-stone-400 opacity-100 animate-gradient-xy" />
+            <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                        {/* Inner Dark Background */}
-                        <div className="absolute inset-[2px] bg-white dark:bg-[#0a0a0a] rounded-[10px] z-10 transition-colors duration-300 group-hover:bg-gray-50 dark:group-hover:bg-[#0a0a0a]/80" />
+                    {/* LEFT COLUMN: ORIGINAL CONTENT RESTORED */}
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-10">
 
-                        {/* Content */}
-                        <div className="relative z-20 flex items-center justify-center gap-2">
-                            <FileDown size={20} className="text-amber-600 dark:text-amber-200 group-hover:text-amber-700 dark:group-hover:text-white transition-colors duration-300 group-hover:animate-bounce" />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-200 dark:to-orange-200 group-hover:text-amber-700 dark:group-hover:text-white group-hover:bg-none transition-all duration-300">
-                                Download Resume
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 dark:bg-white/5 border border-amber-500/20 backdrop-blur-md shadow-sm transition-all hover:scale-105 hover:bg-white/60 dark:hover:bg-white/10 group cursor-default">
+                            <Hand size={18} className="text-amber-600 dark:text-amber-400 animate-wave origin-bottom-right" />
+                            <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                Hi, I am Rohan Patel
                             </span>
                         </div>
-                    </button>
+
+                        {/* Title - Super Impressive Typography */}
+                        <div className="relative">
+                            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 dark:text-white leading-[0.9] drop-shadow-sm">
+                                Frontend
+                                <br />
+                                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 saturate-150">
+                                    Developer
+                                    {/* Underline Decoration */}
+                                    <svg className="absolute w-full h-3 -bottom-1 left-0 text-amber-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                                    </svg>
+                                </span>
+                            </h1>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-medium leading-relaxed">
+                            Computer Science UnderGrad & Creative Coder. I build scalable, immersive web applications and solve complex problems with code.
+                        </p>
+
+                        {/* Actions */}
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-5">
+                            <button
+                                onClick={handleDownloadResume}
+                                className="group relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-full overflow-hidden shadow-2xl shadow-amber-500/20 transition-all hover:scale-105 active:scale-95"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity" />
+                                <div className="flex items-center gap-2 relative z-10">
+                                    <FileDown size={20} />
+                                    <span>Download Resume</span>
+                                </div>
+                            </button>
+
+                            <button
+                                onClick={() => scrollToSection('contact')}
+                                className="group px-8 py-4 bg-transparent border-2 border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all hover:border-gray-300 dark:hover:border-white/20 active:scale-95 flex items-center gap-2"
+                            >
+                                <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
+                                <span>Let's Talk</span>
+                            </button>
+                        </div>
+
+
+
+                    </div>
+
+                    {/* RIGHT COLUMN: THE "IMPRESSIVE" AVATAR + STATS */}
+                    <div className="flex flex-col items-center justify-center space-y-8 lg:justify-start lg:items-center relative group perspective-500 h-full">
+                        {/* Background Splatter/Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/30 to-orange-600/30 rounded-full blur-[80px] scale-75 animate-pulse" />
+
+                        <div className="relative w-64 h-64 sm:w-72 sm:h-72 transform transition-transform duration-700 preserve-3d">
+                            {/* Tech Rings (Restored & Enhanced) */}
+                            <div className="absolute inset-0 rounded-full border-[3px] border-dashed border-amber-500/30 animate-[spin_20s_linear_infinite]" />
+                            <div className="absolute inset-4 rounded-full border-[3px] border-dashed border-orange-500/30 animate-[spin_15s_linear_infinite_reverse]" />
+
+                            {/* The Core Image */}
+                            <div className="absolute inset-2 rounded-full overflow-hidden shadow-2xl">
+                                <div className="w-full h-full flex items-center justify-center">
+                                    <img
+                                        src={profileImg}
+                                        alt="Rohan Patel"
+                                        className="w-[90%] h-[90%] object-cover rounded-full"
+                                        style={{ objectPosition: 'center 30%' }}
+                                    />
+                                </div>
+                                {/* Glass Reflection overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-50 pointer-events-none" />
+                            </div>
+
+
+                        </div>
+
+                        {/* Stats - Moved Below Avatar */}
+                        <div className="w-full max-w-[16rem] pt-4 animate-fade-in-up delay-200">
+                            <div className="w-full bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-4 backdrop-blur-md shadow-sm hover:shadow-md transition-shadow">
+                                <div className="grid grid-cols-2 gap-4 text-center">
+                                    <div className="px-2 border-r border-gray-300/50 dark:border-white/10"> <StatCounter end={1200} label="Hours Code" suffix="+" /> </div>
+                                    <div className="px-2"> <StatCounter end={10} label="Projects" suffix="+" /> </div>
+                                    <div className="px-2 border-r border-gray-300/50 dark:border-white/10 border-t pt-4"> <StatCounter end={10} label="Skills" suffix="+" /> </div>
+                                    <div className="px-2 border-t pt-4 border-gray-300/50 dark:border-white/10"> <StatCounter end={2} label="Years Exp" suffix="+" /> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 dark:text-gray-600 pointer-events-none">
+                <ChevronsDown size={24} />
+            </div>
+        </section >
     );
 };
 

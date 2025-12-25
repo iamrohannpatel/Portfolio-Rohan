@@ -1,86 +1,76 @@
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
+import {
+    Code2,
+    Database,
+    Globe,
+    Cpu,
+    Layers,
+    Terminal,
+    Smartphone,
+    Cloud
+} from 'lucide-react';
 
-const SkillsSphere = () => {
-    const skills = [
-        "React", "Node.js", "Java", "DSA", "Python",
-        "C++", "SQL", "Git", "Tailwind", "Next.js",
-        "Firebase", "MongoDB", "HTML5", "CSS3", "Redux"
-    ];
+const SKILLS = [
+    { name: "React", icon: <Code2 size={16} /> },
+    { name: "Node.js", icon: <Database size={16} /> },
+    { name: "Three.js", icon: <Globe size={16} /> },
+    { name: "TypeScript", icon: <Code2 size={16} /> },
+    { name: "MongoDB", icon: <Database size={16} /> },
+    { name: "AWS", icon: <Cloud size={16} /> },
+    { name: "Docker", icon: <Layers size={16} /> },
+    { name: "GraphQL", icon: <Globe size={16} /> },
+    { name: "Tailwind", icon: <Code2 size={16} /> },
+    { name: "Python", icon: <Terminal size={16} /> },
+    { name: "Figma", icon: <Layers size={16} /> },
+    { name: "Next.js", icon: <Code2 size={16} /> },
+    { name: "Redux", icon: <Cpu size={16} /> },
+    { name: "Git", icon: <Terminal size={16} /> },
+    { name: "Firebase", icon: <Database size={16} /> },
+];
 
-    const rotationRef = useRef({ x: 0, y: 0 });
-    const itemsRef = useRef([]);
+const Tag = ({ name, icon }) => (
+    <div className="flex items-center gap-2 px-4 py-2 mx-2 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full shadow-sm whitespace-nowrap transition-all duration-300 hover:bg-amber-500/20 hover:border-amber-500/50 hover:scale-105 cursor-default group">
+        <span className="text-amber-600 dark:text-amber-500 group-hover:text-amber-700 dark:group-hover:text-amber-400">
+            {icon}
+        </span>
+        <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-amber-900 dark:group-hover:text-white">
+            {name}
+        </span>
+    </div>
+);
 
-    const tags = useMemo(() => {
-        const phi = Math.PI * (3 - Math.sqrt(5));
-        return skills.map((skill, i) => {
-            const y = 1 - (i / (skills.length - 1)) * 2;
-            const radius = Math.sqrt(1 - y * y);
-            const theta = phi * i;
-            const x = Math.cos(theta) * radius;
-            const z = Math.sin(theta) * radius;
-            return { skill, x, y, z };
-        });
-    }, []);
-
-    useEffect(() => {
-        let animationFrame;
-
-        const animate = () => {
-            rotationRef.current.x += 0.015;
-            rotationRef.current.y += 0.015;
-
-            const cosX = Math.cos(rotationRef.current.x);
-            const sinX = Math.sin(rotationRef.current.x);
-            const cosY = Math.cos(rotationRef.current.y);
-            const sinY = Math.sin(rotationRef.current.y);
-
-            tags.forEach((tag, i) => {
-                const item = itemsRef.current[i];
-                if (!item) return;
-
-                let y = tag.y * cosX - tag.z * sinX;
-                let z = tag.y * sinX + tag.z * cosX;
-                let x = tag.x * cosY - z * sinY;
-                z = tag.x * sinY + z * cosY;
-
-                const scale = (z + 2) / 3;
-                const alpha = (z + 1) / 2;
-
-                item.style.transform = `translate3d(${x * 120}px, ${y * 120}px, 0) scale(${scale})`;
-                item.style.opacity = Math.max(0.2, alpha);
-                item.style.zIndex = Math.floor(scale * 100);
-                item.style.color = alpha > 0.8 ? '#fff' : '#94a3b8';
-            });
-
-            animationFrame = requestAnimationFrame(animate);
-        };
-
-        animate();
-        return () => cancelAnimationFrame(animationFrame);
-    }, [tags]);
+const MarqueeRow = ({ items, reverse = false }) => {
+    // Duplicate items to ensure seamless loop
+    const content = [...items, ...items, ...items, ...items];
 
     return (
-        <div className="relative w-full h-[400px] flex items-center justify-center overflow-hidden">
-            <div className="relative w-64 h-64 transform-style-3d">
-                {tags.map((tag, i) => (
-                    <div
-                        key={i}
-                        ref={(el) => itemsRef.current[i] = el}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-300 cursor-default hover:text-amber-400 hover:scale-110 hover:z-50"
-                        style={{
-                            willChange: 'transform, opacity, z-index',
-                            fontSize: '14px',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        <span className="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md border border-white/10">
-                            {tag.skill}
-                        </span>
-                    </div>
+        <div className="relative flex overflow-hidden w-full mask-image-gradient">
+            <div className={`flex py-2 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'} hover:pause-animation`}>
+                {content.map((skill, index) => (
+                    <Tag key={`${skill.name}-${index}`} name={skill.name} icon={skill.icon} />
                 ))}
             </div>
         </div>
     );
 };
 
-export default SkillsSphere;
+const SkillsSphere = () => {
+    // Split skills into rows randomly or sequentially
+    const row1 = SKILLS.slice(0, 5);
+    const row2 = SKILLS.slice(5, 10);
+    const row3 = SKILLS.slice(10, 15);
+
+    return (
+        <div className="relative w-full py-8 flex flex-col gap-6 overflow-hidden select-none">
+            {/* Gradient Masks for fade effect at edges */}
+            <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-gray-50 dark:from-[#050505] to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-gray-50 dark:from-[#050505] to-transparent z-10 pointer-events-none" />
+
+            <MarqueeRow items={row1} />
+            <MarqueeRow items={row2} reverse />
+            <MarqueeRow items={row3} />
+        </div>
+    );
+};
+
+export default React.memo(SkillsSphere);
