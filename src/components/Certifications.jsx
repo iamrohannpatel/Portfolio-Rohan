@@ -33,11 +33,15 @@ const Certifications = () => {
                             {/* Card Content */}
                             <div className="flex items-start justify-between mb-6">
                                 <div className="p-3 bg-white dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10 group-hover:border-amber-500/30 group-active:border-amber-500/30 group-[.active-card]:border-amber-500/30 group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] group-active:shadow-[0_0_15px_rgba(251,191,36,0.2)] group-[.active-card]:shadow-[0_0_15px_rgba(251,191,36,0.2)] transition-all duration-300">
-                                    <img
-                                        src={cert.image}
-                                        alt={cert.issuer}
-                                        className="w-12 h-12 object-contain"
-                                    />
+                                    {cert.image ? (
+                                        <img
+                                            src={cert.image}
+                                            alt={cert.issuer}
+                                            className="w-12 h-12 object-contain"
+                                        />
+                                    ) : (
+                                        <Award className="w-12 h-12 text-amber-500" />
+                                    )}
                                 </div>
                                 <div className="px-3 py-1 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/10 group-active:bg-amber-50 dark:group-active:bg-amber-500/10 group-[.active-card]:bg-amber-50 dark:group-[.active-card]:bg-amber-500/10 transition-colors">
                                     <Calendar size={12} />

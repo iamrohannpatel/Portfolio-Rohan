@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Quote, Star, ChevronLeft, ChevronRight, MessageSquareQuote } from 'lucide-react';
+import { Quote, Star, ChevronLeft, ChevronRight, MessageSquareQuote, User } from 'lucide-react';
 
 const testimonials = [
   {
@@ -7,7 +7,6 @@ const testimonials = [
     name: "Alex Johnson",
     role: "Senior Engineer, TechCorp",
     content: "Rohan is an incredibly dedicated developer. His ability to solve complex problems and his eye for design make him a valuable asset to any team.",
-    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
     gradient: "from-amber-500 to-orange-500"
   },
   {
@@ -15,7 +14,6 @@ const testimonials = [
     name: "Sarah Lee",
     role: "Fellow Student",
     content: "Working with Rohan on the hackathon project was amazing. He leads with code and is always willing to help others learn.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
     gradient: "from-orange-500 to-red-500"
   },
   {
@@ -23,7 +21,6 @@ const testimonials = [
     name: "Michael Chen",
     role: "Project Manager",
     content: "The level of polish in Rohan's work is outstanding. He doesn't just deliver features; he delivers experiences.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
     gradient: "from-yellow-400 to-orange-500"
   }
 ];
@@ -107,11 +104,10 @@ translateZ(${- position * 50}px)
                   </p>
 
                   <div className="flex items-center gap-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-white/10"
-                    />
+                    <div className="w-12 h-12 rounded-full border-2 border-gray-200 dark:border-white/10 flex items-center justify-center bg-gray-50 dark:bg-white/5 text-gray-400 dark:text-gray-500">
+                      <User size={24} />
+                    </div>
+
                     <div>
                       <h4 className="font-bold text-gray-900 dark:text-white text-lg">{testimonial.name}</h4>
                       <p className="text-sm text-gray-500 dark:text-gray-400 font-semibold">{testimonial.role}</p>

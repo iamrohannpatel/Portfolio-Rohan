@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import {
   Home as HomeIcon,
   User,
@@ -16,48 +17,68 @@ import {
 } from 'lucide-react';
 import Header from './components/Header';
 import Home from './components/Home';
-import LazySection from './components/LazySection';
 import SocialSidebar from './components/SocialSidebar';
-// ScrollToTop is non-critical, lazy load it
-const ScrollToTop = React.lazy(() => import('./components/ScrollToTop'));
 import ScrollProgress from './components/ScrollProgress';
 import ClickSpark from './components/ClickSpark';
 
-// Lazy Load Section Components
-// About is now lazy loaded
-const About = React.lazy(() => import('./components/About'));
-const Services = React.lazy(() => import('./components/Services'));
-const CodingProfile = React.lazy(() => import('./components/CodingProfile'));
-const Projects = React.lazy(() => import('./components/Projects'));
-const Testimonials = React.lazy(() => import('./components/Testimonials'));
-const Education = React.lazy(() => import('./components/Education'));
-const Certifications = React.lazy(() => import('./components/Certifications'));
-const Blog = React.lazy(() => import('./components/Blog'));
-const FAQs = React.lazy(() => import('./components/FAQs'));
-const Contact = React.lazy(() => import('./components/Contact'));
-const Feedback = React.lazy(() => import('./components/Feedback'));
-const Footer = React.lazy(() => import('./components/Footer'));
-const Skills = React.lazy(() => import('./components/Skills'));
+// Lazy Load Components
+const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services'));
+const CodingProfile = lazy(() => import('./components/CodingProfile'));
+const Projects = lazy(() => import('./components/Projects'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Education = lazy(() => import('./components/Education'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Blog = lazy(() => import('./components/Blog'));
+const FAQs = lazy(() => import('./components/FAQs'));
+const Contact = lazy(() => import('./components/Contact'));
+const Feedback = lazy(() => import('./components/Feedback'));
+const Footer = lazy(() => import('./components/Footer'));
+const Skills = lazy(() => import('./components/Skills'));
+// New Component
+const AllProjects = lazy(() => import('./components/AllProjects'));
+
+// Section Wrapper Component
+const SectionWrapper = ({ id, children, className = '', minHeight = '100vh' }) => (
+  <section
+    id={id}
+    className={`relative w-full ${className}`}
+    style={{ minHeight }}
+  >
+    {children}
+  </section>
+);
+
+// Loading placeholder component
+const LoadingPlaceholder = ({ height = '100px' }) => (
+  <div className="w-full flex items-center justify-center" style={{ height }}>
+    <div className="animate-pulse text-gray-400">Loading...</div>
+  </div>
+);
 
 
 import useIsMobile from './hooks/useIsMobile';
 
 /**
- * MAIN APP
+ * MAIN APP LAYOUT (For the Landing Page)
  */
-const App = () => {
+const MainLayout = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState('dark');
   const isMobile = useIsMobile();
+  const location = useLocation();
 
-  // Load theme from localStorage
+  // Initialize theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
+    if (savedTheme && savedTheme !== theme) {
       setTheme(savedTheme);
     }
   }, []);
+
+
 
   // Apply theme to HTML element
   useEffect(() => {
@@ -109,38 +130,43 @@ const App = () => {
     return () => observer.disconnect();
   }, [navItems]);
 
+  // Handle smooth scrolling
   const scrollToSection = React.useCallback((id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 60; // Exact/tight header height to remove gaps
-      const offsetPosition = element.offsetTop - offset;
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = Math.max(0, elementPosition - headerHeight - 20);
 
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
+
       setActiveSection(id);
       setMobileMenuOpen(false);
     }
   }, []);
 
-  // Wrap content conditionally based on mobile check for click spark
+  // Handle hash scrolling on mount or change
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 100); // Small delay to ensure DOM is ready
+    }
+  }, [location.hash, scrollToSection]);
+
   const content = (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
-
-      {/* Scroll Progress Bar - Disable on mobile */}
-      {!isMobile && <ScrollProgress />}
-
-
-      {/* Social Sidebar - Hide on mobile */}
+      <ScrollProgress />
       {!isMobile && <SocialSidebar />}
 
-      {/* ScrollToTop - Non-critical, lazy load */}
-      <React.Suspense fallback={null}>
+      <Suspense fallback={null}>
         <ScrollToTop />
-      </React.Suspense>
+      </Suspense>
 
-      {/* Navigation */}
       <Header
         activeSection={activeSection}
         scrollToSection={scrollToSection}
@@ -151,120 +177,102 @@ const App = () => {
         toggleTheme={toggleTheme}
       />
 
-      <main className="relative z-10 pt-20">
-
-        {/* HERO - Eager Loaded */}
-        <Home scrollToSection={scrollToSection} />
-
-        {/* ABOUT - Lazy Loaded */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+      <main className="relative z-10">
+        <SectionWrapper id="home" className="pt-20">
+          <Home scrollToSection={scrollToSection} />
+        </SectionWrapper>
+        <SectionWrapper id="about">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <About />
-          </React.Suspense>
-        </LazySection>
-
-        {/* PROJECTS */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="projects">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Projects />
-          </React.Suspense>
-        </LazySection>
-
-        {/* SKILLS */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="skills">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Skills />
-          </React.Suspense>
-        </LazySection>
-
-        {/* CODING PROFILE */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="coding">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <CodingProfile />
-          </React.Suspense>
-        </LazySection>
-
-        {/* SERVICES */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="services">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Services />
-          </React.Suspense>
-        </LazySection>
-
-        {/* EDUCATION & JOURNEY */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="education">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Education />
-          </React.Suspense>
-        </LazySection>
-
-        {/* CERTIFICATIONS */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="certifications">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Certifications />
-          </React.Suspense>
-        </LazySection>
-
-        {/* TESTIMONIALS */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="testimonials">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Testimonials />
-          </React.Suspense>
-        </LazySection>
-
-        {/* BLOG */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="blog">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Blog />
-          </React.Suspense>
-        </LazySection>
-
-        {/* FAQ */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="faq">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <FAQs />
-          </React.Suspense>
-        </LazySection>
-
-        {/* CONTACT FORM */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="contact">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Contact />
-          </React.Suspense>
-        </LazySection>
-
-        {/* FEEDBACK */}
-        <LazySection>
-          <React.Suspense fallback={<div className="h-96" />}>
+          </Suspense>
+        </SectionWrapper>
+        <SectionWrapper id="feedback">
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
             <Feedback />
-          </React.Suspense>
-        </LazySection>
-
-        <LazySection>
-          <React.Suspense fallback={<div className="h-20" />}>
-            <Footer />
-          </React.Suspense>
-        </LazySection>
-
+          </Suspense>
+        </SectionWrapper>
       </main>
 
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+
+      <ClickSpark />
     </div>
   );
 
-  if (isMobile) {
-    return content;
-  }
+  if (isMobile) return content;
 
   return (
-    <ClickSpark
-      sparkColor="#FFD700"
-      sparkSize={10}
-      sparkRadius={15}
-      sparkCount={8}
-      duration={400}
-    >
+    <ClickSpark sparkColor="#FFD700" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       {content}
     </ClickSpark>
+  );
+};
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />} />
+      <Route
+        path="/all-projects"
+        element={
+          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+            <AllProjects />
+          </Suspense>
+        }
+      />
+    </Routes>
   );
 };
 
