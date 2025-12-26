@@ -69,11 +69,11 @@ const CodingProfile = () => {
                             <div className="space-y-6">
                                 <div>
                                     <div className="flex justify-between text-sm mb-2">
-                                        <span className="text-amber-600 dark:text-amber-400 font-medium">Easy</span>
+                                        <span className="text-green-600 dark:text-green-400 font-medium">Easy</span>
                                         <span className="text-gray-500 dark:text-gray-400">200 solved</span>
                                     </div>
                                     <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-amber-500 w-[70%]" />
+                                        <div className="h-full bg-green-500 w-[70%]" />
                                     </div>
                                 </div>
                                 <div>
@@ -100,7 +100,7 @@ const CodingProfile = () => {
                         {/* Consistency Graph */}
                         <div className="lg:col-span-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-6 overflow-x-auto shadow-lg dark:shadow-none">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                                <Code2 size={20} className="text-orange-600 dark:text-orange-400" />
+                                <Code2 size={20} className="text-green-600 dark:text-green-400" />
                                 Consistency Graph
                             </h3>
 
@@ -124,10 +124,10 @@ const CodingProfile = () => {
                                             <div
                                                 key={i}
                                                 className={`w-3 h-3 rounded-[2px] transition-all hover:scale-125 hover:border-white border border-transparent ${level === 0 ? 'bg-gray-100 dark:bg-white/5' :
-                                                    level === 1 ? 'bg-amber-200 dark:bg-amber-900/40' :
-                                                        level === 2 ? 'bg-amber-300 dark:bg-amber-700/60' :
-                                                            level === 3 ? 'bg-amber-400 dark:bg-amber-500/80' :
-                                                                'bg-amber-500 dark:bg-amber-300'
+                                                    level === 1 ? 'bg-green-200 dark:bg-green-900/40' :
+                                                        level === 2 ? 'bg-green-300 dark:bg-green-700/60' :
+                                                            level === 3 ? 'bg-green-400 dark:bg-green-500/80' :
+                                                                'bg-green-500 dark:bg-green-400'
                                                     }`}
                                                 title={`Activity Level: ${level}`}
                                             />
@@ -140,10 +140,10 @@ const CodingProfile = () => {
                                     <span>Less</span>
                                     <div className="flex items-center gap-1">
                                         <div className="w-3 h-3 bg-gray-100 dark:bg-white/5 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-amber-200 dark:bg-amber-900/40 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-amber-300 dark:bg-amber-700/60 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-amber-400 dark:bg-amber-500/80 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-amber-500 dark:bg-amber-300 rounded-[2px]" />
+                                        <div className="w-3 h-3 bg-green-200 dark:bg-green-900/40 rounded-[2px]" />
+                                        <div className="w-3 h-3 bg-green-300 dark:bg-green-700/60 rounded-[2px]" />
+                                        <div className="w-3 h-3 bg-green-400 dark:bg-green-500/80 rounded-[2px]" />
+                                        <div className="w-3 h-3 bg-green-500 dark:bg-green-400 rounded-[2px]" />
                                     </div>
                                     <span>More</span>
                                 </div>

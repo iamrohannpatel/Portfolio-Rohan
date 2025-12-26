@@ -74,13 +74,15 @@ const Home = ({ scrollToSection }) => {
                                 </div>
                             </button>
 
-                            <button
-                                onClick={() => scrollToSection('contact')}
+                            <a
+                                href="https://whatsapp.com/channel/0029Vb7ELzDE50UooO9Mtw3k"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group px-8 py-4 bg-transparent border-2 border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all hover:border-gray-300 dark:hover:border-white/20 active:scale-95 flex items-center gap-2"
                             >
                                 <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
-                                <span>Let's Talk</span>
-                            </button>
+                                <span>Let's Grind</span>
+                            </a>
                         </div>
 
 
@@ -115,55 +117,63 @@ const Home = ({ scrollToSection }) => {
                         </div>
 
                         {/* Stats - Boxy Strip Layout */}
-                        <div className="w-full max-w-2xl mt-4 lg:mt-0 animate-fade-in-up delay-200">
-                            <div className="relative bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl p-4 shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 transition-all duration-300 group">
+                        <div className="w-full max-w-2xl mt-8 lg:mt-0 animate-fade-in-up delay-200">
+                            <div className="relative bg-white/5 dark:bg-black/30 backdrop-blur-2xl border border-white/10 dark:border-white/5 rounded-[2rem] py-3 px-6 shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/20 transition-all duration-500 group">
                                 {/* Gloss Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem] pointer-events-none" />
 
-                                <div className="grid grid-cols-2 sm:grid-cols-4 items-center">
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 items-center">
 
                                     {/* Stat 1 */}
-                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat border-r border-transparent sm:border-r-gray-200/20 dark:sm:border-r-white/10">
-                                        <Code size={24} className="text-amber-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                    <div className="flex flex-col items-center justify-center p-2 relative group/stat sm:border-r border-gray-200/10 dark:border-white/5">
+                                        <div className="p-2 bg-amber-500/10 rounded-lg mb-2 group-hover/stat:bg-amber-500/20 transition-colors">
+                                            <Code size={16} className="text-amber-500" />
+                                        </div>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
+                                            <span className="text-xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
                                                 <StatCounter end={1200} suffix="+" />
                                             </span>
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Hours Code</span>
+                                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1 text-center">Hours of coding</span>
                                     </div>
 
                                     {/* Stat 2 */}
-                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat sm:border-r border-gray-200/20 dark:border-white/10">
-                                        <Laptop size={24} className="text-orange-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                    <div className="flex flex-col items-center justify-center p-2 relative group/stat sm:border-r border-gray-200/10 dark:border-white/5">
+                                        <div className="p-2 bg-orange-500/10 rounded-lg mb-2 group-hover/stat:bg-orange-500/20 transition-colors">
+                                            <Laptop size={16} className="text-orange-500" />
+                                        </div>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
+                                            <span className="text-xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
                                                 <StatCounter end={10} suffix="+" />
                                             </span>
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Projects</span>
+                                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1 text-center">Projects</span>
                                     </div>
 
                                     {/* Stat 3 */}
-                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat border-r border-transparent sm:border-r-gray-200/20 dark:sm:border-r-white/10">
-                                        <Zap size={24} className="text-amber-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                    <div className="flex flex-col items-center justify-center p-2 relative group/stat sm:border-r border-gray-200/10 dark:border-white/5">
+                                        <div className="p-2 bg-amber-500/10 rounded-lg mb-2 group-hover/stat:bg-amber-500/20 transition-colors">
+                                            <Zap size={16} className="text-amber-500" />
+                                        </div>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
+                                            <span className="text-xl font-black text-gray-900 dark:text-white group-hover/stat:text-amber-500 transition-colors">
                                                 <StatCounter end={10} suffix="+" />
                                             </span>
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Skills</span>
+                                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1 text-center">Tech Skills</span>
                                     </div>
 
                                     {/* Stat 4 */}
-                                    <div className="flex flex-col items-center justify-center p-4 relative group/stat">
-                                        <Coffee size={24} className="text-orange-500 mb-2 opacity-80 group-hover/stat:opacity-100 group-hover/stat:scale-110 transition-all" />
+                                    <div className="flex flex-col items-center justify-center p-2 relative group/stat">
+                                        <div className="p-2 bg-orange-500/10 rounded-lg mb-2 group-hover/stat:bg-orange-500/20 transition-colors">
+                                            <Coffee size={16} className="text-orange-500" />
+                                        </div>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
-                                                <StatCounter end={2} suffix="+" />
+                                            <span className="text-xl font-black text-gray-900 dark:text-white group-hover/stat:text-orange-500 transition-colors">
+                                                <StatCounter end={15} suffix="+" />
                                             </span>
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1">Years Exp</span>
+                                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1 text-center">Months of learning</span>
                                     </div>
 
                                 </div>
