@@ -4,15 +4,25 @@ const ScrollProgress = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
+        let rafId;
+
         const handleScroll = () => {
-            const totalScroll = document.documentElement.scrollTop;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scroll = totalScroll / windowHeight;
-            setScrollProgress(Number(scroll));
+            if (rafId) return;
+
+            rafId = requestAnimationFrame(() => {
+                const totalScroll = document.documentElement.scrollTop;
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scroll = totalScroll / windowHeight;
+                setScrollProgress(Number(scroll));
+                rafId = null;
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (rafId) cancelAnimationFrame(rafId);
+        };
     }, []);
 
     return (

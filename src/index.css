@@ -1,10 +1,16 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
+}
+
+/* Accessibility: Global Focus Styles */
+:focus-visible {
+  outline: 2px solid #fbbf24 !important;
+  outline-offset: 2px !important;
+  border-radius: 4px;
 }
 
 /* View Transitions */

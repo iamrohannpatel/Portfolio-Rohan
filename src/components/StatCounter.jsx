@@ -1,24 +1,42 @@
+
 import React, { useState, useEffect } from 'react';
+import useIsMobile from '../hooks/useIsMobile';
 
 const StatCounter = ({ end, label, suffix = "" }) => {
     const [count, setCount] = useState(0);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
-        let startTime;
-        const duration = 2000;
+        // If mobile, don't run animation logic at all, just set final value
+        if (isMobile) {
+            setCount(end);
+            return;
+        }
 
-        const animate = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
-            const percentage = Math.min(progress / duration, 1);
-            const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-            setCount(Math.floor(easeOutQuart * end));
-            if (progress < duration) {
-                requestAnimationFrame(animate);
+        let startTime = null;
+        const duration = 2000;
+        let animationFrameId;
+
+        const animate = (currentTime) => {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+
+            // Easing function (easeOutExpo)
+            const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+            setCount(Math.floor(easeOut * end));
+
+            if (progress < 1) {
+                animationFrameId = requestAnimationFrame(animate);
             }
         };
-        requestAnimationFrame(animate);
-    }, [end]);
+
+        animationFrameId = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        };
+    }, [end, isMobile]);
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -30,4 +48,4 @@ const StatCounter = ({ end, label, suffix = "" }) => {
     );
 };
 
-export default StatCounter;
+export default React.memo(StatCounter);

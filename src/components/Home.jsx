@@ -19,9 +19,9 @@ const Home = ({ scrollToSection }) => {
 
             {/* 1. CINEMATIC BACKGROUND */}
             <div className="absolute inset-0 bg-gray-50 dark:bg-[#030303]">
-                {/* Aurora Beams */}
-                <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-r from-amber-400/20 to-orange-500/20 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-l from-amber-600/20 to-orange-600/20 rounded-full blur-[120px] animate-pulse delay-1000" />
+                {/* Aurora Beams - Optimized with will-change */}
+                <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-r from-amber-400/20 to-orange-500/20 rounded-full blur-[120px] animate-pulse will-change-opacity" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-l from-amber-600/20 to-orange-600/20 rounded-full blur-[120px] animate-pulse delay-1000 will-change-opacity" />
 
                 {/* Grid Pattern overlay for texture */}
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay" />
@@ -34,7 +34,7 @@ const Home = ({ scrollToSection }) => {
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
 
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 transition-all hover:scale-105 group cursor-default">
+                        <div className="inline-flex items-center gap-2 transition-transform hover:scale-105 group cursor-default will-change-transform">
                             <Hand size={18} className="text-amber-600 dark:text-amber-400 animate-wave origin-bottom-right" />
                             <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                 Hi, I am Rohan Patel
@@ -46,7 +46,7 @@ const Home = ({ scrollToSection }) => {
                             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 dark:text-white leading-[0.9] drop-shadow-sm">
                                 Full Stack
                                 <br />
-                                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 saturate-150">
+                                <span className="relative inline-block text-amber-600 dark:text-amber-500">
                                     Developer
                                     {/* Underline Decoration */}
                                     <svg className="absolute w-full h-3 -bottom-1 left-0 text-amber-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -65,7 +65,7 @@ const Home = ({ scrollToSection }) => {
                         <div className="flex flex-wrap justify-center lg:justify-start gap-5 mt-8">
                             <button
                                 onClick={handleDownloadResume}
-                                className="group relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-full overflow-hidden shadow-2xl shadow-amber-500/20 transition-all hover:scale-105 active:scale-95"
+                                className="group relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-full overflow-hidden shadow-2xl transition-transform hover:scale-105 active:scale-95 will-change-transform"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity" />
                                 <div className="flex items-center gap-2 relative z-10">
@@ -78,7 +78,8 @@ const Home = ({ scrollToSection }) => {
                                 href="https://whatsapp.com/channel/0029Vb7ELzDE50UooO9Mtw3k"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group px-8 py-4 bg-transparent border-2 border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all hover:border-gray-300 dark:hover:border-white/20 active:scale-95 flex items-center gap-2"
+                                className="group px-8 py-4 bg-transparent border-2 border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors active:scale-95 flex items-center gap-2"
+                                aria-label="Join my WhatsApp Channel"
                             >
                                 <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
                                 <span>Let's Grind</span>
@@ -92,12 +93,12 @@ const Home = ({ scrollToSection }) => {
                     {/* RIGHT COLUMN: THE "IMPRESSIVE" AVATAR + STATS */}
                     <div className="flex flex-col items-center justify-center space-y-8 lg:justify-start lg:items-center relative group perspective-500 h-full order-1 lg:order-2">
                         {/* Background Splatter/Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/30 to-orange-600/30 rounded-full blur-[80px] scale-75 animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/30 to-orange-600/30 rounded-full blur-[80px] scale-75 animate-pulse will-change-opacity" />
 
-                        <div className="relative w-64 h-64 sm:w-72 sm:h-72 transform transition-transform duration-700 preserve-3d mt-12 lg:mt-6">
+                        <div className="relative w-64 h-64 sm:w-72 sm:h-72 transform transition-transform duration-700 preserve-3d mt-12 lg:mt-6 will-change-transform">
                             {/* Tech Rings (Restored & Enhanced) */}
-                            <div className="absolute inset-0 rounded-full border-[3px] border-dashed border-amber-500/30 animate-[spin_20s_linear_infinite]" />
-                            <div className="absolute inset-4 rounded-full border-[3px] border-dashed border-orange-500/30 animate-[spin_15s_linear_infinite_reverse]" />
+                            <div className="absolute inset-0 rounded-full border-[3px] border-dashed border-amber-500/30 animate-[spin_20s_linear_infinite] will-change-transform" />
+                            <div className="absolute inset-4 rounded-full border-[3px] border-dashed border-orange-500/30 animate-[spin_15s_linear_infinite_reverse] will-change-transform" />
 
                             {/* The Core Image */}
                             <div className="absolute inset-2 rounded-full overflow-hidden shadow-2xl">
@@ -107,6 +108,10 @@ const Home = ({ scrollToSection }) => {
                                         alt="Rohan Patel"
                                         className="w-[90%] h-[90%] object-cover rounded-full"
                                         style={{ objectPosition: 'center 30%' }}
+                                        fetchPriority="high"
+                                        loading="eager"
+                                        width="300"
+                                        height="300"
                                     />
                                 </div>
                                 {/* Glass Reflection overlay */}
@@ -118,11 +123,14 @@ const Home = ({ scrollToSection }) => {
 
                         {/* Stats - Boxy Strip Layout */}
                         <div className="w-full max-w-2xl mt-8 lg:mt-0 animate-fade-in-up delay-200">
-                            <div className="relative bg-white/5 dark:bg-black/30 backdrop-blur-2xl border border-white/10 dark:border-white/5 rounded-[2rem] py-3 px-6 shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/20 transition-all duration-500 group">
+                            <div className="relative bg-white/5 dark:bg-black/30 backdrop-blur-2xl border border-white/10 dark:border-white/5 rounded-[2rem] py-3 px-6 shadow-2xl transition-all duration-500 group">
+                                {/* Border Glow Opacity Twin */}
+                                <div className="absolute inset-0 rounded-[2rem] border border-amber-500/20 shadow-[0_0_20px_rgba(245,158,11,0.15)] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
                                 {/* Gloss Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem] pointer-events-none" />
 
-                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 items-center">
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 items-center relative z-10">
 
                                     {/* Stat 1 */}
                                     <div className="flex flex-col items-center justify-center p-2 relative group/stat sm:border-r border-gray-200/10 dark:border-white/5">
@@ -192,4 +200,4 @@ const Home = ({ scrollToSection }) => {
     );
 };
 
-export default Home;
+export default React.memo(Home);

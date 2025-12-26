@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
 
+import useIsMobile from '../hooks/useIsMobile';
+
 const TiltCard = ({ children, className = "" }) => {
     const cardRef = useRef(null);
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
+    const isMobile = useIsMobile();
 
     const handleMouseMove = (e) => {
-        if (!cardRef.current) return;
+        if (isMobile || !cardRef.current) return;
         const rect = cardRef.current.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -18,9 +21,18 @@ const TiltCard = ({ children, className = "" }) => {
     };
 
     const handleMouseLeave = () => {
+        if (isMobile) return;
         setRotation({ x: 0, y: 0 });
         setIsHovered(false);
     };
+
+    if (isMobile) {
+        return (
+            <div className={`relative ${className}`}>
+                {children}
+            </div>
+        );
+    }
 
     return (
         <div
@@ -29,7 +41,7 @@ const TiltCard = ({ children, className = "" }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
             onClick={() => setIsHovered(!isHovered)}
-            className={`relative transition-all duration-200 ease-out transform-style-3d ${className} ${isHovered ? 'active-card' : ''}`}
+            className={`relative transition-all duration-200 ease-out transform-style-3d will-change-transform ${className} ${isHovered ? 'active-card' : ''}`}
             style={{
                 transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
                 zIndex: isHovered ? 50 : 1

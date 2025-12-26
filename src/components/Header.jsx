@@ -52,7 +52,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] transition-all duration-300">
+        <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] transition-all duration-300">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <div className="text-xl md:text-2xl font-bold flex items-center gap-2">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-200 dark:to-orange-400 drop-shadow-[0_0_25px_rgba(251,191,36,0.8)]">
@@ -61,7 +61,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden xl:flex items-center space-x-1">
+                <nav className="hidden xl:flex items-center space-x-1">
                     {primaryItems.map((item) => (
                         <button
                             key={item.id}
@@ -121,13 +121,14 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
-                </div>
+                </nav>
 
                 {/* Mobile Menu Button & Toggle */}
                 <div className="xl:hidden flex items-center gap-2">
                     <button
                         onClick={handleThemeToggle}
                         className="p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
+                        aria-label="Toggle Theme"
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
@@ -136,13 +137,14 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                         className={`text-gray-900 dark:text-white p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : 'rotate-0'
                             }`}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
                     >
                         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </div>
             {mobileMenuOpen && (
-                <div className="xl:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-black/95 border-b border-gray-200 dark:border-white/10 backdrop-blur-xl h-[calc(100vh-80px)] overflow-y-auto">
+                <nav className="xl:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-black/95 border-b border-gray-200 dark:border-white/10 backdrop-blur-xl h-[calc(100vh-80px)] overflow-y-auto">
                     <div className="flex flex-col p-4 space-y-1 pb-10">
                         {navItems.map((item) => (
                             <button
@@ -160,9 +162,9 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                             </button>
                         ))}
                     </div>
-                </div>
+                </nav>
             )}
-        </nav>
+        </header>
     );
 };
 

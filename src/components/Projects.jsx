@@ -20,8 +20,8 @@ const Projects = () => {
                             <div className="flex justify-between items-start mb-4">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Student Hub</h3>
                                 <div className="flex gap-3">
-                                    <Github size={18} className="cursor-pointer text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400" />
-                                    <ExternalLink size={18} className="cursor-pointer text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400" />
+                                    <a href="#" aria-label="View Student Hub Source Code on GitHub"><Github size={18} className="cursor-pointer text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400" /></a>
+                                    <a href="#" aria-label="View Student Hub Live Project"><ExternalLink size={18} className="cursor-pointer text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400" /></a>
                                 </div>
                             </div>
                             <p className="text-gray-600 dark:text-gray-300 font-medium text-sm mb-4">

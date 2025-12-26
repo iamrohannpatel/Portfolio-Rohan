@@ -115,101 +115,64 @@ const SOFT_SKILLS = [
     }
 ];
 
-/* --- INTERNAL COMPONENT: TILT CARD --- */
-const TiltCard = ({ children, className = "" }) => {
-    const cardRef = useRef(null);
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
-    const [isHovered, setIsHovered] = useState(false);
-
-    const handleMouseMove = (e) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-        setRotation({ x: rotateX, y: rotateY });
-    };
-
-    const handleMouseLeave = () => {
-        setRotation({ x: 0, y: 0 });
-        setIsHovered(false);
-    };
-
-    return (
-        <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={handleMouseLeave}
-            className={`relative transition-all duration-200 ease-out transform-style-3d ${className}`}
-            style={{
-                transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
-                zIndex: isHovered ? 50 : 1
-            }}
-        >
-            {children}
-            <div
-                className="absolute inset-0 pointer-events-none rounded-xl"
-                style={{
-                    background: `linear-gradient(135deg, rgba(255,255,255,${isHovered ? 0.1 : 0}) 0%, rgba(255,255,255,0) 100%)`
-                }}
-            />
-        </div>
-    );
-};
+import useIsMobile from '../hooks/useIsMobile';
+import TiltCard from './TiltCard';
 
 /* --- INTERNAL COMPONENT: CUBE SKILL --- */
 const CubeSkill = ({ name, icon, color }) => {
     const isAmber = color === 'amber';
 
-    // Dynamic Styles
-    const glowColor = isAmber
-        ? 'group-hover:shadow-[0_0_30px_rgba(251,191,36,0.4)]'
-        : 'group-hover:shadow-[0_0_30px_rgba(249,115,22,0.4)]';
+    // Static Base Styles
+    const baseBorder = isAmber ? 'border-amber-200 dark:border-amber-500/30' : 'border-orange-200 dark:border-orange-500/30';
     const textColor = isAmber ? 'text-amber-600 dark:text-amber-400' : 'text-orange-600 dark:text-orange-400';
-    const borderColor = isAmber ? 'border-amber-200 dark:border-amber-500/30' : 'border-orange-200 dark:border-orange-500/30';
-    const hoverBorder = isAmber ? 'group-hover:border-amber-400' : 'group-hover:border-orange-400';
-    const bgHover = isAmber ? 'group-hover:bg-amber-50 dark:group-hover:bg-amber-500/10' : 'group-hover:bg-orange-50 dark:group-hover:bg-orange-500/10';
+
+    // Active Styles (for overlay)
+    const activeBorder = isAmber ? 'border-amber-400' : 'border-orange-400';
+    const activeBg = isAmber ? 'bg-amber-50 dark:bg-amber-500/10' : 'bg-orange-50 dark:bg-orange-500/10';
+    const activeShadow = isAmber ? 'shadow-[0_0_30px_rgba(251,191,36,0.4)]' : 'shadow-[0_0_30px_rgba(249,115,22,0.4)]';
+
+    // Bottom Plate Color
     const plateColor = isAmber ? 'bg-amber-600' : 'bg-orange-600';
 
     return (
         <div className="relative w-24 h-24 group cursor-pointer perspective-1000">
             {/* The Cube Face */}
             <div className={`
-        absolute inset-0 
-        bg-white dark:bg-[#0a0a16] 
-        border-2 ${borderColor} ${hoverBorder}
-        rounded-xl 
-        flex flex-col items-center justify-center gap-2 
-        transition-all duration-300 
-        ${bgHover} 
-        ${glowColor} 
-        transform group-hover:-translate-y-2
-        z-10
-        shadow-lg dark:shadow-none
-      `}>
-                <div className={`${textColor} transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                absolute inset-0 
+                bg-white dark:bg-[#0a0a16] 
+                border-2 ${baseBorder} 
+                rounded-xl 
+                flex flex-col items-center justify-center gap-2 
+                transition-transform duration-300 
+                transform group-hover:-translate-y-2
+                z-10
+                shadow-lg dark:shadow-none
+                will-change-transform
+            `}>
+                {/* Active Overlay (Opacity Twin) */}
+                <div className={`absolute inset-[-2px] rounded-xl border-2 ${activeBorder} ${activeBg} ${activeShadow} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
+
+                {/* Content */}
+                <div className={`${textColor} transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative z-10`}>
                     {icon}
                 </div>
-                <span className="text-gray-600 dark:text-gray-300 text-[10px] font-bold tracking-widest group-hover:text-amber-600 dark:group-hover:text-white uppercase text-center px-1">
+                <span className="text-gray-600 dark:text-gray-300 text-[10px] font-bold tracking-widest group-hover:text-amber-600 dark:group-hover:text-white uppercase text-center px-1 relative z-10 transition-colors">
                     {name}
                 </span>
             </div>
 
             {/* 3D Depth Layer (Bottom Plate) */}
             <div className={`
-        absolute inset-0 
-        ${plateColor} 
-        rounded-xl 
-        opacity-0 group-hover:opacity-40 
-        transform translate-x-2 translate-y-2
-        transition-all duration-300 
-        blur-sm
-        -z-0
-      `} />
+                absolute inset-0 
+                ${plateColor} 
+                rounded-xl 
+                opacity-0 group-hover:opacity-40 
+                transform translate-x-2 translate-y-2
+                transition-all duration-300 
+                blur-sm
+                -z-0
+                will-change-[opacity,transform]
+            `} />
         </div>
     );
 };

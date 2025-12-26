@@ -12,18 +12,20 @@ import {
   HelpCircle,
   Mail,
   Award,
-  ThumbsUp,
-  Loader2
+  ThumbsUp
 } from 'lucide-react';
 import Header from './components/Header';
 import Home from './components/Home';
-import About from './components/About';
+import LazySection from './components/LazySection';
 import SocialSidebar from './components/SocialSidebar';
-import ScrollToTop from './components/ScrollToTop';
+// ScrollToTop is non-critical, lazy load it
+const ScrollToTop = React.lazy(() => import('./components/ScrollToTop'));
 import ScrollProgress from './components/ScrollProgress';
 import ClickSpark from './components/ClickSpark';
 
 // Lazy Load Section Components
+// About is now lazy loaded
+const About = React.lazy(() => import('./components/About'));
 const Services = React.lazy(() => import('./components/Services'));
 const CodingProfile = React.lazy(() => import('./components/CodingProfile'));
 const Projects = React.lazy(() => import('./components/Projects'));
@@ -38,6 +40,7 @@ const Footer = React.lazy(() => import('./components/Footer'));
 const Skills = React.lazy(() => import('./components/Skills'));
 
 
+import useIsMobile from './hooks/useIsMobile';
 
 /**
  * MAIN APP
@@ -46,6 +49,7 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState('dark');
+  const isMobile = useIsMobile();
 
   // Load theme from localStorage
   useEffect(() => {
@@ -69,7 +73,7 @@ const App = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  const navItems = [
+  const navItems = React.useMemo(() => [
     { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
     { id: 'about', label: 'About', icon: <User size={20} /> },
     { id: 'projects', label: 'Projects', icon: <FolderGit2 size={20} /> },
@@ -83,7 +87,7 @@ const App = () => {
     { id: 'faq', label: 'FAQs', icon: <HelpCircle size={20} /> },
     { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
     { id: 'feedback', label: 'Feedback', icon: <ThumbsUp size={20} /> },
-  ];
+  ], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -105,7 +109,7 @@ const App = () => {
     return () => observer.disconnect();
   }, [navItems]);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = React.useCallback((id) => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 60; // Exact/tight header height to remove gaps
@@ -118,7 +122,138 @@ const App = () => {
       setActiveSection(id);
       setMobileMenuOpen(false);
     }
-  };
+  }, []);
+
+  // Wrap content conditionally based on mobile check for click spark
+  const content = (
+    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
+
+      {/* Scroll Progress Bar - Disable on mobile */}
+      {!isMobile && <ScrollProgress />}
+
+
+      {/* Social Sidebar - Hide on mobile */}
+      {!isMobile && <SocialSidebar />}
+
+      {/* ScrollToTop - Non-critical, lazy load */}
+      <React.Suspense fallback={null}>
+        <ScrollToTop />
+      </React.Suspense>
+
+      {/* Navigation */}
+      <Header
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        navItems={navItems}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+
+      <main className="relative z-10 pt-20">
+
+        {/* HERO - Eager Loaded */}
+        <Home scrollToSection={scrollToSection} />
+
+        {/* ABOUT - Lazy Loaded */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <About />
+          </React.Suspense>
+        </LazySection>
+
+        {/* PROJECTS */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Projects />
+          </React.Suspense>
+        </LazySection>
+
+        {/* SKILLS */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Skills />
+          </React.Suspense>
+        </LazySection>
+
+        {/* CODING PROFILE */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <CodingProfile />
+          </React.Suspense>
+        </LazySection>
+
+        {/* SERVICES */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Services />
+          </React.Suspense>
+        </LazySection>
+
+        {/* EDUCATION & JOURNEY */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Education />
+          </React.Suspense>
+        </LazySection>
+
+        {/* CERTIFICATIONS */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Certifications />
+          </React.Suspense>
+        </LazySection>
+
+        {/* TESTIMONIALS */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Testimonials />
+          </React.Suspense>
+        </LazySection>
+
+        {/* BLOG */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Blog />
+          </React.Suspense>
+        </LazySection>
+
+        {/* FAQ */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <FAQs />
+          </React.Suspense>
+        </LazySection>
+
+        {/* CONTACT FORM */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Contact />
+          </React.Suspense>
+        </LazySection>
+
+        {/* FEEDBACK */}
+        <LazySection>
+          <React.Suspense fallback={<div className="h-96" />}>
+            <Feedback />
+          </React.Suspense>
+        </LazySection>
+
+        <LazySection>
+          <React.Suspense fallback={<div className="h-20" />}>
+            <Footer />
+          </React.Suspense>
+        </LazySection>
+
+      </main>
+
+    </div>
+  );
+
+  if (isMobile) {
+    return content;
+  }
 
   return (
     <ClickSpark
@@ -128,96 +263,7 @@ const App = () => {
       sparkCount={8}
       duration={400}
     >
-      <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
-
-        {/* Scroll Progress Bar */}
-        <ScrollProgress />
-
-        {/* <ParticleBackground /> */}
-        <SocialSidebar />
-        <ScrollToTop />
-
-        {/* Navigation */}
-        <Header
-          activeSection={activeSection}
-          scrollToSection={scrollToSection}
-          mobileMenuOpen={mobileMenuOpen}
-          setMobileMenuOpen={setMobileMenuOpen}
-          navItems={navItems}
-          theme={theme}
-          toggleTheme={toggleTheme}
-        />
-
-        <main className="relative z-10 pt-20">
-
-          {/* HERO */}
-          <Home scrollToSection={scrollToSection} />
-
-          {/* ABOUT */}
-          <About />
-
-          {/* PROJECTS */}
-          <React.Suspense fallback={<div className="h-96 flex items-center justify-center"><Loader2 className="animate-spin text-amber-500" size={40} /></div>}>
-            <Projects />
-          </React.Suspense>
-
-          {/* SKILLS */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Skills />
-          </React.Suspense>
-
-          {/* CODING PROFILE */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <CodingProfile />
-          </React.Suspense>
-
-          {/* SERVICES */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Services />
-          </React.Suspense>
-
-          {/* EDUCATION & JOURNEY */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Education />
-          </React.Suspense>
-
-          {/* CERTIFICATIONS */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Certifications />
-          </React.Suspense>
-
-          {/* TESTIMONIALS */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Testimonials />
-          </React.Suspense>
-
-          {/* BLOG */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Blog />
-          </React.Suspense>
-
-          {/* FAQ */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <FAQs />
-          </React.Suspense>
-
-          {/* CONTACT FORM */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Contact />
-          </React.Suspense>
-
-          {/* FEEDBACK */}
-          <React.Suspense fallback={<div className="h-96" />}>
-            <Feedback />
-          </React.Suspense>
-
-          <React.Suspense fallback={<div className="h-20" />}>
-            <Footer />
-          </React.Suspense>
-
-        </main>
-
-      </div>
+      {content}
     </ClickSpark>
   );
 };

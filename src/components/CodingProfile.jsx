@@ -123,7 +123,7 @@ const CodingProfile = () => {
                                         {contributions.map((level, i) => (
                                             <div
                                                 key={i}
-                                                className={`w-3 h-3 rounded-[2px] transition-all hover:scale-125 hover:border-white border border-transparent ${level === 0 ? 'bg-gray-100 dark:bg-white/5' :
+                                                className={`w-3 h-3 rounded-[2px] transition-transform duration-200 hover:scale-125 hover:z-10 hover:brightness-125 hover:shadow-lg ${level === 0 ? 'bg-gray-100 dark:bg-white/5' :
                                                     level === 1 ? 'bg-green-200 dark:bg-green-900/40' :
                                                         level === 2 ? 'bg-green-300 dark:bg-green-700/60' :
                                                             level === 3 ? 'bg-green-400 dark:bg-green-500/80' :
