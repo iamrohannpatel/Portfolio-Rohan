@@ -8,7 +8,7 @@ const Services = () => {
     <section id="services" className="py-16 md:py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
-          <span className="text-amber-600 dark:text-amber-500">05.</span> What I Do
+          <span className="text-amber-600 dark:text-amber-500">05.</span> Services
         </h2>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-8">

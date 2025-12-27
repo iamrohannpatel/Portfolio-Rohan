@@ -70,7 +70,7 @@ const CodingProfile = () => {
                                 <div>
                                     <div className="flex justify-between text-sm mb-2">
                                         <span className="text-green-600 dark:text-green-400 font-medium">Easy</span>
-                                        <span className="text-gray-500 dark:text-gray-400">200 solved</span>
+                                        <span className="text-gray-500 dark:text-gray-400">170 solved</span>
                                     </div>
                                     <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
                                         <div className="h-full bg-green-500 w-[70%]" />
@@ -79,7 +79,7 @@ const CodingProfile = () => {
                                 <div>
                                     <div className="flex justify-between text-sm mb-2">
                                         <span className="text-yellow-600 dark:text-yellow-400 font-medium">Medium</span>
-                                        <span className="text-gray-500 dark:text-gray-400">210 solved</span>
+                                        <span className="text-gray-500 dark:text-gray-400">36 solved</span>
                                     </div>
                                     <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
                                         <div className="h-full bg-yellow-500 w-[55%]" />
@@ -88,7 +88,7 @@ const CodingProfile = () => {
                                 <div>
                                     <div className="flex justify-between text-sm mb-2">
                                         <span className="text-red-600 dark:text-red-400 font-medium">Hard</span>
-                                        <span className="text-gray-500 dark:text-gray-400">40 solved</span>
+                                        <span className="text-gray-500 dark:text-gray-400">8 solved</span>
                                     </div>
                                     <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
                                         <div className="h-full bg-red-500 w-[25%]" />
