@@ -41,6 +41,47 @@ a,
 
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0.0deg);
+  }
+
+  10% {
+    transform: rotate(14.0deg);
+  }
+
+  20% {
+    transform: rotate(-8.0deg);
+  }
+
+  30% {
+    transform: rotate(14.0deg);
+  }
+
+  40% {
+    transform: rotate(-4.0deg);
+  }
+
+  50% {
+    transform: rotate(10.0deg);
+  }
+
+  60% {
+    transform: rotate(0.0deg);
+  }
+
+  100% {
+    transform: rotate(0.0deg);
+  }
+}
+
+.animate-wave {
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+  will-change: transform;
 }
 
 .transform-style-3d {
@@ -75,22 +116,7 @@ a,
   background: #78350f;
 }
 
-@keyframes gradient-xy {
 
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient-xy {
-  background-size: 200% 200%;
-  animation: gradient-xy 6s ease infinite;
-}
 
 @keyframes marquee {
   0% {
@@ -119,6 +145,7 @@ a,
 .animate-marquee-reverse {
   animation: marquee-reverse 20s linear infinite;
 }
+
 /* Hide Scrollbar Utility */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;

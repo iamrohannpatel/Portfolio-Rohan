@@ -20,6 +20,7 @@ import Home from './components/Home';
 import SocialSidebar from './components/SocialSidebar';
 import ScrollProgress from './components/ScrollProgress';
 import ClickSpark from './components/ClickSpark';
+import LazySection from './components/LazySection';
 
 // Lazy Load Components
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
@@ -177,74 +178,114 @@ const MainLayout = () => {
         toggleTheme={toggleTheme}
       />
 
+
+
       <main className="relative z-10">
         <SectionWrapper id="home" className="pt-20">
           <Home scrollToSection={scrollToSection} />
         </SectionWrapper>
+
         <SectionWrapper id="about">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <About />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <About />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="projects">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Projects />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Projects />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="skills">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Skills />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Skills />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="coding">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <CodingProfile />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <CodingProfile />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="services">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Services />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Services />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="education">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Education />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Education />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="certifications">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Certifications />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Certifications />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="testimonials">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Testimonials />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Testimonials />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="blog">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Blog />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Blog />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="faq">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <FAQs />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <FAQs />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="contact">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Contact />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Contact />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
+
         <SectionWrapper id="feedback">
-          <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
-            <Feedback />
-          </Suspense>
+          <LazySection>
+            <Suspense fallback={<LoadingPlaceholder height="100vh" />}>
+              <Feedback />
+            </Suspense>
+          </LazySection>
         </SectionWrapper>
       </main>
 
       <Suspense fallback={null}>
-        <Footer />
+        <LazySection height="auto" rootMargin="100px">
+          <Footer />
+        </LazySection>
       </Suspense>
 
       <ClickSpark />

@@ -1,24 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const LazySection = ({ children, threshold = 0.1 }) => {
+/**
+ * LazySection
+ * Renders children only when they are close to entering the viewport.
+ * This prevents fetching code chunks for sections that are far down the page until needed.
+ * 
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - The component to lazy load (e.g., a Suspense wrapper)
+ * @param {string} props.rootMargin - Margin around the root to trigger loading (default: '200px')
+ * @param {string|number} props.height - Placeholder height before loading (default: '100vh')
+ */
+const LazySection = ({ children, rootMargin = '200px', height = '100vh' }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
     useEffect(() => {
+        if (isVisible) return; // Already loaded, no need to observe anymore
+
         const observer = new IntersectionObserver(
             ([entry]) => {
-                // If the section is in view (or close to it), trigger load
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    // Once visible, we don't need to observe anymore
                     observer.disconnect();
                 }
             },
             {
-                // Trigger when 10% of the placeholder is visible
-                // OR when the element is within 200px of the viewport (load early)
-                rootMargin: '200px',
-                threshold: threshold
+                rootMargin, // Load before it comes into view
+                threshold: 0
             }
         );
 
@@ -27,14 +35,12 @@ const LazySection = ({ children, threshold = 0.1 }) => {
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
+            observer.disconnect();
         };
-    }, [threshold]);
+    }, [isVisible, rootMargin]);
 
     return (
-        <div ref={ref} className="min-h-[100px]">
+        <div ref={ref} style={{ minHeight: !isVisible ? height : undefined }}>
             {isVisible ? children : null}
         </div>
     );
