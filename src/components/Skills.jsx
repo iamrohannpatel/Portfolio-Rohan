@@ -54,7 +54,7 @@ import {
 
 /* --- NEW CATEGORIZED DATA --- */
 /* --- NEW CATEGORIZED DATA --- */
-const FRONTEND_NESTED_DATA = {
+export const FRONTEND_NESTED_DATA = {
     "Frontend Core": [
         { name: "HTML5", icon: <FileCode size={24} /> },
         { name: "CSS3", icon: <Palette size={24} /> },
