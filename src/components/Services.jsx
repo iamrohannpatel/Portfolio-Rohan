@@ -1,49 +1,118 @@
-
 import React from 'react';
-import { Globe, Server, Palette } from 'lucide-react';
-import TiltCard from './TiltCard'; // Ensure this path is correct based on your folder structure
+import { Layout, Rocket, Server, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { SERVICES_DATA } from '../data/constants';
 
 const Services = () => {
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case 'Layout': return <Layout size={32} />;
+      case 'Rocket': return <Rocket size={32} />;
+      case 'Server': return <Server size={32} />;
+      case 'Zap': return <Zap size={32} />;
+      default: return <Layout size={32} />;
+    }
+  };
+
   return (
-    <section id="services" className="py-16 md:py-20 px-4 relative">
+    <section id="services" className="py-20 px-4 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-gray-50/50 dark:to-white/5 -z-10" />
+
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
-          <span className="text-amber-600 dark:text-amber-500">05.</span> Services
-        </h2>
-
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-8">
-          {/* Service 1: Web Development */}
-          <TiltCard className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-xl dark:shadow-none transition-colors">
-            <div className="w-16 h-16 bg-amber-100 text-amber-600 dark:bg-amber-500/20 rounded-lg flex items-center justify-center dark:text-amber-400 mb-6">
-              <Globe size={32} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Web Development</h3>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">
-              Building fast, responsive, and SEO-friendly websites using modern frameworks like React and Next.js.
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3 text-gray-900 dark:text-white mb-4">
+              <span className="text-amber-600 dark:text-amber-500">05.</span> Services
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-xl text-lg">
+              Specialized technical services tailored for startups and businesses.
+              I deliver high-quality, scalable solutions with a focus on speed and performance.
             </p>
-          </TiltCard>
+          </div>
 
-          {/* Service 2: Backend Systems */}
-          <TiltCard className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-xl dark:shadow-none transition-colors">
-            <div className="w-16 h-16 bg-orange-100 text-orange-600 dark:bg-orange-500/20 rounded-lg flex items-center justify-center dark:text-orange-400 mb-6">
-              <Server size={32} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Backend Systems</h3>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">
-              Designing robust APIs and database architectures using Node.js, Express, and SQL/NoSQL databases.
-            </p>
-          </TiltCard>
+          <a
+            href="#contact"
+            className="hidden md:flex items-center gap-2 text-amber-600 dark:text-amber-500 font-semibold hover:gap-3 transition-all"
+          >
+            Start a project <ArrowRight size={20} />
+          </a>
+        </div>
 
-          {/* Service 3: UI/UX Design */}
-          <TiltCard className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-xl dark:shadow-none transition-colors">
-            <div className="w-16 h-16 bg-rose-100 text-rose-600 dark:bg-rose-500/20 rounded-lg flex items-center justify-center dark:text-rose-400 mb-6">
-              <Palette size={32} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+          {SERVICES_DATA.map((service) => (
+            <div
+              key={service.id}
+              className="group bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-8 hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-14 h-14 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  {getIcon(service.icon)}
+                </div>
+                <div className="text-3xl font-bold text-gray-100 dark:text-white/5 select-none -mt-4 -mr-4">
+                  0{service.id}
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
+                {service.title}
+              </h3>
+
+              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                {service.description}
+              </p>
+
+              <div className="space-y-3">
+                {service.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <CheckCircle2 size={16} className="text-green-500 dark:text-green-400 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">UI/UX Design</h3>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">
-              Creating intuitive and visually stunning user interfaces that provide an exceptional user experience.
-            </p>
-          </TiltCard>
+          ))}
+        </div>
+
+        {/* Freelance Benefits / Why Hire Me */}
+        <div className="bg-gray-900 dark:bg-white/5 rounded-3xl p-8 md:p-12 text-center md:text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/20 rounded-full blur-3xl -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -ml-32 -mb-32" />
+
+          <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to launch your next big idea?
+              </h3>
+              <p className="text-gray-300 mb-8 text-lg">
+                Me and my team are available for freelance projects and consulting. Let's discuss how we can build something amazing together.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-xl font-bold transition-all transform hover:scale-105"
+              >
+                Book a Free Consultation <ArrowRight size={20} />
+              </a>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center">
+                <div className="text-amber-400 font-bold text-xl mb-1">Super</div>
+                <div className="text-gray-300 text-sm">Client Satisfaction</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center">
+                <div className="text-amber-400 font-bold text-xl mb-1">Best</div>
+                <div className="text-gray-300 text-sm">Support</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center">
+                <div className="text-amber-400 font-bold text-xl mb-1">Fast</div>
+                <div className="text-gray-300 text-sm">Delivery</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center">
+                <div className="text-amber-400 font-bold text-xl mb-1">Clean</div>
+                <div className="text-gray-300 text-sm">Code Quality</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

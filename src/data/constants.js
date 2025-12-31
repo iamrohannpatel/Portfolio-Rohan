@@ -44,18 +44,18 @@ export const FAQ_DATA = [
 export const CERTIFICATIONS_DATA = [
   {
     id: 1,
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    link: "https://aws.amazon.com/certification/",
-    skills: ["Cloud Computing", "AWS Services", "Security", "Billing"]
+    title: "Data Structures & Algorithms in Java",
+    issuer: "Coding Ninjas",
+    date: "2023",
+    link: "https://ninjasfiles.s3.amazonaws.com/certificate_dac478d6e4f84e37_27190d4de75be61152290de0f9b6dba0.pdf",
+    skills: ["Java", "Data Structures", "Algorithms", "Problem Solving"]
   },
   {
     id: 2,
     title: "Meta Front-End Developer Professional Certificate",
     issuer: "Meta",
     date: "2023",
-    link: "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    link: "https://ninjasfiles.s3.amazonaws.com/certificate_dac478d6e4f84e37_27190d4de75be61152290de0f9b6dba0.pdf",
     skills: ["React", "JavaScript", "HTML/CSS", "UI/UX"]
   },
   {
@@ -200,5 +200,36 @@ export const PROJECTS_DATA = [
       github: "#",
       live: "#"
     }
+  }
+];
+
+export const SERVICES_DATA = [
+  {
+    id: 1,
+    title: "Full Stack Development",
+    icon: "Layout",
+    description: "End-to-end web application development tailored to your business needs. From concept to deployment.",
+    features: ["Custom Frontend UI", "Robust Backend API", "Database Integration", "Deployment & Hosting"]
+  },
+  {
+    id: 2,
+    title: "MVP for Startups",
+    icon: "Rocket",
+    description: "Rapid prototyping and MVP development to launch your ideas fast. Get to market quicker.",
+    features: ["Fast Turnaround", "Scalable Architecture", "Core Features Focus", "Investor-Ready Demos"]
+  },
+  {
+    id: 3,
+    title: "Backend & Systems",
+    icon: "Server",
+    description: "Secure and scalable server-side solutions for high-performance applications.",
+    features: ["API Development", "Database Optimization", "Authentication Systems", "Cloud Integration"]
+  },
+  {
+    id: 4,
+    title: "Performance Optimization",
+    icon: "Zap",
+    description: "Speed up your existing applications for better user experience, retention and SEO.",
+    features: ["Code Cleaning", "Component Optimization", "Load Time Reduction", "SEO Best Practices"]
   }
 ];
