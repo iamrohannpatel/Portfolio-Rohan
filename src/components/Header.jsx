@@ -1,6 +1,6 @@
 import React from 'react';
 import { flushSync } from 'react-dom';
-import { Terminal, Menu, X, Sun, Moon } from 'lucide-react';
+import { Terminal, Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
 
 const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuOpen, navItems, theme, toggleTheme }) => {
     const [dropdownOpen, setDropdownOpen] = React.useState(false);
@@ -50,6 +50,25 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
             );
         });
     };
+
+    const [mobileMoreOpen, setMobileMoreOpen] = React.useState(false);
+
+    // Reuse the same primary/secondary logic for consistency
+    const MobileNavItem = ({ item, isSecondary = false }) => (
+        <button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            className={`flex items-center gap-3 text-left p-3 rounded-lg transition-all w-full ${activeSection === item.id
+                ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
+                : 'text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-white hover:bg-amber-50 dark:hover:bg-white/5'
+                } ${isSecondary ? 'pl-8' : ''}`} // Add indentation for secondary items
+        >
+            <span className={`${activeSection === item.id ? 'text-amber-600 dark:text-amber-400' : 'text-gray-400 dark:text-gray-500'}`}>
+                {item.icon}
+            </span>
+            <span className="text-base font-medium">{item.label}</span>
+        </button>
+    );
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] transition-all duration-300">
@@ -146,21 +165,41 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
             {mobileMenuOpen && (
                 <nav className="xl:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-black/95 border-b border-gray-200 dark:border-white/10 backdrop-blur-xl h-[calc(100vh-80px)] overflow-y-auto">
                     <div className="flex flex-col p-4 space-y-1 pb-10">
-                        {navItems.map((item) => (
-                            <button
-                                key={item.id}
-                                onClick={() => scrollToSection(item.id)}
-                                className={`flex items-center gap-3 text-left p-3 rounded-lg transition-all ${activeSection === item.id
-                                    ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
-                                    : 'text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-white hover:bg-amber-50 dark:hover:bg-white/5'
-                                    }`}
-                            >
-                                <span className={`${activeSection === item.id ? 'text-amber-600 dark:text-amber-400' : 'text-gray-400 dark:text-gray-500'}`}>
-                                    {item.icon}
-                                </span>
-                                <span className="text-base font-medium">{item.label}</span>
-                            </button>
+                        {/* Primary Items */}
+                        {primaryItems.map((item) => (
+                            <MobileNavItem key={item.id} item={item} />
                         ))}
+
+                        {/* Mobile More Section */}
+                        {secondaryItems.length > 0 && (
+                            <div className="border-t border-gray-100 dark:border-white/5 pt-1 mt-1">
+                                <button
+                                    onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                                    className={`flex items-center justify-between w-full p-3 rounded-lg text-left transition-all ${secondaryItems.some(i => i.id === activeSection)
+                                        ? 'text-gray-900 dark:text-white bg-amber-500/5 dark:bg-white/5'
+                                        : 'text-gray-600 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-white/5'
+                                        }`}
+                                >
+                                    <span className="flex items-center gap-3 font-medium">
+                                        <Menu size={20} className={secondaryItems.some(i => i.id === activeSection) ? 'text-amber-600 dark:text-amber-400' : 'text-gray-400 dark:text-gray-500'} />
+                                        More
+                                    </span>
+                                    <ChevronDown
+                                        size={16}
+                                        className={`transition-transform duration-300 ${mobileMoreOpen ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+
+                                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileMoreOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                                    }`}>
+                                    <div className="pt-1 space-y-1">
+                                        {secondaryItems.map((item) => (
+                                            <MobileNavItem key={item.id} item={item} isSecondary={true} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </nav>
             )}
