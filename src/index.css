@@ -181,22 +181,14 @@ a,
   color: var(--theme-amber-50);
 }
 
-/* Custom Scrollbar */
+/* Hide Browser Scrollbar Globally */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--theme-amber-50);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--theme-amber-600);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--theme-amber-500);
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 

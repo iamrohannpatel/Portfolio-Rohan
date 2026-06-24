@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, MessageSquare, User, Mail } from './GoogleIcons';
+import { Send, User, Mail } from './GoogleIcons';
 import { Star, Frown, Meh, Smile, Heart, Zap } from 'lucide-react';
 
 const Feedback = () => {
@@ -11,12 +11,12 @@ const Feedback = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const getMoodConfig = (r) => {
-        if (r === 1) return { color: 'text-[#EA4335]', bg: 'bg-[#EA4335]', shadow: 'shadow-[#EA4335]/50', icon: <Frown size={48} />, label: 'Disappointed' };
-        if (r === 2) return { color: 'text-[#FBBC05]', bg: 'bg-[#FBBC05]', shadow: 'shadow-[#FBBC05]/50', icon: <Meh size={48} />, label: 'It was okay' };
-        if (r === 3) return { color: 'text-[#4285F4]', bg: 'bg-[#4285F4]', shadow: 'shadow-[#4285F4]/50', icon: <Smile size={48} />, label: 'Good' };
-        if (r === 4) return { color: 'text-[#34A853]', bg: 'bg-[#34A853]', shadow: 'shadow-[#34A853]/50', icon: <Heart size={48} />, label: 'Amazing!' };
-        if (r === 5) return { color: 'text-[#EA4335]', bg: 'bg-[#EA4335]', shadow: 'shadow-[#EA4335]/50', icon: <Zap size={48} />, label: 'Mind-blowing!' };
-        return { color: 'text-gray-400', bg: 'bg-gray-500', shadow: 'shadow-gray-500/20', icon: <Star size={48} />, label: 'Rate Experience' };
+        if (r === 1) return { color: 'text-[#EA4335]', bg: 'bg-[#EA4335]', border: 'border-[#EA4335]', icon: <Frown size={64} />, label: 'Disappointed', desc: "I'll work hard to improve." };
+        if (r === 2) return { color: 'text-[#FBBC05]', bg: 'bg-[#FBBC05]', border: 'border-[#FBBC05]', icon: <Meh size={64} />, label: 'It was okay', desc: 'Thanks for the feedback.' };
+        if (r === 3) return { color: 'text-[#4285F4]', bg: 'bg-[#4285F4]', border: 'border-[#4285F4]', icon: <Smile size={64} />, label: 'Good', desc: 'Glad you liked it!' };
+        if (r === 4) return { color: 'text-[#34A853]', bg: 'bg-[#34A853]', border: 'border-[#34A853]', icon: <Heart size={64} />, label: 'Amazing!', desc: 'That means a lot to me.' };
+        if (r === 5) return { color: 'text-[#EA4335]', bg: 'bg-[#EA4335]', border: 'border-[#EA4335]', icon: <Zap size={64} />, label: 'Mind-blowing!', desc: 'You are awesome!' };
+        return { color: 'text-gray-300 dark:text-gray-700', bg: 'bg-gray-200 dark:bg-white/10', border: 'border-gray-200 dark:border-white/10', icon: <Star size={64} />, label: 'Rate Experience', desc: 'Select a rating to begin.' };
     };
 
     const currentMood = getMoodConfig(hoverRating || rating);
@@ -24,7 +24,6 @@ const Feedback = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you would typically send the data to a backend
         console.log({ name, email, rating, note });
         setIsSubmitted(true);
         setTimeout(() => {
@@ -37,158 +36,136 @@ const Feedback = () => {
     };
 
     return (
-        <section id="feedback" className="py-20 md:py-32 px-4 relative overflow-hidden bg-white/50 dark:bg-transparent transition-colors duration-300">
-
-
-
-            <div className="max-w-4xl mx-auto relative z-10">
+        <section id="feedback" className="py-20 md:py-32 px-4 relative bg-white/50 dark:bg-transparent transition-colors duration-300">
+            <div className="max-w-6xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center justify-center gap-3 text-gray-900 dark:text-white">
                         <span className="text-amber-600 dark:text-amber-500">12.</span> Feedback
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">
-                        Please share your feedback on my work and projects.
-                    </p>
                 </div>
 
-                <div className="max-w-2xl mx-auto">
-                    <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-8 md:p-12 relative overflow-hidden group transition-colors hover:border-amber-500">
+                <div className="bg-white dark:bg-[#030303] border border-gray-200 dark:border-white/10 relative group transition-colors hover:border-gray-300 dark:hover:border-white/20">
+                    
+                    {/* Top dynamic accent line */}
+                    <div className={`absolute top-0 left-0 w-full h-1 ${currentMood.bg} transition-colors duration-500`} />
 
-                        {/* Animated Border Gradient */}
-                        <div className={`absolute top-0 left-0 w-full h-1 ${currentMood.bg} opacity-50 transition-all duration-500`} />
+                    {!isSubmitted ? (
+                        <div className="grid md:grid-cols-5 min-h-[500px]">
+                            {/* Left Column: Experience / Mood */}
+                            <div className="md:col-span-2 p-8 md:p-12 border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5 flex flex-col justify-center items-center text-center bg-gray-50 dark:bg-white/[0.02]">
+                                <div className={`inline-flex items-center justify-center w-32 h-32 bg-white dark:bg-white/5 border ${currentMood.border} mb-8 transition-colors duration-500`}>
+                                    <div className={`transition-transform duration-500 ${hasRated ? 'scale-110' : 'scale-100'} ${currentMood.color}`}>
+                                        {currentMood.icon}
+                                    </div>
+                                </div>
+                                <h3 className={`text-3xl font-black tracking-tight transition-colors duration-300 mb-3 ${hasRated ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
+                                    {currentMood.label}
+                                </h3>
+                                <p className="text-gray-500 dark:text-gray-400 font-medium">
+                                    {currentMood.desc}
+                                </p>
+                            </div>
 
-                        {!isSubmitted ? (
-                            <form onSubmit={handleSubmit} className="space-y-8">
-
-                                {/* Header & Mood Icon */}
-                                <div className="text-center space-y-4">
-                                    <div className={`inline-flex items-center justify-center w-20 h-20 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-2 transition-all duration-500 group-hover:scale-110`}>
-                                        <div className={`transition-all duration-300 ${currentMood.color}`}>
-                                            {currentMood.icon}
+                            {/* Right Column: Form */}
+                            <div className="md:col-span-3 p-8 md:p-12 flex flex-col justify-center">
+                                <form onSubmit={handleSubmit} className="space-y-8 w-full max-w-lg mx-auto">
+                                    
+                                    {/* Star Rating */}
+                                    <div className="flex justify-between items-center pb-8 border-b border-gray-100 dark:border-white/5">
+                                        <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">Your Rating</span>
+                                        <div className="flex gap-2 sm:gap-4">
+                                            {[1, 2, 3, 4, 5].map((star) => (
+                                                <button
+                                                    key={star}
+                                                    type="button"
+                                                    className="group/star relative focus:outline-none transition-transform hover:-translate-y-1 duration-300"
+                                                    onMouseEnter={() => setHoverRating(star)}
+                                                    onMouseLeave={() => setHoverRating(0)}
+                                                    onClick={() => setRating(star)}
+                                                >
+                                                    <Star
+                                                        size={32}
+                                                        className={`transition-colors duration-300 ${star <= (hoverRating || rating)
+                                                            ? `${getMoodConfig(Math.max(hoverRating, rating)).color} fill-current`
+                                                            : 'text-gray-200 dark:text-white/10 fill-transparent group-hover/star:text-gray-300 dark:group-hover/star:text-white/20'
+                                                            }`}
+                                                    />
+                                                </button>
+                                            ))}
                                         </div>
                                     </div>
-                                    <h3 className={`text-2xl font-bold transition-colors duration-300 ${hasRated ? 'text-gray-900 dark:text-white' : 'text-gray-400'}`}>
-                                        {hasRated ? currentMood.label : 'How was your visit?'}
-                                    </h3>
-                                </div>
 
-                                {/* Star Interaction */}
-                                <div className="flex justify-center gap-3 md:gap-6">
-                                    {[1, 2, 3, 4, 5].map((star) => (
-                                        <button
-                                            key={star}
-                                            type="button"
-                                            className="group/star relative focus:outline-none transition-transform hover:scale-125 hover:-translate-y-2 duration-300"
-                                            onMouseEnter={() => setHoverRating(star)}
-                                            onMouseLeave={() => setHoverRating(0)}
-                                            onClick={() => setRating(star)}
-                                        >
-                                            <Star
-                                                size={36}
-                                                className={`transition-all duration-300 ${star <= (hoverRating || rating)
-                                                    ? `${getMoodConfig(Math.max(hoverRating, rating)).color} fill-current`
-                                                    : 'text-gray-300 dark:text-gray-700 fill-transparent group-hover/star:text-gray-400 dark:group-hover/star:text-gray-500'
-                                                    }`}
-                                            />
-                                        </button>
-                                    ))}
-                                </div>
-
-                                {/* Inputs Container */}
-                                <div className={`space-y-6 transition-all duration-500 ${hasRated ? 'opacity-100 translate-y-0' : 'opacity-50 translate-y-4 blur-sm grayscale pointer-events-none'}`}>
-
-                                    {/* Name & Email Grid */}
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        {/* Name Input */}
-                                        <div className="relative group/input">
-                                            <div className="absolute -inset-0.5 bg-gray-200 dark:bg-white/10 opacity-0 group-hover/input:opacity-50 transition duration-500" />
-                                            <div className="relative">
+                                    {/* Input Fields */}
+                                    <div className={`space-y-5 transition-all duration-500 ${hasRated ? 'opacity-100' : 'opacity-40 grayscale pointer-events-none'}`}>
+                                        <div className="grid grid-cols-2 gap-5">
+                                            <div className="relative group/input">
                                                 <input
                                                     type="text"
                                                     value={name}
                                                     onChange={(e) => setName(e.target.value)}
-                                                    placeholder="Your Name"
-                                                    className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 p-4 pl-12 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:border-amber-500 dark:focus:border-amber-500 transition-all font-sans"
+                                                    placeholder="Name"
+                                                    className={`w-full bg-transparent border border-gray-200 dark:border-white/10 p-4 pl-12 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none transition-colors font-medium focus:border-black dark:focus:border-white`}
                                                     disabled={!hasRated}
                                                     required
                                                 />
-                                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-white/20" size={20} />
+                                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                                             </div>
-                                        </div>
-
-                                        {/* Email Input */}
-                                        <div className="relative group/input">
-                                            <div className="absolute -inset-0.5 bg-gray-200 dark:bg-white/10 opacity-0 group-hover/input:opacity-50 transition duration-500" />
-                                            <div className="relative">
+                                            <div className="relative group/input">
                                                 <input
                                                     type="email"
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
-                                                    placeholder="Your Email"
-                                                    className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 p-4 pl-12 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:border-amber-500 dark:focus:border-amber-500 transition-all font-sans"
+                                                    placeholder="Email"
+                                                    className={`w-full bg-transparent border border-gray-200 dark:border-white/10 p-4 pl-12 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none transition-colors font-medium focus:border-black dark:focus:border-white`}
                                                     disabled={!hasRated}
                                                     required
                                                 />
-                                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-white/20" size={20} />
+                                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Cinematic Input Field (Textarea) */}
-                                    <div className="relative group/input">
-                                         <div className={`absolute -inset-0.5 ${hasRated ? currentMood.bg : 'bg-gray-200 dark:bg-white/10'} opacity-20 group-hover/input:opacity-50 transition duration-500`} />
-                                        <div className="relative">
+                                        <div className="relative group/input">
                                             <textarea
                                                 value={note}
                                                 onChange={(e) => setNote(e.target.value)}
-                                                placeholder="Write a short review..."
-                                                maxLength={100}
-                                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 p-6 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:border-amber-500 dark:focus:border-amber-500 transition-all resize-none h-32 leading-relaxed font-sans"
+                                                placeholder="Tell me more about your experience..."
+                                                maxLength={250}
+                                                className={`w-full bg-transparent border border-gray-200 dark:border-white/10 p-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none transition-colors font-medium resize-none h-32 focus:border-black dark:focus:border-white`}
                                                 disabled={!hasRated}
                                                 required
                                             />
-                                            <MessageSquare className="absolute right-4 top-4 text-gray-400 dark:text-white/10" size={20} />
-                                            <div className="absolute bottom-4 right-4 text-xs font-mono text-gray-500 dark:text-gray-600">
-                                                {note.length}/100
+                                            <div className="absolute bottom-4 right-4 text-xs font-mono text-gray-400">
+                                                {note.length}/250
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                {/* Futuristic Submit Button */}
-                                <button
-                                    type="submit"
-                                    disabled={!hasRated || !note.trim() || !name.trim() || !email.trim()}
-                                    className={`w-full group/btn relative py-4 font-bold tracking-wide overflow-hidden transition-all duration-500 ${hasRated && note.trim() && name.trim() && email.trim()
-                                        ? 'cursor-pointer'
-                                        : 'cursor-not-allowed opacity-50'
-                                        }`}
-                                >
-                                    <div className={`absolute inset-0 ${hasRated ? currentMood.bg : 'bg-gray-200 dark:bg-gray-800'} transition-all duration-500`} />
-
-                                    <span className={`relative flex items-center justify-center gap-3 ${hasRated ? 'text-white' : 'text-gray-500 dark:text-white'}`}>
-                                        <Send size={18} className={`transition-transform duration-300 ${hasRated && note.trim() && name.trim() && email.trim() ? 'group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1' : ''}`} />
-                                        {hasRated && note.trim() ? 'TRANSMIT FEEDBACK' : 'WAITING FOR INPUT...'}
-                                    </span>
-                                </button>
-                            </form>
-                        ) : (
-                            <div className="py-20 flex flex-col items-center justify-center space-y-6 animate-fade-in text-center">
-                                <div className="relative">
-                                    <div className="w-24 h-24 bg-white dark:bg-white/[0.03] border border-green-500/30 flex items-center justify-center relative z-10">
-                                        <Zap className="text-green-500 dark:text-green-400 fill-green-400/20" size={40} />
+                                        <button
+                                            type="submit"
+                                            disabled={!hasRated || !note.trim() || !name.trim() || !email.trim()}
+                                            className={`w-full group/btn flex items-center justify-center gap-3 py-4 font-bold tracking-widest uppercase transition-all duration-300 ${hasRated && note.trim() && name.trim() && email.trim()
+                                                ? `text-white cursor-pointer ${currentMood.bg}`
+                                                : 'bg-gray-100 dark:bg-white/5 text-gray-400 cursor-not-allowed'
+                                                }`}
+                                        >
+                                            {hasRated && note.trim() ? 'Submit Feedback' : 'Awaiting Input'}
+                                            <Send size={18} className={`transition-transform ${hasRated && note.trim() ? 'group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1' : ''}`} />
+                                        </button>
                                     </div>
-                                </div>
-                                <div>
-                                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Transmission Received!</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">Thanks for boosting my signal, {name.split(' ')[0]}!</p>
-                                </div>
+                                </form>
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    ) : (
+                        <div className="py-32 flex flex-col items-center justify-center text-center bg-gray-50 dark:bg-white/[0.02]">
+                            <div className="w-24 h-24 border-2 border-green-500 bg-green-500/10 flex items-center justify-center mb-6">
+                                <Zap className="text-green-500" size={40} />
+                            </div>
+                            <h3 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-2">Feedback Received</h3>
+                            <p className="text-gray-500 dark:text-gray-400 text-lg">Thank you for taking the time, {name.split(' ')[0]}!</p>
+                        </div>
+                    )}
                 </div>
             </div>
-        </section >
+        </section>
     );
 };
 
