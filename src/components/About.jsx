@@ -17,13 +17,16 @@ const About = () => {
                             I don't just write code; I strive to create efficient, production-grade applications. Whether it's optimizing database queries or crafting smooth frontend animations, I treat every project as an opportunity to learn something new.
                         </p>
                     </div>
-                    <div className="p-6 bg-white dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-none">
-                        <h3 className="text-xl font-bold mb-4 text-amber-600 dark:text-amber-400">Learning Now</h3>
-                        <ul className="space-y-2 text-gray-600 dark:text-gray-400 font-semibold">
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> Advanced Data Structures</li>
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> Cloud Architecture (AWS)</li>
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> System Design Principles</li>
-                        </ul>
+                    <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 overflow-hidden hover:border-gray-400 dark:hover:border-white/20 transition-all duration-300 group">
+                        <div className="h-[2px] w-full bg-gray-200 dark:bg-white/10 group-hover:bg-amber-500 transition-colors duration-300" />
+                        <div className="p-6">
+                            <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">Currently Learning</h3>
+                            <ul className="space-y-3 text-gray-600 dark:text-gray-400 text-sm">
+                                <li className="flex items-center gap-3"><span className="w-1 h-1 bg-amber-500 flex-shrink-0" /> Advanced Data Structures</li>
+                                <li className="flex items-center gap-3"><span className="w-1 h-1 bg-amber-500 flex-shrink-0" /> Cloud Architecture (AWS)</li>
+                                <li className="flex items-center gap-3"><span className="w-1 h-1 bg-amber-500 flex-shrink-0" /> System Design Principles</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 

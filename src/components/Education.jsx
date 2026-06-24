@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { GraduationCap, Book, Award, ChevronRight } from 'lucide-react';
+import {  GraduationCap, Book, Award, ChevronRight  } from './GoogleIcons';
 
 const Education = () => {
     const observerRef = useRef(null);
@@ -45,10 +45,10 @@ const Education = () => {
                     {/* Certification */}
                     <div className="education-item relative pl-8 md:pl-12 group">
                         <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-orange-500 group-hover:scale-150 group-[.active-card]:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
-                        <div className="bg-white dark:bg-white/5 p-6 rounded-xl border border-gray-200 dark:border-white/10 group-hover:border-orange-500/50 dark:group-hover:border-orange-500/30 group-[.active-card]:border-orange-500/50 dark:group-[.active-card]:border-orange-500/30 transition-colors shadow-lg dark:shadow-none">
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                        <div className="bg-white dark:bg-white/[0.03] p-6 border border-gray-200 dark:border-white/10 group-hover:border-orange-500 group-[.active-card]:border-orange-500 transition-colors">
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2 gap-4 md:gap-0">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><Award className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-orange-600 dark:text-white" /> IITM Pravartak | Training and Internship Certification in Full Stack Development with DSA & GenAI</h3>
-                                <span className="text-orange-600 dark:text-orange-400 text-sm font-bold font-mono bg-orange-100 dark:bg-orange-500/10 px-2 py-1 rounded">2025</span>
+                                <span className="text-orange-600 dark:text-orange-400 text-sm font-bold font-mono border border-orange-200 dark:border-orange-500/20 bg-orange-50 dark:bg-orange-500/10 px-2.5 py-1 whitespace-nowrap self-start md:self-auto">2025</span>
                             </div>
                             <div className="text-amber-600 dark:text-amber-400 mb-4 font-medium">Coding Ninjas, Online</div>
                             <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-medium text-sm">
@@ -70,11 +70,11 @@ const Education = () => {
 
                     {/* Edu 1 */}
                     <div className="education-item relative pl-8 md:pl-12 group">
-                        <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-500 group-hover:scale-150 group-[.active-card]:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(251,191,36,0.8)]" />
-                        <div className="bg-white dark:bg-white/5 p-6 rounded-xl border border-gray-200 dark:border-white/10 group-hover:border-amber-500/50 dark:group-hover:border-amber-500/30 group-[.active-card]:border-amber-500/50 dark:group-[.active-card]:border-amber-500/30 transition-colors shadow-lg dark:shadow-none">
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                        <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-500 group-hover:scale-150 group-[.active-card]:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(0,0,0,0.8)] dark:shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+                        <div className="bg-white dark:bg-white/[0.03] p-6 border border-gray-200 dark:border-white/10 group-hover:border-amber-500 group-[.active-card]:border-amber-500 transition-colors">
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2 gap-4 md:gap-0">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><GraduationCap className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-amber-600 dark:text-white" /> Bachelor's in Computer Science</h3>
-                                <span className="text-amber-600 dark:text-amber-400 text-sm font-bold font-mono bg-amber-100 dark:bg-amber-500/10 px-2 py-1 rounded">2024 - 2028</span>
+                                <span className="text-amber-600 dark:text-amber-400 text-sm font-bold font-mono border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/10 px-2.5 py-1 whitespace-nowrap self-start md:self-auto">2024 - 2028</span>
                             </div>
                             <div className="text-amber-600 dark:text-amber-400 mb-4 font-medium">Mahakal Institute of Technology & Management, Ujjain</div>
                             <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-medium text-sm">
@@ -97,10 +97,10 @@ const Education = () => {
                     {/* Schooling */}
                     <div className="education-item relative pl-8 md:pl-12 group">
                         <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-orange-500 group-hover:scale-150 group-[.active-card]:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
-                        <div className="bg-white dark:bg-white/5 p-6 rounded-xl border border-gray-200 dark:border-white/10 group-hover:border-orange-500/50 dark:group-hover:border-orange-500/30 group-[.active-card]:border-orange-500/50 dark:group-[.active-card]:border-orange-500/30 transition-colors shadow-lg dark:shadow-none">
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                        <div className="bg-white dark:bg-white/[0.03] p-6 border border-gray-200 dark:border-white/10 group-hover:border-orange-500 group-[.active-card]:border-orange-500 transition-colors">
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2 gap-4 md:gap-0">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><Book className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-orange-600 dark:text-white" /> Secondary & Higher Secondary Education</h3>
-                                <span className="text-orange-600 dark:text-orange-400 text-sm font-bold font-mono bg-orange-100 dark:bg-orange-500/10 px-2 py-1 rounded">2022 & 2024</span>
+                                <span className="text-orange-600 dark:text-orange-400 text-sm font-bold font-mono border border-orange-200 dark:border-orange-500/20 bg-orange-50 dark:bg-orange-500/10 px-2.5 py-1 whitespace-nowrap self-start md:self-auto">2022 & 2024</span>
                             </div>
                             <div className="text-amber-600 dark:text-amber-400 mb-4 font-medium">The Delta School, Dewas</div>
                             <ul className="space-y-2 text-gray-600 dark:text-gray-300 font-medium text-sm">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import {  ArrowRight  } from './GoogleIcons';
 import { PROJECTS_DATA } from '../data/constants';
 import ProjectCard from './ProjectCard';
 
@@ -24,7 +24,7 @@ const Projects = () => {
                 <div className="flex justify-center">
                     <Link
                         to="/all-projects"
-                        className="group relative px-8 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full font-bold text-gray-900 dark:text-white shadow-lg hover:shadow-xl hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all active:scale-95 flex items-center gap-2"
+                        className="group relative px-8 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 font-bold text-gray-900 dark:text-white shadow-lg hover:shadow-xl hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all active:scale-95 flex items-center gap-2"
                     >
                         <span className="group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                             View all Projects

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import {  ArrowLeft  } from './GoogleIcons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS_DATA } from '../data/constants';
 import ProjectCard from './ProjectCard';
@@ -23,7 +23,7 @@ const AllProjects = () => {
                     >
                         <ArrowLeft size={20} className="group-hover:-translate-x-0.5 transition-transform" />
                     </Link>
-                    <h1 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">
+                    <h1 className="text-xl md:text-2xl font-bold text-amber-600 dark:text-amber-500">
                         Project Gallery
                     </h1>
                 </div>

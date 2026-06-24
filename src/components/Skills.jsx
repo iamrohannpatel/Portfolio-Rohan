@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {
+import { 
     Code2,
     Workflow,
     Box,
@@ -48,7 +48,7 @@ import {
     Cloud,
     ChevronDown,
     Menu
-} from 'lucide-react';
+ } from './GoogleIcons';
 
 /* --- DATA CONSTANTS --- */
 
@@ -133,7 +133,7 @@ const SOFT_SKILLS = [
         name: "Problem Solving",
         icon: <Brain size={40} />,
         desc: "Approaching complex bugs like puzzles. I love dissecting logic to find the root cause.",
-        theme: "from-amber-500/20 to-orange-500/20",
+        theme: "bg-amber-500/10",
         border: "group-hover:border-amber-500/50",
         color: "text-amber-600 dark:text-amber-400",
         bg: "bg-amber-100 dark:bg-amber-500/20"
@@ -143,7 +143,7 @@ const SOFT_SKILLS = [
         name: "Leadership",
         icon: <Users size={40} />,
         desc: "Led a team of 4 developers during the Global Hackathon, managing timelines and git merges.",
-        theme: "from-orange-500/20 to-red-500/20",
+        theme: "bg-orange-500/10",
         border: "group-hover:border-orange-500/50",
         color: "text-orange-600 dark:text-orange-400",
         bg: "bg-orange-100 dark:bg-orange-500/20"
@@ -153,7 +153,7 @@ const SOFT_SKILLS = [
         name: "Adaptability",
         icon: <Zap size={40} />,
         desc: "Quick learner. Picked up Three.js in 3 days to build this 3D portfolio website.",
-        theme: "from-yellow-500/20 to-amber-500/20",
+        theme: "bg-yellow-500/10",
         border: "group-hover:border-yellow-500/50",
         color: "text-yellow-600 dark:text-yellow-400",
         bg: "bg-yellow-100 dark:bg-yellow-500/20"
@@ -163,7 +163,7 @@ const SOFT_SKILLS = [
         name: "Creative Thinking",
         icon: <Lightbulb size={40} />,
         desc: "I don't just write code; I design experiences. I focus heavily on UI/UX and motion.",
-        theme: "from-rose-500/20 to-pink-500/20",
+        theme: "bg-rose-500/10",
         border: "group-hover:border-rose-500/50",
         color: "text-rose-600 dark:text-rose-400",
         bg: "bg-rose-100 dark:bg-rose-500/20"
@@ -173,7 +173,7 @@ const SOFT_SKILLS = [
         name: "Communication",
         icon: <MessageSquare size={40} />,
         desc: "Clear and concise communication is key. I ensure everyone is on the same page.",
-        theme: "from-stone-500/20 to-zinc-500/20",
+        theme: "bg-stone-500/10",
         border: "group-hover:border-stone-500/50",
         color: "text-stone-600 dark:text-stone-400",
         bg: "bg-stone-100 dark:bg-stone-500/20"
@@ -183,7 +183,7 @@ const SOFT_SKILLS = [
         name: "Time Management",
         icon: <Clock size={40} />,
         desc: "Efficiently managing time to meet deadlines and deliver high-quality work.",
-        theme: "from-red-500/20 to-orange-500/20",
+        theme: "bg-red-500/10",
         border: "group-hover:border-red-500/50",
         color: "text-red-600 dark:text-red-400",
         bg: "bg-red-100 dark:bg-red-500/20"
@@ -198,7 +198,6 @@ const SkillStrip = ({ name, icon, color }) => {
     const isAmber = color === 'amber';
 
     // Base Styles
-    const baseBorder = isAmber ? 'border-amber-200 dark:border-amber-500/30' : 'border-orange-200 dark:border-orange-500/30';
     const activeBorder = isAmber ? 'group-hover:border-amber-500' : 'group-hover:border-orange-500';
     const bgHover = isAmber ? 'group-hover:bg-amber-50 dark:group-hover:bg-amber-500/10' : 'group-hover:bg-orange-50 dark:group-hover:bg-orange-500/10';
     const iconColor = isAmber ? 'text-amber-600 dark:text-amber-400' : 'text-orange-600 dark:text-orange-400';
@@ -207,11 +206,9 @@ const SkillStrip = ({ name, icon, color }) => {
         <div className={`
             relative w-full group cursor-pointer 
             flex items-center gap-3 px-4 py-3
-            bg-white dark:bg-[#0a0a16] 
-            border-2 ${baseBorder} ${activeBorder}
-            rounded-xl 
+            bg-white dark:bg-white/[0.03] 
+            border border-gray-200 dark:border-white/10 ${activeBorder}
             transition-all duration-300 
-            transform hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-none
             ${bgHover}
         `}>
             <div className={`${iconColor} transition-transform duration-300 group-hover:scale-110 flex-shrink-0`}>
@@ -253,11 +250,11 @@ const SkillsSection = () => {
 
                 {/* Toggle Switch */}
                 <div className="flex justify-center mb-16">
-                    <div className="bg-white dark:bg-white/5 p-1 rounded-full border border-gray-200 dark:border-white/10 flex shadow-sm">
+                    <div className="bg-white dark:bg-white/5 p-1 border border-gray-200 dark:border-white/10 flex shadow-sm">
                         <button
                             onClick={() => setSkillType('technical')}
-                            className={`px-4 py-2 md:px-8 md:py-3 rounded-full text-sm font-bold transition-all ${skillType === 'technical'
-                                ? 'bg-amber-500 text-white dark:text-black shadow-[0_0_20px_rgba(251,191,36,0.4)]'
+                            className={`px-4 py-2 md:px-8 md:py-3 text-sm font-bold transition-all ${skillType === 'technical'
+                                ? 'bg-amber-500 text-white dark:text-black'
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                         >
@@ -265,8 +262,8 @@ const SkillsSection = () => {
                         </button>
                         <button
                             onClick={() => setSkillType('soft')}
-                            className={`px-4 py-2 md:px-8 md:py-3 rounded-full text-sm font-bold transition-all ${skillType === 'soft'
-                                ? 'bg-orange-500 text-white dark:text-black shadow-[0_0_20px_rgba(249,115,22,0.4)]'
+                            className={`px-4 py-2 md:px-8 md:py-3 text-sm font-bold transition-all ${skillType === 'soft'
+                                ? 'bg-orange-500 text-white dark:text-black'
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                         >
@@ -282,7 +279,7 @@ const SkillsSection = () => {
                             {TECHNICAL_SKILLS.map((cat, idx) => (
                                 <div key={idx} className="flex flex-col items-center w-full">
                                     <div className="flex items-center gap-3 mb-8">
-                                        <div className={`p-2 rounded-lg bg-white dark:bg-white/5 border border-gray-100 dark:border-transparent shadow-md dark:shadow-none ${cat.color === 'amber' ? 'text-amber-600 dark:text-amber-400' : 'text-orange-600 dark:text-orange-400'}`}>
+                                        <div className={`p-2 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 ${cat.color === 'amber' ? 'text-amber-600 dark:text-amber-400' : 'text-orange-600 dark:text-orange-400'}`}>
                                             {cat.icon}
                                         </div>
                                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{cat.category}</h3>
@@ -295,7 +292,7 @@ const SkillsSection = () => {
                                             <div className="relative w-full max-w-xs mb-8 z-50 text-left" ref={dropdownRef}>
                                                 <button
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                                    className="w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-700 dark:text-gray-200 font-medium hover:border-amber-500 dark:hover:border-amber-500 transition-colors"
+                                                    className="w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-200 font-medium hover:border-amber-500 dark:hover:border-amber-500 transition-colors"
                                                 >
                                                     <span className="flex items-center gap-2">
                                                         <Menu size={18} className="text-amber-500" />
@@ -305,7 +302,7 @@ const SkillsSection = () => {
                                                 </button>
 
                                                 {isDropdownOpen && (
-                                                    <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#1a1a1a] border border-gray-100 dark:border-white/10 rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto z-50 animate-in fade-in zoom-in-95 duration-200">
+                                                    <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden max-h-64 overflow-y-auto z-50 animate-in fade-in zoom-in-95 duration-200">
                                                         {Object.keys(cat.data).map((subCat) => (
                                                             <button
                                                                 key={subCat}
@@ -342,8 +339,8 @@ const SkillsSection = () => {
                                         /* NORMAL RENDER (BACKEND LEARN CARD ETC) */
                                         <div className="w-full flex flex-col items-center">
                                             {cat.isLearning ? (
-                                                <div className="flex flex-col items-center justify-center p-8 bg-white dark:bg-white/5 border border-dashed border-orange-300 dark:border-orange-500/30 rounded-2xl w-full max-w-sm text-center group hover:border-orange-500 transition-colors">
-                                                    <div className="bg-orange-100 dark:bg-orange-500/10 p-4 rounded-full mb-4 animate-pulse">
+                                                <div className="flex flex-col items-center justify-center p-8 bg-white dark:bg-white/5 border border-dashed border-orange-300 dark:border-orange-500/30 w-full max-w-sm text-center group hover:border-orange-500 transition-colors">
+                                                    <div className="bg-orange-100 dark:bg-orange-500/10 p-4 mb-4 animate-pulse border border-orange-200 dark:border-orange-500/20">
                                                         <Loader size={32} className="text-orange-500 animate-spin" />
                                                     </div>
                                                     <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Actively Learning</h4>
@@ -374,9 +371,10 @@ const SkillsSection = () => {
                             {SOFT_SKILLS.map((skill) => (
                                 <TiltCard
                                     key={skill.id}
-                                    className={`bg-white dark:bg-white/5 border ${skill.border.replace('group-hover:', 'border-gray-200 dark:border-white/10 group-hover:')} p-6 rounded-2xl group hover:bg-gray-50 dark:hover:bg-white/10 shadow-xl dark:shadow-none transition-colors`}
+                                    className={`bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 ${skill.border} p-6 group transition-colors overflow-hidden relative`}
                                 >
-                                    <div className={`w-14 h-14 ${skill.bg} ${skill.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                                    <div className={`absolute top-0 left-0 w-full h-[2px] bg-transparent ${skill.border.replace('group-hover:border-', 'group-hover:bg-')} transition-colors duration-300`} />
+                                    <div className={`w-14 h-14 ${skill.bg} ${skill.color} border border-gray-200 dark:border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                                         {skill.icon}
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{skill.name}</h3>

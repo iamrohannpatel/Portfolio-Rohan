@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import {  ArrowUp  } from './GoogleIcons';
 
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -28,11 +28,11 @@ const ScrollToTop = () => {
     return (
         <button
             onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-amber-500 hover:bg-amber-400 text-black shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300 transform hover:-translate-y-1 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+            className={`fixed bottom-8 right-8 z-50 p-2 bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 shadow-md transition-all duration-300 transform hover:-translate-y-1 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
                 }`}
             aria-label="Scroll to top"
         >
-            <ArrowUp size={24} className="transition-transform group-hover:scale-110" />
+            <ArrowUp size={20} className="transition-transform group-hover:scale-110" />
         </button>
     );
 };

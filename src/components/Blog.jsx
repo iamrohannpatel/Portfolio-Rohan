@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, ExternalLink } from 'lucide-react';
+import {  BookOpen, ExternalLink  } from './GoogleIcons';
 import { BLOG_DATA } from '../data/constants';
 // Adjust this import path based on where you saved TiltCard
 import TiltCard from './TiltCard';
@@ -15,8 +15,9 @@ const BlogSection = () => {
           {BLOG_DATA.map((post) => (
             <TiltCard
               key={post.id}
-              className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-6 rounded-2xl flex flex-col h-full hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-colors shadow-lg dark:shadow-none"
+              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 flex flex-col h-full hover:border-amber-500 transition-colors group relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-transparent group-hover:bg-amber-500 transition-colors duration-300" />
               <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-500 mb-4">
                 <span>{post.date}</span>
                 <span className="flex items-center gap-1">

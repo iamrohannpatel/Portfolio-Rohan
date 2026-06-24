@@ -1,6 +1,6 @@
 import React from 'react';
 import { flushSync } from 'react-dom';
-import { Terminal, Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
+import {  Terminal, Menu, X, Sun, Moon, ChevronDown  } from './GoogleIcons';
 
 const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuOpen, navItems, theme, toggleTheme }) => {
     const [dropdownOpen, setDropdownOpen] = React.useState(false);
@@ -58,7 +58,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
         <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className={`flex items-center gap-3 text-left p-3 rounded-lg transition-all w-full ${activeSection === item.id
+            className={`flex items-center gap-3 text-left p-3 transition-all w-full ${activeSection === item.id
                 ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
                 : 'text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-white hover:bg-amber-50 dark:hover:bg-white/5'
                 } ${isSecondary ? 'pl-8' : ''}`} // Add indentation for secondary items
@@ -71,10 +71,10 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
     );
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)] transition-all duration-300">
+        <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 backdrop-blur-2xl bg-white/70 dark:bg-black/50 border-b border-gray-200 dark:border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-300">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <div className="text-xl md:text-2xl font-bold flex items-center gap-2">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-200 dark:to-orange-400 drop-shadow-[0_0_25px_rgba(251,191,36,0.8)]">
+                <div className="text-base md:text-lg font-bold flex items-center gap-2">
+                    <span className="text-amber-600 dark:text-amber-500">
                         &lt;Developerohan /&gt;
                     </span>
                 </div>
@@ -85,15 +85,15 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                         <button
                             key={item.id}
                             onClick={() => scrollToSection(item.id)}
-                            className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${activeSection === item.id
-                                ? 'text-gray-900 dark:text-white bg-amber-500/10 dark:bg-white/10 shadow-[0_0_10px_rgba(251,191,36,0.2)]'
+                            className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group ${activeSection === item.id
+                                ? 'text-gray-900 dark:text-white bg-amber-500/10 dark:bg-white/10 shadow-[0_0_10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_10px_rgba(255,255,255,0.1)]'
                                 : 'text-gray-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-white hover:bg-amber-50 dark:hover:bg-white/5'
                                 }`}
                         >
                             {item.label}
                             {/* Bottom Glow for Active State */}
                             {activeSection === item.id && (
-                                <span className="absolute bottom-0 left-1/2 w-1/2 h-[2px] -translate-x-1/2 bg-amber-500 dark:bg-amber-400 blur-[2px] rounded-full" />
+                                <span className="absolute bottom-0 left-1/2 w-1/2 h-[2px] -translate-x-1/2 bg-amber-500 dark:bg-amber-400 blur-[2px]" />
                             )}
                         </button>
                     ))}
@@ -102,7 +102,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                     {secondaryItems.length > 0 && (
                         <div className="relative group">
                             <button
-                                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group-hover:bg-amber-50 dark:group-hover:bg-white/10 ${secondaryItems.some(i => i.id === activeSection)
+                                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-white/10 ${secondaryItems.some(i => i.id === activeSection)
                                     ? 'text-gray-900 dark:text-white bg-amber-500/10 dark:bg-white/10'
                                     : 'text-gray-600 dark:text-gray-400 group-hover:text-amber-600 dark:group-hover:text-white'
                                     }`}
@@ -118,7 +118,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                                         <button
                                             key={item.id}
                                             onClick={() => scrollToSection(item.id)}
-                                            className={`flex items-center w-full px-4 py-3 text-sm font-medium transition-colors rounded-lg ${activeSection === item.id
+                                            className={`flex items-center w-full px-4 py-3 text-sm font-medium transition-colors ${activeSection === item.id
                                                 ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
                                                 : 'text-gray-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-white hover:bg-amber-50 dark:hover:bg-white/5'
                                                 }`}
@@ -135,7 +135,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                     {/* Theme Toggle Button */}
                     <button
                         onClick={handleThemeToggle}
-                        className="ml-2 p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
+                        className="ml-2 p-2 bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
                         aria-label="Toggle Theme"
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -146,14 +146,14 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                 <div className="xl:hidden flex items-center gap-2">
                     <button
                         onClick={handleThemeToggle}
-                        className="p-2 rounded-lg bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
+                        className="p-2 bg-gray-100 dark:bg-white/5 text-amber-500 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-white/10 transition-all duration-300 transform active:scale-95"
                         aria-label="Toggle Theme"
                     >
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
 
                     <button
-                        className={`text-gray-900 dark:text-white p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : 'rotate-0'
+                        className={`text-gray-900 dark:text-white p-2 hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : 'rotate-0'
                             }`}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
@@ -175,7 +175,7 @@ const Header = ({ activeSection, scrollToSection, mobileMenuOpen, setMobileMenuO
                             <div className="border-t border-gray-100 dark:border-white/5 pt-1 mt-1">
                                 <button
                                     onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                                    className={`flex items-center justify-between w-full p-3 rounded-lg text-left transition-all ${secondaryItems.some(i => i.id === activeSection)
+                                    className={`flex items-center justify-between w-full p-3 text-left transition-all ${secondaryItems.some(i => i.id === activeSection)
                                         ? 'text-gray-900 dark:text-white bg-amber-500/5 dark:bg-white/5'
                                         : 'text-gray-600 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-white/5'
                                         }`}

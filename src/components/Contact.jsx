@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Mail, Linkedin, Github, User, MessageSquare, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { User, MessageSquare, Send, Loader2, CheckCircle2, AlertCircle } from './GoogleIcons';
+import { Mail, Linkedin, Github } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -33,7 +34,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-16 md:py-20 px-4 bg-white/50 dark:bg-transparent dark:bg-gradient-to-b dark:from-transparent dark:to-black transition-colors duration-300">
+        <section id="contact" className="py-16 md:py-20 px-4 bg-white/50 dark:bg-transparent transition-colors duration-300">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 flex items-center justify-center gap-3 text-gray-900 dark:text-white">
                     <span className="text-amber-600 dark:text-amber-400">11.</span> Let's Connect
@@ -47,22 +48,23 @@ const Contact = () => {
                         </p>
                         <div className="space-y-4">
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=developerohann@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors group">
-                                <div className="p-3 bg-gray-100 dark:bg-white/5 rounded-lg text-[#EA4335] group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0"><Mail size={20} /></div>
+                                <div className="p-3 bg-gray-100 dark:bg-white/5 text-[#EA4335] group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0 border border-transparent dark:border-white/5 group-hover:border-gray-200 dark:group-hover:border-white/10"><Mail size={20} /></div>
                                 <span className="text-sm xs:text-base break-all font-medium">developerohann@gmail.com</span>
                             </a>
                             <a href="https://www.linkedin.com/in/iamrohannpatel/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors group">
-                                <div className="p-3 bg-gray-100 dark:bg-white/5 rounded-lg text-[#0077B5] group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0"><Linkedin size={20} /></div>
+                                <div className="p-3 bg-gray-100 dark:bg-white/5 text-[#0077B5] group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0 border border-transparent dark:border-white/5 group-hover:border-gray-200 dark:group-hover:border-white/10"><Linkedin size={20} /></div>
                                 <span className="text-sm xs:text-base break-all font-medium">www.linkedin.com/in/iamrohannpatel</span>
                             </a>
                             <a href="https://github.com/iamrohannpatel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors group">
-                                <div className="p-3 bg-gray-100 dark:bg-white/5 rounded-lg text-gray-900 dark:text-white group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0"><Github size={20} /></div>
+                                <div className="p-3 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors shrink-0 border border-transparent dark:border-white/5 group-hover:border-gray-200 dark:group-hover:border-white/10"><Github size={20} /></div>
                                 <span className="text-sm xs:text-base break-all font-medium">www.github.com/iamrohannpatel</span>
                             </a>
                         </div>
                     </div>
 
                     {/* Form */}
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white dark:bg-white/5 p-4 md:p-8 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md relative shadow-xl dark:shadow-none transition-colors">
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white dark:bg-white/[0.03] p-4 md:p-8 border border-gray-200 dark:border-white/10 relative transition-colors group/form hover:border-amber-500 overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-[2px] bg-transparent group-hover/form:bg-amber-500 transition-colors duration-300" />
                         <div className="relative group">
                             <User className="absolute left-4 top-4 text-gray-400 dark:text-gray-500 group-focus-within:text-amber-500 dark:group-focus-within:text-amber-400 transition-colors" size={20} />
                             <input
@@ -70,7 +72,7 @@ const Contact = () => {
                                 name="user_name"
                                 required
                                 placeholder="Name"
-                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500/50 transition-all"
+                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
                             />
                         </div>
                         <div className="relative group">
@@ -80,7 +82,7 @@ const Contact = () => {
                                 name="user_email"
                                 required
                                 placeholder="Email"
-                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500/50 transition-all"
+                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
                             />
                         </div>
                         <div className="relative group">
@@ -90,13 +92,13 @@ const Contact = () => {
                                 required
                                 rows="4"
                                 placeholder="Message"
-                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500/50 transition-all resize-none"
+                                className="w-full bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all resize-none"
                             />
                         </div>
 
                         <button
                             disabled={isSubmitting}
-                            className="w-full py-4 bg-amber-600 hover:bg-amber-500 disabled:bg-amber-600/50 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2 group shadow-lg hover:shadow-amber-500/20"
+                            className="w-full py-4 bg-amber-600 dark:bg-amber-500 hover:bg-amber-500 dark:hover:bg-amber-400 disabled:bg-amber-600/50 text-white dark:text-gray-900 font-bold transition-all flex items-center justify-center gap-2 group shadow-lg hover:shadow-amber-500/20 dark:shadow-none"
                         >
                             {isSubmitting ? (
                                 <>Sending... <Loader2 size={18} className="animate-spin" /></>
@@ -106,7 +108,7 @@ const Contact = () => {
                         </button>
 
                         {submitStatus === 'success' && (
-                            <div className="absolute inset-0 bg-white/90 dark:bg-black/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center p-6 animate-fade-in-up">
+                            <div className="absolute inset-0 bg-white/90 dark:bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 animate-fade-in-up">
                                 <CheckCircle2 size={48} className="text-green-500 mb-4" />
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
                                 <p className="text-gray-600 dark:text-gray-300">Thanks for reaching out. I'll get back to you soon.</p>
@@ -114,7 +116,7 @@ const Contact = () => {
                         )}
 
                         {submitStatus === 'error' && (
-                            <div className="absolute bottom-4 left-0 right-0 mx-auto w-max bg-red-500/90 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm">
+                            <div className="absolute bottom-4 left-0 right-0 mx-auto w-max bg-red-500/90 text-white px-4 py-2 flex items-center gap-2 text-sm">
                                 <AlertCircle size={16} />
                                 Failed to send message. Please try again.
                             </div>

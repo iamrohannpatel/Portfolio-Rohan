@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Target, Flame, Percent, Code2 } from 'lucide-react';
+import {  Target, Flame, Percent, Code2  } from './GoogleIcons';
 
 const CodingProfile = () => {
     const contributions = useMemo(() => {
@@ -26,37 +26,36 @@ const CodingProfile = () => {
                 <div className="w-full">
                     <div className="grid md:grid-cols-3 gap-6 mb-8">
                         {/* Total Solved Card */}
-                        <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-6 rounded-xl flex items-center justify-between hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-colors shadow-lg dark:shadow-none">
+                        <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 flex items-center justify-between hover:border-amber-500 transition-colors group">
                             <div>
                                 <div className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Problems Solved</div>
-                                <div className="text-3xl font-bold text-gray-900 dark:text-white">200+</div>
+                                <div className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">200+</div>
                             </div>
-                            <div className="h-12 w-12 rounded-full bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <div className="h-12 w-12 border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
                                 <Target size={24} />
                             </div>
                         </div>
 
                         {/* Streak Card */}
-                        <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-6 rounded-xl flex items-center justify-between relative overflow-hidden group hover:border-orange-500/50 dark:hover:border-orange-500/30 transition-colors shadow-lg dark:shadow-none">
-                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="relative z-10">
+                        <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 flex items-center justify-between group hover:border-orange-500 transition-colors">
+                            <div>
                                 <div className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Max Streak</div>
-                                <div className="text-3xl font-bold text-gray-900 dark:text-white flex items-baseline gap-1">
+                                <div className="text-3xl font-bold text-gray-900 dark:text-white flex items-baseline gap-1 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                                     31 <span className="text-sm font-normal text-gray-500">Days</span>
                                 </div>
                             </div>
-                            <div className="relative z-10 h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-500/20 flex items-center justify-center text-orange-600 dark:text-orange-400 animate-pulse">
+                            <div className="h-12 w-12 border border-orange-200 dark:border-orange-500/20 bg-orange-50 dark:bg-orange-500/10 flex items-center justify-center text-orange-600 dark:text-orange-400 animate-pulse">
                                 <Flame size={24} />
                             </div>
                         </div>
 
                         {/* Global Rank Card */}
-                        <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-6 rounded-xl flex items-center justify-between hover:border-yellow-500/50 dark:hover:border-yellow-500/30 transition-colors shadow-lg dark:shadow-none">
+                        <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 flex items-center justify-between hover:border-yellow-500 transition-colors group">
                             <div>
                                 <div className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Acceptance Rate</div>
-                                <div className="text-3xl font-bold text-gray-900 dark:text-white">71.2%</div>
+                                <div className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">71.2%</div>
                             </div>
-                            <div className="h-12 w-12 rounded-full bg-yellow-100 dark:bg-yellow-500/20 flex items-center justify-center text-yellow-600 dark:text-yellow-400">
+                            <div className="h-12 w-12 border border-yellow-200 dark:border-yellow-500/20 bg-yellow-50 dark:bg-yellow-500/10 flex items-center justify-center text-yellow-600 dark:text-yellow-400">
                                 <Percent size={24} />
                             </div>
                         </div>
@@ -64,7 +63,7 @@ const CodingProfile = () => {
 
                     <div className="grid lg:grid-cols-4 gap-8">
                         {/* Proficiency Breakdown */}
-                        <div className="lg:col-span-1 bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 rounded-xl p-6 backdrop-blur-sm h-full shadow-lg dark:shadow-none">
+                        <div className="lg:col-span-1 bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 h-full hover:border-gray-400 dark:hover:border-white/20 transition-colors">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">Proficiency</h3>
                             <div className="space-y-6">
                                 <div>
@@ -72,7 +71,7 @@ const CodingProfile = () => {
                                         <span className="text-green-600 dark:text-green-400 font-medium">Easy</span>
                                         <span className="text-gray-500 dark:text-gray-400">170 solved</span>
                                     </div>
-                                    <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-2 bg-gray-100 dark:bg-white/10 overflow-hidden">
                                         <div className="h-full bg-green-500 w-[70%]" />
                                     </div>
                                 </div>
@@ -81,7 +80,7 @@ const CodingProfile = () => {
                                         <span className="text-yellow-600 dark:text-yellow-400 font-medium">Medium</span>
                                         <span className="text-gray-500 dark:text-gray-400">36 solved</span>
                                     </div>
-                                    <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-2 bg-gray-100 dark:bg-white/10 overflow-hidden">
                                         <div className="h-full bg-yellow-500 w-[55%]" />
                                     </div>
                                 </div>
@@ -90,7 +89,7 @@ const CodingProfile = () => {
                                         <span className="text-red-600 dark:text-red-400 font-medium">Hard</span>
                                         <span className="text-gray-500 dark:text-gray-400">8 solved</span>
                                     </div>
-                                    <div className="h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-2 bg-gray-100 dark:bg-white/10 overflow-hidden">
                                         <div className="h-full bg-red-500 w-[25%]" />
                                     </div>
                                 </div>
@@ -98,7 +97,7 @@ const CodingProfile = () => {
                         </div>
 
                         {/* Consistency Graph */}
-                        <div className="lg:col-span-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-6 overflow-x-auto shadow-lg dark:shadow-none">
+                        <div className="lg:col-span-3 bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 overflow-x-auto hover:border-gray-400 dark:hover:border-white/20 transition-colors">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                                 <Code2 size={20} className="text-green-600 dark:text-green-400" />
                                 Consistency Graph
@@ -123,7 +122,7 @@ const CodingProfile = () => {
                                         {contributions.map((level, i) => (
                                             <div
                                                 key={i}
-                                                className={`w-3 h-3 rounded-[2px] transition-transform duration-200 hover:scale-125 hover:z-10 hover:brightness-125 hover:shadow-lg ${level === 0 ? 'bg-gray-100 dark:bg-white/5' :
+                                                className={`w-3 h-3 transition-transform duration-200 hover:scale-125 hover:z-10 hover:brightness-125 hover:shadow-lg ${level === 0 ? 'bg-gray-100 dark:bg-white/5' :
                                                     level === 1 ? 'bg-green-200 dark:bg-green-900/40' :
                                                         level === 2 ? 'bg-green-300 dark:bg-green-700/60' :
                                                             level === 3 ? 'bg-green-400 dark:bg-green-500/80' :
@@ -139,11 +138,11 @@ const CodingProfile = () => {
                                 <div className="flex justify-end items-center gap-2 text-xs text-gray-500 mt-4">
                                     <span>Less</span>
                                     <div className="flex items-center gap-1">
-                                        <div className="w-3 h-3 bg-gray-100 dark:bg-white/5 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-green-200 dark:bg-green-900/40 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-green-300 dark:bg-green-700/60 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-green-400 dark:bg-green-500/80 rounded-[2px]" />
-                                        <div className="w-3 h-3 bg-green-500 dark:bg-green-400 rounded-[2px]" />
+                                        <div className="w-3 h-3 bg-gray-100 dark:bg-white/5" />
+                                        <div className="w-3 h-3 bg-green-200 dark:bg-green-900/40" />
+                                        <div className="w-3 h-3 bg-green-300 dark:bg-green-700/60" />
+                                        <div className="w-3 h-3 bg-green-400 dark:bg-green-500/80" />
+                                        <div className="w-3 h-3 bg-green-500 dark:bg-green-400" />
                                     </div>
                                     <span>More</span>
                                 </div>

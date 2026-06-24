@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, ExternalLink, Calendar } from 'lucide-react';
+import {  Award, ExternalLink, Calendar  } from './GoogleIcons';
 import { CERTIFICATIONS_DATA } from '../data/constants';
 import TiltCard from './TiltCard';
 
@@ -28,11 +28,14 @@ const Certifications = () => {
                     {CERTIFICATIONS_DATA.map((cert) => (
                         <TiltCard
                             key={cert.id}
-                            className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 h-full flex flex-col group hover:bg-gray-50 dark:hover:bg-white/10 active:bg-gray-50 dark:active:bg-white/10 group-[.active-card]:bg-gray-50 dark:group-[.active-card]:bg-white/10 hover:border-amber-500/50 dark:hover:border-amber-500/30 active:border-amber-500/50 dark:active:border-amber-500/30 group-[.active-card]:border-amber-500/50 dark:group-[.active-card]:border-amber-500/30 transition-all duration-300 shadow-xl dark:shadow-none"
+                            className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 h-full flex flex-col group hover:border-amber-500 dark:hover:border-amber-500 transition-colors relative overflow-hidden"
                         >
+                            {/* Top Accent Line */}
+                            <div className="absolute top-0 left-0 w-full h-[2px] bg-transparent group-hover:bg-amber-500 transition-colors duration-300" />
+                            
                             {/* Card Content */}
                             <div className="flex items-start justify-between mb-6">
-                                <div className="p-3 bg-white dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10 group-hover:border-amber-500/30 group-active:border-amber-500/30 group-[.active-card]:border-amber-500/30 group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] group-active:shadow-[0_0_15px_rgba(251,191,36,0.2)] group-[.active-card]:shadow-[0_0_15px_rgba(251,191,36,0.2)] transition-all duration-300">
+                                <div className="p-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 group-hover:border-amber-500/30 transition-all">
                                     {cert.image ? (
                                         <img
                                             src={cert.image}
@@ -43,7 +46,7 @@ const Certifications = () => {
                                         <Award className="w-12 h-12 text-amber-500" />
                                     )}
                                 </div>
-                                <div className="px-3 py-1 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/10 group-active:bg-amber-50 dark:group-active:bg-amber-500/10 group-[.active-card]:bg-amber-50 dark:group-[.active-card]:bg-amber-500/10 transition-colors">
+                                <div className="px-3 py-1 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:bg-amber-50 dark:group-hover:bg-amber-500/10 transition-colors">
                                     <Calendar size={12} />
                                     {cert.date}
                                 </div>
@@ -63,7 +66,7 @@ const Certifications = () => {
                                 {cert.skills && cert.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md group-hover:border-amber-500/20 group-active:border-amber-500/20 group-[.active-card]:border-amber-500/20 group-hover:text-amber-800 dark:group-hover:text-amber-300 group-active:text-amber-800 dark:group-active:text-amber-300 group-[.active-card]:text-amber-800 dark:group-[.active-card]:text-amber-300 transition-colors"
+                                        className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 group-hover:border-amber-500/20 group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors"
                                     >
                                         {skill}
                                     </span>
@@ -74,7 +77,7 @@ const Certifications = () => {
                                 href={cert.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl transition-all duration-300 font-medium gap-2 group/btn relative overflow-hidden bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 text-white border border-transparent lg:bg-none lg:bg-gray-100 lg:dark:bg-white/5 lg:text-gray-900 lg:dark:text-white lg:border-gray-200 lg:dark:border-white/10 lg:hover:bg-gradient-to-r lg:hover:from-amber-500 lg:hover:to-orange-500 lg:hover:text-white lg:dark:hover:from-amber-600 lg:dark:hover:to-orange-600 lg:hover:border-transparent lg:group-hover:bg-gradient-to-r lg:group-hover:from-amber-500 lg:group-hover:to-orange-500 lg:group-hover:text-white lg:group-hover:border-transparent lg:dark:group-hover:from-amber-600 lg:dark:group-hover:to-orange-600"
+                                className="inline-flex items-center justify-center w-full py-3 px-4 transition-all duration-300 font-medium gap-2 group/btn relative overflow-hidden bg-amber-600 dark:bg-amber-500 text-white dark:text-gray-900 border border-transparent lg:bg-gray-100 lg:dark:bg-white/[0.03] lg:text-gray-900 lg:dark:text-white lg:border-gray-200 lg:dark:border-white/10 lg:hover:bg-amber-600 lg:dark:hover:bg-amber-500 lg:hover:text-white lg:dark:hover:text-gray-900 lg:hover:border-transparent lg:group-hover:bg-amber-600 lg:dark:group-hover:bg-amber-500 lg:group-hover:text-white lg:dark:group-hover:text-gray-900 lg:group-hover:border-transparent"
 
                             >
                                 <span className="relative z-10 flex items-center gap-2">

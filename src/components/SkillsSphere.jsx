@@ -21,7 +21,7 @@ const MarqueeRow = ({ items, reverse = false }) => {
     const content = [...items, ...items, ...items, ...items];
 
     return (
-        <div className="relative flex overflow-hidden w-full mask-image-gradient">
+        <div className="relative flex overflow-hidden w-full">
             <div className={`flex py-2 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'} hover:pause-animation`}>
                 {content.map((skill, index) => (
                     <Tag key={`${skill.name}-${index}`} name={skill.name} icon={skill.icon} />
@@ -40,9 +40,7 @@ const SkillsSphere = () => {
 
     return (
         <div className="relative w-full py-8 flex flex-col gap-6 overflow-hidden select-none">
-            {/* Gradient Masks for fade effect at edges */}
-            <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-gray-50 dark:from-[#050505] to-transparent z-10 pointer-events-none" />
-            <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-gray-50 dark:from-[#050505] to-transparent z-10 pointer-events-none" />
+            {/* Flat Edge Borders */}
 
             <MarqueeRow items={row1} />
             <MarqueeRow items={row2} reverse />

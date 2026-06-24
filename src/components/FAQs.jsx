@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import {  Plus, Minus  } from './GoogleIcons';
 import { FAQ_DATA } from '../data/constants';
 
 const FaqSection = () => {
@@ -15,8 +15,11 @@ const FaqSection = () => {
           {FAQ_DATA.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-white/5 transition-all duration-300 shadow-sm dark:shadow-none"
+              className={`border border-gray-200 dark:border-white/10 overflow-hidden bg-white dark:bg-white/[0.03] transition-all duration-300 relative group ${openFaq === index ? 'border-amber-500' : 'hover:border-gray-400 dark:hover:border-white/20'}`}
             >
+              {openFaq === index && (
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-amber-500 transition-colors duration-300" />
+              )}
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 className="w-full p-6 flex justify-between items-center text-left hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"

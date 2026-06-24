@@ -48,12 +48,9 @@ const TiltCard = ({ children, className = "" }) => {
             }}
         >
             {children}
-            <div
-                className="absolute inset-0 pointer-events-none rounded-xl"
-                style={{
-                    background: `linear-gradient(135deg, rgba(255,255,255,${isHovered ? 0.1 : 0}) 0%, rgba(255,255,255,0) 100%)`
-                }}
-            />
+            {isHovered && (
+                <div className="absolute inset-0 pointer-events-none rounded-xl bg-white/5" />
+            )}
         </div>
     );
 };

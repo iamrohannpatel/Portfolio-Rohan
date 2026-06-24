@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import Header from './components/Header';
 import Home from './components/Home';
-import SocialSidebar from './components/SocialSidebar';
 import ScrollProgress from './components/ScrollProgress';
 import ClickSpark from './components/ClickSpark';
 import LazySection from './components/LazySection';
@@ -162,8 +161,6 @@ const MainLayout = () => {
   const content = (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#050505] dark:text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
       <ScrollProgress />
-      {!isMobile && <SocialSidebar />}
-
       <Suspense fallback={null}>
         <ScrollToTop />
       </Suspense>
